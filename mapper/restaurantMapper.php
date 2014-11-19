@@ -20,7 +20,7 @@
 
 			foreach ($restaurants as $restaurant)
 			{
-				$restaurantRet.push(createRestaurant($restaurant));
+				array_push($restaurantRet, createRestaurant($restaurant));
 			}
 
 			returnt $restaurantRet;
