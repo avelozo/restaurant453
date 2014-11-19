@@ -48,6 +48,19 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
+
+-- -----------------------------------------------------
+-- Table `role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `role` ;
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `roleId` INT NOT NULL AUTO_INCREMENT,
+  `roleName` VARCHAR(45) NULL,
+  PRIMARY KEY (`roleId`))
+ENGINE = InnoDB;
+
+
 -- -----------------------------------------------------
 -- Table `employee`
 -- -----------------------------------------------------
@@ -65,21 +78,28 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `password` VARCHAR(45) NULL,
   `roleId` INT NOT NULL,
   PRIMARY KEY (`employeeId`),
+  CONSTRAINT `employees_ibfk_1`
+    FOREIGN KEY (`reportsTo`)
+    REFERENCES `employee` (`employeeId`),
   CONSTRAINT `restaurantId`
     FOREIGN KEY (`restaurantId`)
     REFERENCES `restaurant` (`restaurantId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `roleId`
+    FOREIGN KEY (`roleId`)
+    REFERENCES `role` (`roleId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
-ALTER TABLE `employee`
-ADD CONSTRAINT `employees_ibfk_1`
-FOREIGN KEY (`reportsTo`) REFERENCES employee(employeeId);
-
 CREATE INDEX `reportsTo` ON `employee` (`reportsTo` ASC);
 
 CREATE INDEX `restaurantId_idx` ON `employee` (`restaurantId` ASC);
+
+CREATE INDEX `roleId_idx` ON `employee` (`roleId` ASC);
+
 
 
 -- -----------------------------------------------------
@@ -179,23 +199,6 @@ ENGINE = InnoDB;
 CREATE INDEX `productId_idx` ON `stock` (`productId` ASC);
 
 CREATE INDEX `restaurantId_idx` ON `stock` (`restaurantId` ASC);
-
-
--- -----------------------------------------------------
--- Table `role`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `role` ;
-
-CREATE TABLE IF NOT EXISTS `role` (
-  `roleId` INT NOT NULL AUTO_INCREMENT,
-  `roleName` VARCHAR(45) NULL,
-  PRIMARY KEY (`roleId`),
-  CONSTRAINT `roleId`
-    FOREIGN KEY (`roleId`)
-    REFERENCES `employee` (`employeeId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
