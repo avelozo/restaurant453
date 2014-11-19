@@ -134,12 +134,13 @@ DEFAULT CHARACTER SET = latin1;
 DROP TABLE IF EXISTS `orderdetail` ;
 
 CREATE TABLE IF NOT EXISTS `orderdetail` (
+  `orderdetailId` INT NOT NULL AUTO_INCREMENT,
   `orderId` INT(11) NOT NULL,
-  `productId` VARCHAR(15) NOT NULL,
+  `productId` INT NOT NULL,
   `quantityOrdered` INT(11) NOT NULL,
   `priceEach` DOUBLE NOT NULL,
   `chair` VARCHAR(45) NULL,
-  PRIMARY KEY (`orderId`),
+  PRIMARY KEY (`orderdetailId`),
   CONSTRAINT `orderdetails_ibfk_1`
     FOREIGN KEY (`orderId`)
     REFERENCES `order` (`orderId`),
@@ -163,12 +164,12 @@ CREATE TABLE IF NOT EXISTS `stock` (
   `restaurantId` INT NOT NULL,
   `quantityInStock` DECIMAL(4,2) NOT NULL DEFAULT 0,
   PRIMARY KEY (`stockId`, `restaurantId`, `productId`),
-  CONSTRAINT `productId`
+  CONSTRAINT `FK_productId_1`
     FOREIGN KEY (`productId`)
     REFERENCES `product` (`productId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `restaurantId`
+  CONSTRAINT `FK_restaurantId_1`
     FOREIGN KEY (`restaurantId`)
     REFERENCES `restaurant` (`restaurantId`)
     ON DELETE NO ACTION
