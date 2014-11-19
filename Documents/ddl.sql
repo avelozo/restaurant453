@@ -9,22 +9,11 @@ CREATE SCHEMA IF NOT EXISTS `roussef` DEFAULT CHARACTER SET latin1 ;
 USE `roussef` ;
 
 -- -----------------------------------------------------
--- Table `roussef`.`roles`
+-- Table `customer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`roles` ;
+DROP TABLE IF EXISTS `customer` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`roles` (
-  `roleId` INT NOT NULL AUTO_INCREMENT,
-  `roleName` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`roleId`))
-ENGINE = InnoDB;
-
--- -----------------------------------------------------
--- Table `roussef`.`customers`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`customers` ;
-
-CREATE TABLE IF NOT EXISTS `roussef`.`customers` (
+CREATE TABLE IF NOT EXISTS `customer` (
   `customerId` INT(11) NOT NULL,
   `customerName` VARCHAR(50) NOT NULL,
   `phone` VARCHAR(50) NOT NULL,
@@ -32,19 +21,19 @@ CREATE TABLE IF NOT EXISTS `roussef`.`customers` (
   `addressLine2` VARCHAR(50) NULL DEFAULT NULL,
   `city` VARCHAR(50) NOT NULL,
   `state` VARCHAR(50) NULL DEFAULT NULL,
-  `postalCode` VARCHAR(15) NULL DEFAULT NULL,
   `country` VARCHAR(50) NOT NULL,
+  `postalCode` VARCHAR(15) NULL DEFAULT NULL,
   PRIMARY KEY (`customerId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `roussef`.`restaurant`
+-- Table `restaurant`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`restaurant` ;
+DROP TABLE IF EXISTS `restaurant` ;
 
-CREATE TABLE IF NOT EXISTS `roussef`.`restaurant` (
+CREATE TABLE IF NOT EXISTS `restaurant` (
   `restaurantId` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `phone` VARCHAR(50) NOT NULL,
@@ -60,11 +49,11 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `roussef`.`employees`
+-- Table `employee`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`employees` ;
+DROP TABLE IF EXISTS `employee` ;
 
-CREATE TABLE IF NOT EXISTS `roussef`.`employees` (
+CREATE TABLE IF NOT EXISTS `employee` (
   `employeeId` INT(11) NOT NULL,
   `lastName` VARCHAR(50) NOT NULL,
   `firstName` VARCHAR(50) NOT NULL,
@@ -76,30 +65,29 @@ CREATE TABLE IF NOT EXISTS `roussef`.`employees` (
   `password` VARCHAR(45) NULL,
   `roleId` INT NOT NULL,
   PRIMARY KEY (`employeeId`),
-  INDEX `reportsTo` (`reportsTo` ASC),
-  INDEX `employees_ibfk_2_idx` (`roleId` ASC),
-  INDEX `restaurantId_idx` (`restaurantId` ASC),
-  CONSTRAINT `employees_ibfk_1`
-    FOREIGN KEY (`reportsTo`)
-    REFERENCES `roussef`.`employees` (`employeeId`),
-  CONSTRAINT `employees_ibfk_2`
-    FOREIGN KEY (`roleId`)
-    REFERENCES `mydb`.`roles` (`roleId`),
   CONSTRAINT `restaurantId`
     FOREIGN KEY (`restaurantId`)
-    REFERENCES `roussef`.`restaurant` (`restaurantId`)
+    REFERENCES `restaurant` (`restaurantId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+ALTER TABLE `employee`
+ADD CONSTRAINT `employees_ibfk_1`
+FOREIGN KEY (`reportsTo`) REFERENCES employee(employeeId);
+
+CREATE INDEX `reportsTo` ON `employee` (`reportsTo` ASC);
+
+CREATE INDEX `restaurantId_idx` ON `employee` (`restaurantId` ASC);
+
 
 -- -----------------------------------------------------
--- Table `roussef`.`orders`
+-- Table `order`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`orders` ;
+DROP TABLE IF EXISTS `order` ;
 
-CREATE TABLE IF NOT EXISTS `roussef`.`orders` (
+CREATE TABLE IF NOT EXISTS `order` (
   `orderId` INT(11) NOT NULL,
   `orderDate` DATE NOT NULL,
   `customerId` INT(11) NULL,
@@ -107,31 +95,32 @@ CREATE TABLE IF NOT EXISTS `roussef`.`orders` (
   `employeeId` INT NULL,
   `restaurantId` INT NULL,
   PRIMARY KEY (`orderId`),
-  INDEX `customerNumber` (`customerId` ASC),
-  INDEX `restaurantId_idx` (`restaurantId` ASC),
-  CONSTRAINT `orders_ibfk_1`
+  CONSTRAINT `orders_ibfk_11`
     FOREIGN KEY (`customerId`)
-    REFERENCES `roussef`.`customers` (`customerId`),
-  CONSTRAINT `restaurantId`
+    REFERENCES `customer` (`customerId`),
+  CONSTRAINT `restaurantId_1`
     FOREIGN KEY (`restaurantId`)
-    REFERENCES `roussef`.`restaurant` (`restaurantId`)
+    REFERENCES `restaurant` (`restaurantId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+CREATE INDEX `customerNumber` ON `order` (`customerId` ASC);
+
+CREATE INDEX `restaurantId_idx` ON `order` (`restaurantId` ASC);
+
 
 -- -----------------------------------------------------
--- Table `roussef`.`products`
+-- Table `product`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`products` ;
+DROP TABLE IF EXISTS `product` ;
 
-CREATE TABLE IF NOT EXISTS `roussef`.`products` (
+CREATE TABLE IF NOT EXISTS `product` (
   `productId` INT NOT NULL,
-  `productName` VARCHAR(70) NOT NULL,
-  `productVendor` VARCHAR(50) NOT NULL,
-  `productDescription` TEXT NOT NULL,
-  `quantityInStock` SMALLINT(6) NOT NULL,
+  `name` VARCHAR(70) NOT NULL,
+  `vendor` VARCHAR(50) NOT NULL,
+  `description` TEXT NOT NULL,
   `buyPrice` DOUBLE NOT NULL,
   `price` DOUBLE NOT NULL,
   PRIMARY KEY (`productId`))
@@ -140,51 +129,74 @@ DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
--- Table `roussef`.`orderdetails`
+-- Table `orderdetail`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`orderdetails` ;
+DROP TABLE IF EXISTS `orderdetail` ;
 
-CREATE TABLE IF NOT EXISTS `roussef`.`orderdetails` (
+CREATE TABLE IF NOT EXISTS `orderdetail` (
   `orderId` INT(11) NOT NULL,
   `productId` VARCHAR(15) NOT NULL,
   `quantityOrdered` INT(11) NOT NULL,
   `priceEach` DOUBLE NOT NULL,
   `chair` VARCHAR(45) NULL,
   PRIMARY KEY (`orderId`),
-  INDEX `productCode` (`productId` ASC),
   CONSTRAINT `orderdetails_ibfk_1`
     FOREIGN KEY (`orderId`)
-    REFERENCES `roussef`.`orders` (`orderId`),
+    REFERENCES `order` (`orderId`),
   CONSTRAINT `orderdetails_ibfk_2`
     FOREIGN KEY (`productId`)
-    REFERENCES `roussef`.`products` (`productId`))
+    REFERENCES `product` (`productId`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
+CREATE INDEX `productCode` ON `orderdetail` (`productId` ASC);
+
 
 -- -----------------------------------------------------
--- Table `roussef`.`stock`
+-- Table `stock`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `roussef`.`stock` ;
+DROP TABLE IF EXISTS `stock` ;
 
-CREATE TABLE IF NOT EXISTS `roussef`.`stock` (
+CREATE TABLE IF NOT EXISTS `stock` (
   `stockId` INT NOT NULL AUTO_INCREMENT,
   `productId` INT NOT NULL,
   `restaurantId` INT NOT NULL,
   `quantityInStock` DECIMAL(4,2) NOT NULL DEFAULT 0,
   PRIMARY KEY (`stockId`, `restaurantId`, `productId`),
-  INDEX `productId_idx` (`productId` ASC),
-  INDEX `restaurantId_idx` (`restaurantId` ASC),
   CONSTRAINT `productId`
     FOREIGN KEY (`productId`)
-    REFERENCES `roussef`.`products` (`productId`)
+    REFERENCES `product` (`productId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `restaurantId`
     FOREIGN KEY (`restaurantId`)
-    REFERENCES `roussef`.`restaurant` (`restaurantId`)
+    REFERENCES `restaurant` (`restaurantId`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-USE `roussef` ;
+CREATE INDEX `productId_idx` ON `stock` (`productId` ASC);
+
+CREATE INDEX `restaurantId_idx` ON `stock` (`restaurantId` ASC);
+
+
+-- -----------------------------------------------------
+-- Table `role`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `role` ;
+
+CREATE TABLE IF NOT EXISTS `role` (
+  `roleId` INT NOT NULL AUTO_INCREMENT,
+  `roleName` VARCHAR(45) NULL,
+  PRIMARY KEY (`roleId`),
+  CONSTRAINT `roleId`
+    FOREIGN KEY (`roleId`)
+    REFERENCES `employee` (`employeeId`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
