@@ -4,10 +4,19 @@
 
 	class RestaurantDA extends BaseDB
 	{
-		public function getRestaurants()
+
+		private $conn;
+
+		function RestaurantDA()
+		{
+			$this->conn = parent::connectDatabase();
+		}
+
+		public function getRestaurants($connection = null)
 		{
 			
-			$connection = parent::connectDatabase();
+			if($connection == null)
+				$connection = $this->conn;
 
 			try
 			{

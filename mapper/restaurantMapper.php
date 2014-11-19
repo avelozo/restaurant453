@@ -7,15 +7,16 @@
 	{
 		private $restaurantDAO = null;
 
+		function RestaurantMapper()
+		{
+			$this->restaurantDAO = new RestaurantDA();
+		}
+
 		public function getRestaurants()
 		{
-			if($this->restaurantDAO == null)
-				$this->restaurantDAO = new RestaurantDA();
-
 			$restaurantsRet = [];
 
-			$da = $this->restaurantDAO;
-			$restaurants = $da->getRestaurants(null);
+			$restaurants = $this->restaurantDAO->getRestaurants();
 
 			foreach ($restaurants as $restaurant)
 			{
