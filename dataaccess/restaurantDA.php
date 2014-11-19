@@ -2,19 +2,12 @@
 
 	include_once "db.inc.php";
 
-	public class RestaurantDA extends BaseDB
+	class RestaurantDA extends BaseDB
 	{
-		private $conn;
-
-		public function RestaurantDA()
+		public function getRestaurants()
 		{
-			$conn = parent::connectDatabase();
-		}
-
-		public function getRestaurants($connection)
-		{
-			if(!isset($connection))
-				$connection = $conn;
+			
+			$connection = parent::connectDatabase();
 
 			try
 			{

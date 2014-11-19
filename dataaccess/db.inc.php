@@ -1,8 +1,8 @@
 <?php
 	
 	include_once "config.inc.php";
-	
-	public class BaseDB
+
+	class BaseDB
 	{
 		function connectDatabase()
 		{

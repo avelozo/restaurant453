@@ -1,29 +1,28 @@
 <?php
 
-	include_once "../dataaccess/restaurantDA.php";
-	include_once "../model/model.restaurant.php";
+	include_once "dataaccess/restaurantDA.php";
+	include_once "model/model.restaurant.php";
 
 	class RestaurantMapper
 	{
-		private $restaurantDAO;
-
-		public function RestaurantMapper()
-		{
-			$restaurantDAO = new RestautantDA();
-		}
+		private $restaurantDAO = null;
 
 		public function getRestaurants()
 		{
-			$restaurantsRet = array();
+			if($this->restaurantDAO == null)
+				$this->restaurantDAO = new RestaurantDA();
 
-			$restaurants = $restaurantDAO->getRestaurants();
+			$restaurantsRet = [];
+
+			$da = $this->restaurantDAO;
+			$restaurants = $da->getRestaurants(null);
 
 			foreach ($restaurants as $restaurant)
 			{
-				array_push($restaurantRet, createRestaurant($restaurant));
+				array_push($restaurantsRet, $this->createRestaurant($restaurant));
 			}
 
-			return $restaurantRet;
+			return $restaurantsRet;
 		}
 
 		private function createRestaurant($restaurant)
