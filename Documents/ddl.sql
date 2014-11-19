@@ -14,7 +14,7 @@ USE `roussef` ;
 DROP TABLE IF EXISTS `customer` ;
 
 CREATE TABLE IF NOT EXISTS `customer` (
-  `customerId` INT(11) NOT NULL,
+  `customerId` INT(11) NOT NULL AUTO_INCREMENT,
   `customerName` VARCHAR(50) NOT NULL,
   `phone` VARCHAR(50) NOT NULL,
   `addressLine1` VARCHAR(50) NOT NULL,
@@ -67,7 +67,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `employee` ;
 
 CREATE TABLE IF NOT EXISTS `employee` (
-  `employeeId` INT(11) NOT NULL,
+  `employeeId` INT(11) NOT NULL AUTO_INCREMENT,
   `lastName` VARCHAR(50) NOT NULL,
   `firstName` VARCHAR(50) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -108,7 +108,7 @@ CREATE INDEX `roleId_idx` ON `employee` (`roleId` ASC);
 DROP TABLE IF EXISTS `order` ;
 
 CREATE TABLE IF NOT EXISTS `order` (
-  `orderId` INT(11) NOT NULL,
+  `orderId` INT(11) NOT NULL AUTO_INCREMENT,
   `orderDate` DATE NOT NULL,
   `customerId` INT(11) NULL,
   `tableNumber` INT NOT NULL,
@@ -137,7 +137,7 @@ CREATE INDEX `restaurantId_idx` ON `order` (`restaurantId` ASC);
 DROP TABLE IF EXISTS `product` ;
 
 CREATE TABLE IF NOT EXISTS `product` (
-  `productId` INT NOT NULL,
+  `productId` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(70) NOT NULL,
   `vendor` VARCHAR(50) NOT NULL,
   `description` TEXT NOT NULL,
