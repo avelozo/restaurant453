@@ -11,7 +11,7 @@
 			$this->conn = parent::connectDatabase();
 		}
 
-		public function getEmployees($id, $connection)
+		public function getEmployees($id = null, $userName = null, $password = null, $connection = null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
@@ -48,6 +48,10 @@
 			    {
 		    		$sql .= ' WHERE emp.employeeId = :id';
 				}
+				elseif($userName != null && $password != null)
+				{
+					$sql .= ' WHERE emp.userName = :userName AND emp.password = :password';	
+				}
 
 				$prep = $connection->prepare($sql);
 			    
@@ -55,6 +59,11 @@
 			    {
 		    		$prep->bindValue(':id', $id);
 		    	}
+		    	elseif($userName != null && $password != null)
+				{
+					$prep->bindValue(':userName', $userName);
+					$prep->bindValue(':password', $password);
+				}
 
 			    $prep->execute();
 			    return $prep->fetchAll();

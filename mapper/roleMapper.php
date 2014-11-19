@@ -26,7 +26,7 @@
 			return $rolesRet;
 		}
 
-		private function createRole($role)
+		public function createRole($role)
 		{
 			$rol = new Role();
 
