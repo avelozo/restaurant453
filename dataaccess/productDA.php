@@ -27,7 +27,7 @@
 							ON `product`.`productId` = `stock`.`productId`
 							INNER JOIN
 							`restaurant`
-							ON `stock`.`restaurantId` = `restaurant`.`restaurantId`;';
+							ON `stock`.`restaurantId` = `restaurant`.`restaurantId`';
 
 				if($id != null)
 				{

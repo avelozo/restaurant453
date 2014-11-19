@@ -41,7 +41,7 @@
 
 		$c = new ProductMapper();
 
-		$prod = $c->getProducts();
+		$prod = $c->getProducts(2);
 
 		foreach($prod as $product)
 		{
