@@ -1,18 +1,18 @@
 <?php
 
-	include_once "restaurantDA.php";
+	include_once "../dataaccess/restaurantDA.php";
 	include_once "../model/model.restaurant.php";
 
-	public class RestaurantMapper()
+	class RestaurantMapper
 	{
 		private $restaurantDAO;
 
-		public RestaurantMapper()
+		public function RestaurantMapper()
 		{
 			$restaurantDAO = new RestautantDA();
 		}
 
-		public getRestaurants()
+		public function getRestaurants()
 		{
 			$restaurantsRet = array();
 
@@ -23,12 +23,13 @@
 				array_push($restaurantRet, createRestaurant($restaurant));
 			}
 
-			returnt $restaurantRet;
+			return $restaurantRet;
 		}
 
-		private createRestaurant($restaurant)
+		private function createRestaurant($restaurant)
 		{
 			$rest = new Restaurant();
+
 			$rest->id = $restaurant['restaurantId'];
 			$rest->name = $restaurant['name'];
 			$rest->phone = $restaurant['phone'];

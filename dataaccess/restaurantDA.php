@@ -6,12 +6,12 @@
 	{
 		private $conn;
 
-		public RestaurantDA()
+		public function RestaurantDA()
 		{
 			$conn = parent::connectDatabase();
 		}
 
-		public getRestaurants($connection)
+		public function getRestaurants($connection)
 		{
 			if(!isset($connection))
 				$connection = $conn;
