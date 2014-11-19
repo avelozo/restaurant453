@@ -24,6 +24,8 @@
 
 		$c->addCustomer($customer);
 
+		showCustomerInfo($customer);
+
 		showInfo("End - Add Customer");
 	}
 
@@ -33,24 +35,33 @@
 
 		$c = new CustomerMapper();
 
-		$cust = $c->getCustomers();
+		$cust = $c->getCustomers(5);
 
 		foreach($cust as $customer)
 		{
-			echo $customer->id . '<br/>' ;
-			echo $customer->name . '<br/>';
-			echo $customer->phone. '<br/>' ;
-			echo $customer->addressLine1 . '<br/>';
-			echo $customer->addressLine2 . '<br/>' ;
-			echo $customer->city . '<br/>';
-			echo $customer->state . '<br/>' ;
-			echo $customer->country . '<br/>';
-			echo $customer->postalCode . '<br/>';
+			showCustomerInfo($customer);
+
+			$customer->name = "Astolfo";
+
+			$c->updateCustomer($customer);
 
 			showInfo("");
 		}
 
 		showInfo("End - Get Customer");
+	}
+
+	function showCustomerInfo($customer)
+	{
+		echo $customer->id . '<br/>' ;
+		echo $customer->name . '<br/>';
+		echo $customer->phone. '<br/>' ;
+		echo $customer->addressLine1 . '<br/>';
+		echo $customer->addressLine2 . '<br/>' ;
+		echo $customer->city . '<br/>';
+		echo $customer->state . '<br/>' ;
+		echo $customer->country . '<br/>';
+		echo $customer->postalCode . '<br/>';
 	}
 
 	function showInfo($info)

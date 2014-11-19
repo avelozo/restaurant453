@@ -28,7 +28,7 @@
 			    $prep = $connection->prepare($sql);
 			    
 			    if($id != null)
-		    		$prep->bindValue(':customerId', $id);
+		    		$prep->bindValue(':id', $id);
 
 			    $prep->execute();
 			    return $prep->fetchAll();
@@ -69,10 +69,51 @@
 				$prep->bindValue(':cpostalCode', $customer->postalCode);
 
 			    $prep->execute();
+
+			    $customer->id = $connection->lastInsertId();
 		    }
 			catch (PDOException $e)
 			{
 			  $error = 'Error inserting customer: ' . $e->getMessage();
+			  die($error);
+			  exit();
+			}
+		}
+
+		public function updateCustomer($customer, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+				 $sql = 'UPDATE `customer` SET
+			        customerName = :cname,
+			        phone = :cphone,
+			        addressLine1 = :caddr1,
+			        addressLine2 = :caddr2,
+			        city = :ccity,
+			        state = :cstate,
+			        country = :ccountry,
+			        postalCode = :cpostalCode 
+			        WHERE customerId = :id';
+
+			    $prep = $connection->prepare($sql);
+			    $prep->bindValue(':cname', $customer->name);
+			    $prep->bindValue(':cphone', $customer->phone);
+			    $prep->bindValue(':caddr1', $customer->addressLine1);
+				$prep->bindValue(':caddr2', $customer->addressLine2);
+			    $prep->bindValue(':ccity', $customer->city);
+			    $prep->bindValue(':cstate', $customer->state);
+			    $prep->bindValue(':ccountry', $customer->country);
+				$prep->bindValue(':cpostalCode', $customer->postalCode);
+				$prep->bindValue(':id', $customer->id);
+
+			    $prep->execute();
+		    }
+			catch (PDOException $e)
+			{
+			  $error = 'Error updating customer: ' . $e->getMessage();
 			  die($error);
 			  exit();
 			}

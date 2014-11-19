@@ -31,6 +31,11 @@
 			$this->customerDAO->addCustomer($customer);
 		}
 
+		public function updateCustomer($customer)
+		{
+			$this->customerDAO->updateCustomer($customer);
+		}
+
 		private function createCustomer($customer)
 		{
 			$cust = new Customer();
