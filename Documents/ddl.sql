@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `stock` (
   `stockId` INT NOT NULL AUTO_INCREMENT,
   `productId` INT NOT NULL,
   `restaurantId` INT NOT NULL,
-  `stockQuantity` DECIMAL(4,2) NOT NULL DEFAULT 0,
+  `stockQuantity` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`stockId`, `restaurantId`, `productId`),
   CONSTRAINT `FK_stock_productId`
     FOREIGN KEY (`productId`)

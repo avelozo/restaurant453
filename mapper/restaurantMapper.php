@@ -26,19 +26,19 @@
 			return $restaurantsRet;
 		}
 
-		private function createRestaurant($restaurant)
+		public function createRestaurant($restaurant)
 		{
 			$rest = new Restaurant();
 
 			$rest->id = $restaurant['restaurantId'];
-			$rest->name = $restaurant['name'];
-			$rest->phone = $restaurant['phone'];
-			$rest->addressLine1 = $restaurant['addressLine1'];
-			$rest->addressLine2 = $restaurant['addressLine2'];
-			$rest->city = $restaurant['city'];
-			$rest->state = $restaurant['state'];
-			$rest->country = $restaurant['country'];
-			$rest->postalCode = $restaurant['postalCode'];
+			$rest->name = $restaurant['restaurantName'];
+			$rest->phone = $restaurant['restaurantPhone'];
+			$rest->addressLine1 = $restaurant['restaurantAddressLine1'];
+			$rest->addressLine2 = $restaurant['restaurantAddressLine2'];
+			$rest->city = $restaurant['restaurantCity'];
+			$rest->state = $restaurant['restaurantState'];
+			$rest->country = $restaurant['restaurantCountry'];
+			$rest->postalCode = $restaurant['restaurantPostalCode'];
 
 			return $rest;
 		}

@@ -4,7 +4,6 @@
 
 	class RestaurantDA extends BaseDB
 	{
-
 		private $conn;
 
 		function RestaurantDA()

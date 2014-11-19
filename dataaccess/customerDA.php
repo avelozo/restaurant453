@@ -50,13 +50,13 @@
 			{
 				 $sql = 'INSERT INTO `customer` SET
 			        customerName = :cname,
-			        phone = :cphone,
-			        addressLine1 = :caddr1,
-			        addressLine2 = :caddr2,
-			        city = :ccity,
-			        state = :cstate,
-			        country = :ccountry,
-			        postalCode = :cpostalCode';
+			        customerPhone = :cphone,
+			        customerAddressLine1 = :caddr1,
+			        customerAddressLine2 = :caddr2,
+			        customerCity = :ccity,
+			        customerState = :cstate,
+			        customerCountry = :ccountry,
+			        customerPostalCode = :cpostalCode';
 
 			    $prep = $connection->prepare($sql);
 			    $prep->bindValue(':cname', $customer->name);
@@ -89,13 +89,13 @@
 			{
 				 $sql = 'UPDATE `customer` SET
 			        customerName = :cname,
-			        phone = :cphone,
-			        addressLine1 = :caddr1,
-			        addressLine2 = :caddr2,
-			        city = :ccity,
-			        state = :cstate,
-			        country = :ccountry,
-			        postalCode = :cpostalCode 
+			        customerPhone = :cphone,
+			        customerAddressLine1 = :caddr1,
+			        customerAddressLine2 = :caddr2,
+			        customerCity = :ccity,
+			        customerState = :cstate,
+			        customerCountry = :ccountry,
+			        customerPostalCode = :cpostalCode 
 			        WHERE customerId = :id';
 
 			    $prep = $connection->prepare($sql);

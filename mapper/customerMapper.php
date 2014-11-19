@@ -42,13 +42,13 @@
 
 			$cust->id = $customer['customerId'];
 			$cust->name = $customer['customerName'];
-			$cust->phone = $customer['phone'];
-			$cust->addressLine1 = $customer['addressLine1'];
-			$cust->addressLine2 = $customer['addressLine2'];
-			$cust->city = $customer['city'];
-			$cust->state = $customer['state'];
-			$cust->country = $customer['country'];
-			$cust->postalCode = $customer['postalCode'];
+			$cust->phone = $customer['customerPhone'];
+			$cust->addressLine1 = $customer['customerAddressLine1'];
+			$cust->addressLine2 = $customer['customerAddressLine2'];
+			$cust->city = $customer['customerCity'];
+			$cust->state = $customer['customerState'];
+			$cust->country = $customer['customerCountry'];
+			$cust->postalCode = $customer['customerPostalCode'];
 
 			return $cust;
 		}
