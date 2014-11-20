@@ -3,6 +3,7 @@
 class Employee
 {
 	public $id;
+	public $ssn;
 	public $lastName;
 	public $firstName;
 	public $email;
