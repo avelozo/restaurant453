@@ -1,6 +1,6 @@
 <?php 
 
-	include_once "db.inc.php";
+	include_once DIR_BASE . "dataaccess/db.inc.php";
 
 	class CustomerDA extends BaseDB
 	{

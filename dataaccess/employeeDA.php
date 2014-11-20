@@ -1,6 +1,6 @@
 <?php 
 
-	include_once "db.inc.php";
+	include_once DIR_BASE . "dataaccess/db.inc.php";
 
 	class EmployeeDA extends BaseDB
 	{
@@ -11,7 +11,7 @@
 			$this->conn = parent::connectDatabase();
 		}
 
-		public function getEmployees($id = null, $userName = null, $password = null, $connection = null)
+		public function getEmployees($id = null, $userName = null, $connection = null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
@@ -49,9 +49,9 @@
 			    {
 		    		$sql .= ' WHERE emp.employeeId = :id';
 				}
-				elseif($userName != null && $password != null)
+				elseif($userName != null)
 				{
-					$sql .= ' WHERE emp.userName = :userName AND emp.password = :password';	
+					$sql .= ' WHERE emp.employeeUserName = :userName';	
 				}
 
 				$prep = $connection->prepare($sql);
@@ -60,10 +60,9 @@
 			    {
 		    		$prep->bindValue(':id', $id);
 		    	}
-		    	elseif($userName != null && $password != null)
+		    	elseif($userName != null)
 				{
 					$prep->bindValue(':userName', $userName);
-					$prep->bindValue(':password', $password);
 				}
 
 			    $prep->execute();

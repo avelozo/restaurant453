@@ -1,7 +1,7 @@
 <?php
 
-	include_once "dataaccess/customerDA.php";
-	include_once "model/model.customer.php";
+	include_once DIR_BASE . "dataaccess/customerDA.php";
+	include_once DIR_BASE . "model/model.customer.php";
 
 	class CustomerMapper
 	{

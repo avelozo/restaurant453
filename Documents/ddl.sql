@@ -67,6 +67,7 @@ DROP TABLE IF EXISTS `employee` ;
 
 CREATE TABLE IF NOT EXISTS `employee` (
   `employeeId` INT(11) NOT NULL AUTO_INCREMENT,
+  `employeeSSN` VARCHAR(45) NOT NULL,
   `employeeLastName` VARCHAR(50) NOT NULL,
   `employeeFirstName` VARCHAR(50) NOT NULL,
   `employeeEmail` VARCHAR(100) NOT NULL,
@@ -98,6 +99,8 @@ CREATE INDEX `reportsTo` ON `employee` (`employeeReportsTo` ASC);
 CREATE INDEX `restaurantId_idx` ON `employee` (`restaurantId` ASC);
 
 CREATE INDEX `roleId_idx` ON `employee` (`roleId` ASC);
+
+CREATE UNIQUE INDEX `employeeSSN_UNIQUE` ON `employee` (`employeeSSN` ASC);
 
 
 -- -----------------------------------------------------
