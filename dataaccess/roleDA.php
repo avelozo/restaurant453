@@ -11,9 +11,8 @@
 			$this->conn = parent::connectDatabase();
 		}
 
-		public function getRoles($connection = null)
+		public function getRoles($id = null, $connection = null)
 		{
-			
 			if($connection == null)
 				$connection = $this->conn;
 
@@ -23,7 +22,14 @@
 				  			* 
 				  		  FROM 
 				  		  	role';
-			    $prep = $connection->prepare($sql);
+				if($id != null)
+					$sql .= " WHERE roleId = :id";
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
 			    $prep->execute();
 			    return $prep->fetchAll();
 			}
