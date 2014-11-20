@@ -1,8 +1,8 @@
 <?php
 
-	include_once "dataaccess/productDA.php";
-	include_once "model/model.product.php";
-	include_once "restaurantMapper.php";
+	include_once DIR_BASE . "dataaccess/productDA.php";
+	include_once DIR_BASE . "model/model.product.php";
+	include_once DIR_BASE . "mapper/restaurantMapper.php";
 
 	class ProductMapper
 	{

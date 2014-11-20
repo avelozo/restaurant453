@@ -1,7 +1,7 @@
 <?php
 
-	include_once "dataaccess/roleDA.php";
-	include_once "model/model.role.php";
+	include_once DIR_BASE . "dataaccess/roleDA.php";
+	include_once DIR_BASE . "model/model.role.php";
 
 	class RoleMapper
 	{

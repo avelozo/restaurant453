@@ -1,7 +1,7 @@
 <?php
 
-	include_once "dataaccess/restaurantDA.php";
-	include_once "model/model.restaurant.php";
+	include_once DIR_BASE . "dataaccess/restaurantDA.php";
+	include_once DIR_BASE . "model/model.restaurant.php";
 
 	class RestaurantMapper
 	{

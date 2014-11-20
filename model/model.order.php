@@ -8,4 +8,5 @@ class Order
 	public $tableNumber;
 	public $employee;
 	public $restaurant;
+	public $orderDetails;
 }

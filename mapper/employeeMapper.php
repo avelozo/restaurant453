@@ -1,9 +1,9 @@
 <?php
 
-	include_once "dataaccess/employeeDA.php";
-	include_once "model/model.employee.php";
-	include_once "mapper/restaurantMapper.php";
-	include_once "mapper/roleMapper.php";
+	include_once DIR_BASE . "dataaccess/employeeDA.php";
+	include_once DIR_BASE . "model/model.employee.php";
+	include_once DIR_BASE . "mapper/restaurantMapper.php";
+	include_once DIR_BASE . "mapper/roleMapper.php";
 
 	class EmployeeMapper
 	{
@@ -18,11 +18,11 @@
 			$this->restaurantMapper = new RestaurantMapper();
 		}
 
-		public function getEmployees($id = null, $userName = null, $password = null, $connection = null)
+		public function getEmployees($id = null, $userName = null, $connection = null)
 		{
 			$employeeRet = [];
 
-			$employees = $this->employeeDAO->getEmployees($id, $userName, $password);
+			$employees = $this->employeeDAO->getEmployees($id, $userName);
 
 			foreach ($employees as $employee)
 			{
