@@ -22,11 +22,11 @@
 			$this->roleDAO->updateRole($role);
 		}
 
-		public function getRoles()
+		public function getRoles($id = null)
 		{
 			$rolesRet = [];
 
-			$roles = $this->roleDAO->getRoles();
+			$roles = $this->roleDAO->getRoles($id);
 
 			foreach ($roles as $role)
 			{
