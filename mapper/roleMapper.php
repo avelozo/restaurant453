@@ -12,6 +12,16 @@
 			$this->roleDAO = new RoleDA();
 		}
 
+		public function addRole($role)
+		{
+			$this->roleDAO->addRole($role);
+		}
+
+		public function updateRole($role)
+		{
+			$this->roleDAO->updateRole($role);
+		}
+
 		public function getRoles()
 		{
 			$rolesRet = [];

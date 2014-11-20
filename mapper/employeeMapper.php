@@ -47,6 +47,7 @@
 			$emp = new Employee();
 
 			$emp->id = $employee['employeeId'];
+			$emp->ssn = $employee['employeeSSN'];
 			$emp->lastName = $employee['employeeLastName'];
 			$emp->firstName = $employee['employeeFirstName'];
 			$emp->email = $employee['employeeEmail'];
@@ -65,6 +66,7 @@
 			$emp = new Employee();
 
 			$emp->id = $employee['supervisorId'];
+			$emp->ssn = $employee['supervisorSSN'];
 			$emp->lastName = $employee['supervisorLastName'];
 			$emp->firstName = $employee['supervisorFirstName'];
 			$emp->email = $employee['supervisorEmail'];

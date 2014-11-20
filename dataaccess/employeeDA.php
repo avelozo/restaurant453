@@ -21,6 +21,7 @@
 				$sql = 'SELECT
 							emp.*,
 							sup.`employeeId` AS supervisorId,
+							sup.`employeeSSN` AS supervisorSSN,
 						    sup.`employeeLastName` AS supervisorLastName,
 						    sup.`employeeFirstName` AS supervisorFirstName,
 						    sup.`employeeEmail` AS supervisorEmailselect,
@@ -84,7 +85,8 @@
 			try
 			{
 				$sql = 'INSERT INTO `employee`
-						(`employeeLastName`,
+						(`employeeSSN`,
+						`employeeLastName`,
 						`employeeFirstName`,
 						`employeeEmail`,
 						`restaurantId`,
@@ -94,7 +96,8 @@
 						`employeePassword`,
 						`roleId`)
 						VALUES
-						(:employeeLastName,
+						(:employeeSSN,
+						:employeeLastName,
 						:employeeFirstName,
 						:employeeEmail,
 						:restaurantId,
@@ -105,6 +108,7 @@
 						:roleId)';
 
 			    $prep = $connection->prepare($sql);
+			    $prep->bindValue(':employeeSSN', $employee->ssn);
 			    $prep->bindValue(':employeeLastName', $employee->lastName);
 			    $prep->bindValue(':employeeFirstName', $employee->firstName);
 			    $prep->bindValue(':employeeEmail', $employee->email);
@@ -138,6 +142,7 @@
 			{
 				$sql = 'UPDATE `employee`
 						SET
+						`employeeSSN` = :employeeSSN,
 						`employeeLastName` = :employeeLastName,
 						`employeeFirstName` = :employeeFirstName,
 						`employeeEmail` = :employeeEmail,
@@ -150,6 +155,7 @@
 						WHERE `employeeId` = :id';
 
 			    $prep = $connection->prepare($sql);
+			    $prep->bindValue(':employeeSSN', $employee->ssn);
 			    $prep->bindValue(':employeeLastName', $employee->lastName);
 			    $prep->bindValue(':employeeFirstName', $employee->firstName);
 			    $prep->bindValue(':employeeEmail', $employee->email);

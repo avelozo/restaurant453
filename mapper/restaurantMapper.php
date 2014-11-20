@@ -12,6 +12,16 @@
 			$this->restaurantDAO = new RestaurantDA();
 		}
 
+		public function addRestaurant($restaurant)
+		{
+			$this->restaurantDAO->addRestaurant($restaurant);
+		}
+
+		public function updateRestaurant($restaurant)
+		{
+			$this->restaurantDAO->updateRestaurant($restaurant);
+		}
+
 		public function getRestaurants()
 		{
 			$restaurantsRet = [];
