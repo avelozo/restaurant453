@@ -21,19 +21,19 @@
 			</tr>
 			<?php foreach ($restaurants as $restaurant): ?>
 			<tr valign="top">
-				<td><?php echo $restaurant->name); ?></td>
-				<td><?php echo $restaurant->phone); ?></td>
-				<td><?php echo $restaurant->addressLine1); ?></td>
-				<td><?php echo $restaurant->addressLine2); ?></td>
-				<td><?php echo $restaurant->city); ?></td>
-				<td><?php echo $restaurant->state); ?></td>
-				<td><?php echo $restaurant->country); ?></td>
-				<td><?php echo $restaurant->postalCode); ?></td>
+				<td><?php echo $restaurant->name; ?></td>
+				<td><?php echo $restaurant->phone; ?></td>
+				<td><?php echo $restaurant->addressLine1; ?></td>
+				<td><?php echo $restaurant->addressLine2; ?></td>
+				<td><?php echo $restaurant->city; ?></td>
+				<td><?php echo $restaurant->state; ?></td>
+				<td><?php echo $restaurant->country; ?></td>
+				<td><?php echo $restaurant->postalCode; ?></td>
 				<td>
 					<form action="?" method="post">
 						<div>
 							<input type="hidden" name="id" value="<?php
-								echo $restaurant->id); ?>">
+								echo $restaurant->id; ?>">
 							<input type="submit" name="action" value="Edit">
 							<input type="submit" name="action" value="Delete">
 						</div>

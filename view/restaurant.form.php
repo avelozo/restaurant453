@@ -9,19 +9,19 @@
 		<form action="?<?php echo $action; ?>" method="post">
 			<div><label for="name">Name: <input type="text" name="name" id="name"
 				value="<?php echo $restaurant->name; ?>"></label></div>
-			<div><label for="phone">Name: <input type="text" name="phone" id="phone"
+			<div><label for="phone">Phone: <input type="text" name="phone" id="phone"
 				value="<?php echo $restaurant->phone; ?>"></label></div>
-			<div><label for="addressLine1">Name: <input type="text" name="addressLine1" id="addressLine1"
+			<div><label for="addressLine1">Address Line 1: <input type="text" name="addressLine1" id="addressLine1"
 				value="<?php echo $restaurant->addressLine1; ?>"></label></div>
-			<div><label for="addressLine2">Name: <input type="text" name="addressLine2" id="addressLine2"
+			<div><label for="addressLine2">Address Line 2: <input type="text" name="addressLine2" id="addressLine2"
 				value="<?php echo $restaurant->addressLine2; ?>"></label></div>
-			<div><label for="city">Name: <input type="text" name="city" id="city"
+			<div><label for="city">City: <input type="text" name="city" id="city"
 				value="<?php echo $restaurant->city; ?>"></label></div>
-			<div><label for="state">Name: <input type="text" name="state" id="state"
+			<div><label for="state">State: <input type="text" name="state" id="state"
 				value="<?php echo $restaurant->state; ?>"></label></div>
-			<div><label for="country">Name: <input type="text" name="country" id="country"
+			<div><label for="country">Country: <input type="text" name="country" id="country"
 				value="<?php echo $restaurant->country; ?>"></label></div>
-			<div><label for="postalCode">Name: <input type="text" name="postalCode" id="postalCode"
+			<div><label for="postalCode">Postal Code: <input type="text" name="postalCode" id="postalCode"
 				value="<?php echo $restaurant->postalCode; ?>"></label></div>
 			<div>
 				<input type="hidden" name="id" value="<?php echo $id; ?>">
