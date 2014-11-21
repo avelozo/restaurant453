@@ -12,9 +12,9 @@
 			$this->restaurantMapper = new RestaurantMapper();
 		}
 
-		public function getRestaurants()
+		public function getRestaurants($id = null)
 		{
-			return $this->restaurantMapper->getRestaurants();
+			return $this->restaurantMapper->getRestaurants($id);
 		}
 
 
