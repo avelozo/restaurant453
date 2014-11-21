@@ -93,7 +93,7 @@
 
 			    $product->id = $connection->lastInsertId();
 
-			    $this->addProductStock($product);
+			    $this->addProductStock($product, $connection);
 
 			    $connection->commit();
 
