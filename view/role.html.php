@@ -1,35 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Roles - Rousseff Restaurant</title>
-	</head>
-	<body>
-		<h1>Roles - Rousseff Restaurant</h1>
+<?php  include 'header.php';?>
+
+<div class="boxContainer marginContainer">
 		<p><a href="?add">Add new role</a></p>
-		<table>
-			<tr>
+		<table class="tableClass">
+			<tr class= "tableRowHeader">
 				<th>Id</th>
 				<th>Name</th>
 				<th>Options</th>
 			</tr>
+
 			<?php foreach ($roles as $role): ?>
-			<tr valign="top">
-				<td><?php echo $role->id; ?></td>
+			<tr class="tableRow" valign="top">
+				<td class=""><?php echo $role->id; ?></td>
 				<td><?php echo $role->name; ?></td>
 				<td>
 					<form action="?" method="post">
 						<div>
-							<input type="hidden" name="id" value="<?php
-								echo $role->id; ?>">
-							<input type="submit" name="action" value="Edit">
-							<input type="submit" name="action" value="Delete">
+							<input type="submit" name="action" value="iedit">
+							<input type="submit" name="action" value="idelete">
 						</div>
 					</form>
 				</td>
 			</tr>
 			<?php endforeach; ?>
 		</table>
-		<p><a href="..">Return to Rousseff Restaurant home</a></p>
+	</div>
 	</body>
 </html>
