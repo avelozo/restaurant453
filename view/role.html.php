@@ -1,7 +1,7 @@
 <?php  include 'header.php';?>
 
 <div class="boxContainer marginContainer">
-		<p><a href="?add">Add new role</a></p>
+		<span>Role</span><hr/>
 		<table class="tableClass">
 			<tr class= "tableRowHeader">
 				<th>Id</th>
@@ -14,7 +14,7 @@
 				<td class=""><?php echo $role->id; ?></td>
 				<td><?php echo $role->name; ?></td>
 				<td>
-					<form action="?" method="post">
+					<form action="role.form.php" method="post">
 						<div>
 							<input type="submit" name="action" value="iedit">
 							<input type="submit" name="action" value="idelete">

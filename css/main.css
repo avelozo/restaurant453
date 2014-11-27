@@ -20,24 +20,47 @@
     text-align: center;
   }
 
+  label{
+    display:inline-block;
+    text-align: left;
+    font-weight: 600; 
+  }
 
+  /*Positions*/
+
+ .rightPosition{
+  float: right;
+}
+
+/* Buttons*/
   input[type="submit"][value="iedit"],input[type="submit"][value="idelete"]{
     width:15%;
     height:auto;
-  background-size: 15px;
-  margin: 0;
- border: 0;
-text-indent: -1000em;
+    background-size: 15px;
+    margin: 0;
+    border: 0;
+    text-indent: -1000em;
   } 
 
-input[type="submit"][value="iedit"]{
- background: url(../img/iedit.png) no-repeat  center top;
-
-}
+  input[type="submit"][value="iedit"]{
+   background: url(../img/iedit.png) no-repeat  center top;
+  }
 
 input[type="submit"][value="idelete"]{
- background: transparent url(../img/idelete.png) no-repeat  center top;
+  background: transparent url(../img/idelete.png) no-repeat  center top;
 }
+
+     .submitButton{
+      margin:5px;
+        background: #299a0b;
+        color: white;
+        padding: 8px;
+        border: 0;
+       -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+         border-radius: 8px;
+    }
+
 
 
 /* unvisited link */
@@ -66,6 +89,7 @@ a:active {
     line-height: 65px;
     padding: 0px;
     margin-bottom: 1px;
+
     }
 
 #logoHeader{
@@ -153,18 +177,6 @@ a:active {
 
     }
 
-    /*Buttons*/
-
-     .submitButton{
-        background: #333333;
-        color: white;
-        padding: 10px;
-        border: 0;
-       -webkit-border-radius: 8px;
-       -moz-border-radius: 8px;
-         border-radius: 8px;
-    }
-
 
     /*Forms */
 
@@ -172,7 +184,7 @@ a:active {
         min-width: 20%;
         position: absolute;
         background-color: #fff;
-        padding: 15px;
+        padding: 25px 45px 45px 45px;
         border-left: 0 solid #e1e3e8;
         border-right: 0 solid #e1e3e8;
         border-bottom: 0 solid #e1e3e8;
@@ -181,9 +193,25 @@ a:active {
         -moz-border-radius: 30px;
         border-radius: 30px;
     }
-
+/*add the margin container when using box container */
     .marginContainer{
          margin: 5% 40%;
+    }
+
+
+    .inputContent {
+        border: 1px solid #e2e2e4;
+        box-shadow: none;
+        color: #c2c2c2;
+        display: block;
+        width: 100%;
+        height: 34px;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
     }
 
     .tableClass{
