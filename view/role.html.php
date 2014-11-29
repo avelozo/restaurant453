@@ -4,7 +4,7 @@
 		<span>Role</span><hr/>
 		<table class="tableClass">
 			<tr class= "tableRowHeader">
-				<th>Id</th>
+				<th>ID</th>
 				<th>Name</th>
 				<th>Options</th>
 			</tr>
@@ -14,8 +14,9 @@
 				<td class=""><?php echo $role->id; ?></td>
 				<td><?php echo $role->name; ?></td>
 				<td>
-					<form action="role.form.php" method="post">
+					<form action="?" method="post">
 						<div>
+							<input type="hidden" name="id" value="<?php echo $role->id; ?>">
 							<input type="submit" name="action" value="iedit">
 							<input type="submit" name="action" value="idelete">
 						</div>

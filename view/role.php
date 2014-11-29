@@ -12,7 +12,6 @@
 
 		$pageTitle	= 'New Role';
 		$action		= 'addform';
-		$button		= 'Add role';
 
 		include 'role.form.php';
 		exit();
@@ -22,20 +21,20 @@
 	{
 		$role = new Role(null,
 						 $_POST['name']);
+
 		$roleBS->addRole($role);
 	
 		header('Location: .');
 		exit();
 	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'Edit')
+	if (isset($_POST['action']) and $_POST['action'] == 'iedit')
 	{
 		$role = $roleBS->getRoles($_POST['id'])[0];
 
 		$pageTitle	= 'Edit Role';
 		$action		= 'editform';
-		$button		= 'Update role';
-
+		
 		include 'role.form.php';
 		exit();
 	}
@@ -44,13 +43,14 @@
 	{
 		$role = new Role($_POST['id'],
 						 $_POST['name']);
+
 		$roleBS->updateRole($role);
 	
 		header('Location: .');
 		exit();
 	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'Delete')
+	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
 		$roleBS->deleteRole($_POST['id']);
 

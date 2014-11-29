@@ -17,19 +17,19 @@
 			return $this->roleMapper->getRoles($id);
 		}
 
-		public function addRole()
+		public function addRole($role)
 		{
-			$this->roleMapper->addRole(getPostData());
+			$this->roleMapper->addRole($role);
 		}
 		
-		public function updateRole()
+		public function updateRole($role)
 		{
-			$this->roleMapper->updateRole(getPostData());
+			$this->roleMapper->updateRole($role);
 		}
 		
-		public function deleteRole()
+		public function deleteRole($id)
 		{
-			$this->roleMapper->deleteRole($_POST['id']);
+			$this->roleMapper->deleteRole($id);
 		}
 		
 		private function getPostData()
