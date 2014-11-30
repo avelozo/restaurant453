@@ -6,7 +6,7 @@
 
 	$roleBS = new RoleBS();
 	
-	if (isset($_GET['add']))
+	if (isset($_POST['add']))
 	{
 		$role = new Role();
 
