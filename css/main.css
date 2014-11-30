@@ -18,6 +18,8 @@
   td{
 
     text-align: center;
+    margin:0;
+    vertical-align: middle;
   }
 
   label{
@@ -34,12 +36,12 @@
 
 /* Buttons*/
   input[type="submit"][value="iedit"],input[type="submit"][value="idelete"]{
-    width:15%;
-    height:auto;
-    background-size: 15px;
+    width:35%;
+    height:30px;
     margin: 0;
     border: 0;
     text-indent: -1000em;
+    margin: 7 0;
   } 
 
   input[type="submit"][value="iedit"]{
@@ -181,7 +183,7 @@ a:active {
     /*Forms */
 
     .boxContainer {
-        min-width: 20%;
+        min-width: 25%;
         position: absolute;
         background-color: #fff;
         padding: 25px 45px 45px 45px;
