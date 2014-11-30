@@ -20,11 +20,13 @@
 							<input type="submit" name="action" value="iedit">
 							<input type="submit" name="action" value="idelete">
 						</div>
+
 					</form>
 				</td>
 			</tr>
 			<?php endforeach; ?>
 		</table>
+		<input type="submit" class="submitButton  rightPosition" value="Add">
 	</div>
 	</body>
 </html>
