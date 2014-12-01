@@ -35,6 +35,16 @@
 
 			return $rolesRet;
 		}
+		
+		public function deleteRole($id)
+		{
+			$employees = $this->roleDAO->countEmployees($id);
+			
+			if ($employees > 0)
+				return "Not possible to delete. The role is associated to at least 1 employee.";
+		
+			return $this->roleDAO->deleteRole($id);
+		}
 
 		public function createRole($role)
 		{

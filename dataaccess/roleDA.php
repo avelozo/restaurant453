@@ -40,6 +40,34 @@
 			    exit();
 			}	
 		}
+		
+		public function countEmployees($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM employee';
+				if($id != null)
+					$sql .= " WHERE roleId = :id";
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting employees by role: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
+		}
 
 		public function addRole($role, $connection = null)
 		{
@@ -96,4 +124,30 @@
 				exit();
 			}
 		}
+
+		public function deleteRole($id = null, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'DELETE FROM role
+						WHERE roleId = :id';
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+				
+			    return '';
+			}
+			catch (PDOException $e)
+			{
+			    return 'Error deleting role: ' . $e->getMessage();
+			}	
+		}
+		
 	}
