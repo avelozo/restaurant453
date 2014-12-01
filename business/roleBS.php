@@ -29,7 +29,7 @@
 		
 		public function deleteRole($id)
 		{
-			$this->roleMapper->deleteRole($id);
+			return $this->roleMapper->deleteRole($id);
 		}
 		
 		private function getPostData()

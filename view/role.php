@@ -4,6 +4,7 @@
 	include_once DIR_BASE . "business/roleBS.php";
 	include_once DIR_BASE . "model/model.role.php";
 
+	$error = '';
 	$roleBS = new RoleBS();
 	
 	if (isset($_POST['add']))
@@ -52,10 +53,7 @@
 
 	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
-		$roleBS->deleteRole($_POST['id']);
-
-		header('Location: .');
-		exit();
+		$error = $roleBS->deleteRole($_POST['id']);
 	}
 
 	// Display role list
