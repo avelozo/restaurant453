@@ -11,20 +11,24 @@
 			$this->conn = parent::connectDatabase();
 		}
 
-		public function getRestaurants($connection = null)
+		public function getRestaurants($id = null, $connection = null)
 		{
-			
 			if($connection == null)
 				$connection = $this->conn;
 
 			try
 			{
-			  	$sql = 'SELECT 
-				  			* 
-				  		  FROM 
-				  		  	restaurant';
-			    $prep = $connection->prepare($sql);
-			    $prep->execute();
+			  	$sql = 'SELECT * 
+				  		FROM restaurant';
+				if($id != null)
+					$sql .= ' WHERE roleId = :id';
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
+				$prep->execute();
 			    return $prep->fetchAll();
 			}
 			catch (PDOException $e)
@@ -33,6 +37,87 @@
 			    die($error);
 			    exit();
 			}	
+		}
+
+		public function countEmployees($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM employee
+						WHERE restaurantId = :id';
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting employees by restaurant: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
+		}
+
+		public function countOrders($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM order
+						WHERE restaurantId = :id';
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting orders by restaurant: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
+		}
+
+		public function countStocks($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM stock
+						WHERE restaurantId = :id';
+
+				$prep = $connection->prepare($sql);
+
+			    if($id != null)
+		    		$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting stocks by restaurant: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
 		}
 
 		public function addRestaurant($restaurant, $connection = null)
@@ -75,13 +160,11 @@
 
 			    $restaurant->id = $connection->lastInsertId();
 
-			    return true;
+			    return '';
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error inserting restaurant: ' . $e->getMessage();
-				die($error);
-				exit();
+				return 'Error inserting restaurant: ' . $e->getMessage();
 			}
 		}
 
@@ -117,13 +200,36 @@
 			   
 			    $prep->execute();
 
-			    return true;
+			    return '';
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error inserting restaurant: ' . $e->getMessage();
-				die($error);
-				exit();
+				return 'Error updating restaurant: ' . $e->getMessage();
 			}
 		}
+
+		public function deleteRestaurant($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'DELETE FROM restaurant
+						WHERE restaurantId = :id';
+
+				$prep = $connection->prepare($sql);
+
+				$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+				
+			    return '';
+			}
+			catch (PDOException $e)
+			{
+			    return 'Error deleting restaurant: ' . $e->getMessage();
+			}	
+		}
+
 	}

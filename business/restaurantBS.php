@@ -17,36 +17,29 @@
 			return $this->restaurantMapper->getRestaurants($id);
 		}
 
+		public function addRestaurant($restaurant)
+		{
+			if (!$this->validateName($restaurant->name))
+				return 'Invalid name';
+			
+			return $this->restaurantMapper->addRestaurant($restaurant);
+		}
+		
+		public function updateRestaurant($restaurant)
+		{
+			if (!$this->validateName($restaurant->name))
+				return 'Invalid name';
 
-		public function addRestaurant()
-		{
-			$this->restaurantMapper->addRestaurant(getPostData());
+			return $this->restaurantMapper->updateRestaurant($restaurant);
 		}
 		
-		public function updateRestaurant()
+		public function deleteRestaurant($id)
 		{
-			$this->restaurantMapper->updateRestaurant(getPostData());
+			return $this->restaurantMapper->deleteRestaurant($id);
 		}
 		
-		public function deleteRestaurant()
+		private function validateName($name)
 		{
-			$this->restaurantMapper->deleteRestaurant($_POST['id']);
-		}
-		
-		private function getPostData()
-		{
-			$restaurant = new restaurant();
-			
-			$restaurant->id = $_POST['id'];
-			$restaurant->name = $_POST['name'];
-			$restaurant->phone = $_POST['phone'];
-			$restaurant->addressLine1 = $_POST['addressLine1'];
-			$restaurant->addressLine2 = $_POST['addressLine2'];
-			$restaurant->city = $_POST['city'];
-			$restaurant->state = $_POST['state'];
-			$restaurant->country = $_POST['country'];
-			$restaurant->postalCode = $_POST['postalCode'];
-			
-			return $restaurant;
+			return (strlen($name) > 0) && (strlen($name) <= 45);
 		}
 	}

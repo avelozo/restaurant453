@@ -4,15 +4,14 @@
 	include_once DIR_BASE . "business/restaurantBS.php";
 	include_once DIR_BASE . "model/model.restaurant.php";
 
+	$error = '';
 	$restaurantBS = new restaurantBS();
 	
-	if (isset($_GET['add']))
+	if (isset($_POST['add']))
 	{
 		$restaurant = new Restaurant();
 
-		$pageTitle	= 'New Restaurant';
-		$action		= 'addform';
-		$button		= 'Add restaurant';
+		$action	= 'addform';
 
 		include 'restaurant.form.php';
 		exit();
@@ -29,19 +28,15 @@
 									 $_POST['state'],
 									 $_POST['country'],
 									 $_POST['postalCode']);
-		$restaurantBS->addRestaurant($restaurant);
-	
-		header('Location: .');
-		exit();
+
+		$error = $restaurantBS->addRestaurant($restaurant);
 	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'Edit')
+	if (isset($_POST['action']) and $_POST['action'] == 'iedit')
 	{
 		$restaurant = $restaurantBS->getRestaurants($_POST['id'])[0];
 
-		$pageTitle	= 'Edit Restaurant';
-		$action		= 'editform';
-		$button		= 'Update restaurant';
+		$action	= 'editform';
 
 		include 'restaurant.form.php';
 		exit();
@@ -58,18 +53,13 @@
 									 $_POST['state'],
 									 $_POST['country'],
 									 $_POST['postalCode']);
-		$restaurantBS->updateRestaurant($restaurant);
-	
-		header('Location: .');
-		exit();
+
+		$error = $restaurantBS->updateRestaurant($restaurant);
 	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'Delete')
+	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
-		$restaurantBS->deleteRestaurant($_POST['id']);
-
-		header('Location: .');
-		exit();
+		$error = $restaurantBS->deleteRestaurant($_POST['id']);
 	}
 
 	// Display restaurant list
