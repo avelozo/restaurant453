@@ -19,18 +19,18 @@
 
 		public function addRole($role)
 		{
-			if ($this->validateName($role->name))
-				return $this->roleMapper->addRole($role);
-			else
+			if (!$this->validateName($role->name))
 				return 'Invalid name';
+			
+			return $this->roleMapper->addRole($role);
 		}
 		
 		public function updateRole($role)
 		{
-			if ($this->validateName($role->name))
-				return $this->roleMapper->updateRole($role);
-			else
+			if (!$this->validateName($role->name))
 				return 'Invalid name';
+
+			return $this->roleMapper->updateRole($role);
 		}
 		
 		public function deleteRole($id)

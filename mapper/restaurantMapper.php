@@ -12,21 +12,11 @@
 			$this->restaurantDAO = new RestaurantDA();
 		}
 
-		public function addRestaurant($restaurant)
-		{
-			$this->restaurantDAO->addRestaurant($restaurant);
-		}
-
-		public function updateRestaurant($restaurant)
-		{
-			$this->restaurantDAO->updateRestaurant($restaurant);
-		}
-
-		public function getRestaurants()
+		public function getRestaurants($id = null)
 		{
 			$restaurantsRet = [];
 
-			$restaurants = $this->restaurantDAO->getRestaurants();
+			$restaurants = $this->restaurantDAO->getRestaurants($id);
 
 			foreach ($restaurants as $restaurant)
 			{
@@ -34,6 +24,36 @@
 			}
 
 			return $restaurantsRet;
+		}
+
+		public function addRestaurant($restaurant)
+		{
+			return $this->restaurantDAO->addRestaurant($restaurant);
+		}
+
+		public function updateRestaurant($restaurant)
+		{
+			return $this->restaurantDAO->updateRestaurant($restaurant);
+		}
+
+		public function deleteRestaurant($id)
+		{
+			$employees = $this->restaurantDAO->countEmployees($id);
+			
+			if ($employees > 0)
+				return "Not possible to delete. The restaurant is associated to at least 1 employee.";
+		
+			$orders = $this->restaurantDAO->countOrders($id);
+			
+			if ($orders > 0)
+				return "Not possible to delete. The restaurant is associated to at least 1 order.";
+		
+			$stocks = $this->restaurantDAO->countStocks($id);
+			
+			if ($stocks > 0)
+				return "Not possible to delete. The restaurant is associated to at least 1 stock.";
+		
+			return $this->restaurantDAO->deleteRestaurant($id);
 		}
 
 		public function createRestaurant($restaurant)

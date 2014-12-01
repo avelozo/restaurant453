@@ -47,9 +47,8 @@
 			try
 			{
 			  	$sql = 'SELECT COUNT(*) AS Quantity
-				  		FROM employee';
-				if($id != null)
-					$sql .= " WHERE roleId = :id";
+				  		FROM employee
+						WHERE roleId = :id';
 
 				$prep = $connection->prepare($sql);
 
@@ -119,7 +118,7 @@
 			}
 		}
 
-		public function deleteRole($id = null, $connection = null)
+		public function deleteRole($id, $connection = null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
@@ -131,8 +130,7 @@
 
 				$prep = $connection->prepare($sql);
 
-			    if($id != null)
-		    		$prep->bindValue(':id', $id);
+				$prep->bindValue(':id', $id);
 
 			    $prep->execute();
 				
