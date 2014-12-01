@@ -12,16 +12,6 @@
 			$this->roleDAO = new RoleDA();
 		}
 
-		public function addRole($role)
-		{
-			$this->roleDAO->addRole($role);
-		}
-
-		public function updateRole($role)
-		{
-			$this->roleDAO->updateRole($role);
-		}
-
 		public function getRoles($id = null)
 		{
 			$rolesRet = [];
@@ -36,6 +26,16 @@
 			return $rolesRet;
 		}
 		
+		public function addRole($role)
+		{
+			return $this->roleDAO->addRole($role);
+		}
+
+		public function updateRole($role)
+		{
+			return $this->roleDAO->updateRole($role);
+		}
+
 		public function deleteRole($id)
 		{
 			$employees = $this->roleDAO->countEmployees($id);
