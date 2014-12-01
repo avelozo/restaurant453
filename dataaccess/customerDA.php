@@ -74,7 +74,7 @@
 		    }
 			catch (PDOException $e)
 			{
-			  $error = 'Error inserting customer: ' . $e->getMessage();
+			  $error = 'Error inserting customer: ' . $e->getMessage() ;
 			  die($error);
 			  exit();
 			}

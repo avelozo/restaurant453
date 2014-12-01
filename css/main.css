@@ -20,6 +20,7 @@
     text-align: center;
     margin:0;
     vertical-align: middle;
+    width:auto;
   }
 
   label{
@@ -200,6 +201,12 @@ a:active {
          margin: 5% 40%;
     }
 
+      .largeContainer{
+
+        min-width: 65%;
+         margin: 5% 28%;
+
+      }
 
     .inputContent {
         border: 1px solid #e2e2e4;
@@ -217,8 +224,8 @@ a:active {
     }
 
     .tableClass{
-
-      width: 98%;
+      min-width:300px;
+      width:99%;
     }
 
     .tableRowHeader,.tableRow{
@@ -227,7 +234,7 @@ a:active {
      }
 
     .tableClass td{
-
-      width:9000px; /*large number in order to the browser slipt the td with the same size for each td*/
+width:auto;
+    
 
     } 

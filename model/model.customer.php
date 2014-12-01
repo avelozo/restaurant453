@@ -12,7 +12,7 @@ class Customer
 	public $country;
 	public $postalCode;
 
-	function Product($id			= '',
+	function Customer($id			= '',
 				     $name			= '',
 					 $phone			= '',
 					 $addressLine1	= '',
