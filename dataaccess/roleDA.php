@@ -18,12 +18,10 @@
 
 			try
 			{
-			  	$sql = 'SELECT 
-				  			* 
-				  		  FROM 
-				  		  	role';
+			  	$sql = 'SELECT * 
+				  		FROM role';
 				if($id != null)
-					$sql .= " WHERE roleId = :id";
+					$sql .= ' WHERE roleId = :id';
 
 				$prep = $connection->prepare($sql);
 
@@ -88,13 +86,11 @@
 
 			    $role->id = $connection->lastInsertId();
 
-			    return true;
+			    return '';
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error inserting role: ' . $e->getMessage();
-				die($error);
-				exit();
+				return 'Error inserting role: ' . $e->getMessage();
 			}
 		}
 
@@ -105,8 +101,8 @@
 
 			try
 			{
-				$sql = 'UPDATE `role` SET
-						`roleName` = :roleName
+				$sql = 'UPDATE `role`
+						SET `roleName` = :roleName
 						WHERE `roleId` = :roleId';
 
 			    $prep = $connection->prepare($sql);
@@ -115,13 +111,11 @@
 			   
 			    $prep->execute();
 
-			    return true;
+			    return '';
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error updating role: ' . $e->getMessage();
-				die($error);
-				exit();
+				return 'Error updating role: ' . $e->getMessage();
 			}
 		}
 

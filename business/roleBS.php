@@ -19,12 +19,18 @@
 
 		public function addRole($role)
 		{
-			$this->roleMapper->addRole($role);
+			if ($this->validateName($role->name))
+				return $this->roleMapper->addRole($role);
+			else
+				return 'Invalid name';
 		}
 		
 		public function updateRole($role)
 		{
-			$this->roleMapper->updateRole($role);
+			if ($this->validateName($role->name))
+				return $this->roleMapper->updateRole($role);
+			else
+				return 'Invalid name';
 		}
 		
 		public function deleteRole($id)
@@ -32,13 +38,8 @@
 			return $this->roleMapper->deleteRole($id);
 		}
 		
-		private function getPostData()
+		private function validateName($name)
 		{
-			$role = new role();
-			
-			$role->id = $_POST['id'];
-			$role->name = $_POST['name'];
-			
-			return $role;
+			return (strlen($name) > 0) && (strlen($name) <= 45);
 		}
 	}
