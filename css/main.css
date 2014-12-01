@@ -36,7 +36,9 @@
 }
 
 /* Buttons*/
-  input[type="submit"][value="iedit"],input[type="submit"][value="idelete"]{
+  input[type="submit"][value="iedit"],
+  input[type="submit"][value="idelete"],
+  input[type="button"][value="idelete"]{
     width:35%;
     height:30px;
     margin: 0;
@@ -49,7 +51,8 @@
    background: url(../img/iedit.png) no-repeat  center top;
   }
 
-input[type="submit"][value="idelete"]{
+input[type="submit"][value="idelete"],
+input[type="button"][value="idelete"]{
   background: transparent url(../img/idelete.png) no-repeat  center top;
 }
 

@@ -10,15 +10,17 @@ class Product
 	public $price;
 	public $restaurant;
 	public $quantityInStock;
+	public $saleTaxRate;
 
-	function Product($id				= '',
+	function Product($id				= -1,
 				     $name				= '',
 					 $vendor			= '',
 					 $description		= '',
 					 $buyPrice			= '',
 					 $price				= '',
 					 $restaurant		= '',
-					 $quantityInStock	= '')
+					 $quantityInStock	= '',
+					 $saleTaxRate		= '')
 	{
 		$this->id				= $id;
 		$this->name				= $name;
@@ -28,5 +30,6 @@ class Product
 		$this->price			= $price;
 		$this->restaurant		= $restaurant;
 		$this->quantityInStock	= $quantityInStock;
+		$this->saleTaxRate   	= $saleTaxRate;
 	}
 }
