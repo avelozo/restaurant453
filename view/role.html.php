@@ -1,6 +1,7 @@
 <?php  include 'header.php';?>
-
+<?php if($error!=""){?>
 <div class="alertWarning"><?php echo $error ?></div>
+<?php }?>
 <div class="boxContainer marginContainer">
 	<span>Role</span><hr/>
 	<table class="tableClass">
