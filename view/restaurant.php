@@ -7,7 +7,7 @@
 	$error = '';
 	$restaurantBS = new restaurantBS();
 	
-	if (isset($_GET['add']))
+	if (isset($_POST['add']))
 	{
 		$restaurant = new Restaurant();
 
