@@ -42,5 +42,4 @@
 		<input type="submit" name="add" class="submitButton  rightPosition" value="Add">
 	</form>
 </div>
-</body>
-</html>
+<?php  include 'footer.php';?>
