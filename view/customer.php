@@ -4,22 +4,22 @@
 	include_once DIR_BASE . "business/customerBS.php";
 	include_once DIR_BASE . "model/model.customer.php";
 
+	$error = '';
 	$customerBS = new CustomerBS();
+	$deleteMsg = 'Do you want to delete this customer: ';
+	$deleteUrl = 'customer.php';
 	
 	if (isset($_POST['add']))
 	{
 		$customer = new Customer();
 
-		$pageTitle	= 'New Customer';
-		$action		= 'addform';
+		$action	= 'addform';
 
 		include 'customer.form.php';
 		exit();
 	}
-
-	if (isset($_GET['addform']))
+	elseif (isset($_GET['addform']))
 	{
-		echo $_POST['name']. $_POST['phone'] . $_POST['addressLine1'];
 		$customer = new Customer(null,
 						 $_POST['name'],
 						 $_POST['phone'],
@@ -32,22 +32,18 @@
 
 		$customerBS->addCustomer($customer);
 	
-		header('Location: .');
-		exit();
+		mainPage();
 	}
-
-	if (isset($_POST['action']) and $_POST['action'] == 'iedit')
+	elseif (isset($_POST['action']) and $_POST['action'] == 'iedit')
 	{
 		$customer = $customerBS->getCustomers($_POST['id'])[0];
 
-		$pageTitle	= 'Edit Customer';
-		$action		= 'editform';
+		$action	= 'editform';
 		
 		include 'customer.form.php';
 		exit();
 	}
-
-	if (isset($_GET['editform']))
+	elseif (isset($_GET['editform']))
 	{
 		$customer = new Customer(null,
 						 $_POST['name'],
@@ -61,19 +57,25 @@
 
 		$customerBS->updateCustomer($customer);
 	
-		header('Location: .');
-		exit();
+		mainPage();
 	}
-
-	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
+	elseif (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
-		$customerBS->deleteCustomer($_POST['id']);
+		$error = $customerBS->deleteCustomer($_POST['id']);
 
-		header('Location: .');
-		exit();
+		mainPage();
+	}
+	else
+	{
+		mainPage();
 	}
 
-	// Display customer list
-	$customers = $customerBS->getCustomers();
+	function mainPage()
+	{	
+		global $customerBS, $customers, $error, $deleteMsg, $deleteUrl;
+
+		// Display customer list
+		$customers = $customerBS->getCustomers();
 	
-	include 'customer.html.php';
+		include 'customer.html.php';
+	}
