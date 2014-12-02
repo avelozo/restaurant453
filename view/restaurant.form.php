@@ -1,7 +1,8 @@
 <?php  include 'header.php';?>
+<div id="alertWarning" class="alertWarning"></div>
 <div class="boxContainer marginContainer">
 	<span>Restaurant</span><hr/>
-	<form action="?<?php echo $action; ?>" method="post">
+	<form action="?<?php echo $action; ?>" method="post" name="formRestaurant" onsubmit="return validateForm()">
 		<div><label for="name">Name: <input type="text" class="inputContent" name="name" id="name"
 			value="<?php echo $restaurant->name; ?>"></label></div>
 		<div><label for="phone">Phone: <input type="text" class="inputContent" name="phone" id="phone"
@@ -24,4 +25,7 @@
 		</div>
 	</form>
 </div>
+<script>
+errorVisibility();
+</script>
 <?php  include 'footer.php';?>
