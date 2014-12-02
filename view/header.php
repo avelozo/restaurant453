@@ -5,6 +5,7 @@
     <script src="../scripts/jquery-2.1.1.min.js"></script>
     <script src="../scripts/product.js"></script>
     <script src="../scripts/util.js"></script>
+    <script src="../scripts/validate.js"></script>
     <title>Rousseff Restaurant</title>
   </head>
   <body>
@@ -20,6 +21,7 @@
     <div class="leftPanel">
       <div class="leftMenu">
         <ul>
+          <li class="leftPanelLi"><a href="../view/order.php"><img src="../img/iorder.png" class="leftPIcon"></i> <span>Order</span></a></li>
         	<li class="leftPanelLi"><a href="../view/employee.php"><img src="../img/iemployee.png" class="leftPIcon"></i> <span>Employee</span></a></li>
         	<li class="leftPanelLi"><a href="../view/restaurant.php"><img src="../img/irestaurant.png" class="leftPIcon"></i> <span>Restaurant</span></a></li>
         	<li class="leftPanelLi"><a href="../view/role.php"><img src="../img/irole.png" class="leftPIcon"></i> <span>Role</span></a></li>
