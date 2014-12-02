@@ -19,7 +19,7 @@
 		<div><label for="postalCode">Postal Code: <input type="text" class="inputContent" name="postalCode" id="postalCode"
 			value="<?php echo $restaurant->postalCode; ?>"></label></div>
 		<div>
-			<input type="hidden" name="id" value="<?php echo $id; ?>">
+			<input type="hidden" name="id" value="<?php echo $restaurant->id; ?>">
 			<input type="submit" class="submitButton  rightPosition" value="Confirm">
 		</div>
 	</form>
