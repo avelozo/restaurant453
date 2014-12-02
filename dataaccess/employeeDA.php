@@ -76,6 +76,58 @@
 			}
 		}
 
+		public function countEmployees($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM `employee`
+						WHERE employeeReportsTo = :id';
+
+				$prep = $connection->prepare($sql);
+
+				$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting employees by supervisor: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
+		}
+
+		public function countOrders($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM `order`
+						WHERE employeeId = :id';
+
+				$prep = $connection->prepare($sql);
+
+				$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting orders by employee: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
+		}
+
 		public function addEmployee($employee, $connection=null)
 		{
 			if($connection == null)
@@ -122,13 +174,11 @@
 
 			    $employee->id = $connection->lastInsertId();
 
-			    return true;
+			    return '';
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error inserting employee: ' . $e->getMessage();
-				die($error);
-				exit();
+				return 'Error inserting employee: ' . $e->getMessage();
 			}
 		}
 
@@ -168,25 +218,23 @@
 
 			    $prep->execute();
 
-			    return true;
+			    return '';
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error updating employee: ' . $e->getMessage();
-				die($error);
-				exit();
+				return 'Error updating employee: ' . $e->getMessage();
 			}
 		}
 
-		public function deleteRole($id, $connection = null)
+		public function deleteEmployee($id, $connection = null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
 
 			try
 			{
-			  	$sql = 'DELETE FROM role
-						WHERE roleId = :id';
+			  	$sql = 'DELETE FROM `employee`
+						WHERE `employeeId` = :id';
 
 				$prep = $connection->prepare($sql);
 
@@ -198,7 +246,7 @@
 			}
 			catch (PDOException $e)
 			{
-			    return 'Error deleting role: ' . $e->getMessage();
+			    return 'Error deleting employee: ' . $e->getMessage();
 			}	
 		}
 	}
