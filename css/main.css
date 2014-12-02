@@ -183,9 +183,9 @@ a:active {
     }
 
     .leftPIcon{
-      width:5%;
+      width:8%;
       height:auto;
-      //margin-left: 20%;
+      margin-left: 10%;
       display: block;
       position: absolute;
       -webkit-filter: sepia(100%);;
