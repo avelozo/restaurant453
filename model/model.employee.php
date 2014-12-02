@@ -1,5 +1,4 @@
-<?php
-
+<?php  
 class Employee
 {
 	public $id;
@@ -14,18 +13,20 @@ class Employee
 	public $password;
 	public $role;
 
-	function Product($id			= '',
+	
+
+	function Employee($id			= '',
 				     $ssn			= '',
 					 $lastName		= '',
 					 $firstName		= '',
 					 $email			= '',
-					 $restaurant	= '',
-					 $reportsTo		= '',
+					 $restaurant	= null,
+					 $reportsTo		= null,
 					 $jobTitle		= '',
 					 $userName		= '',
 					 $password		= '',
-					 $role			= '')
-	{
+					 $role			= null)
+	{	
 		$this->id			= $id;
 		$this->ssn			= $ssn;
 		$this->lastName		= $lastName;
@@ -38,4 +39,7 @@ class Employee
 		$this->password		= $password;
 		$this->role			= $role;
 	}
+
+
+	
 }

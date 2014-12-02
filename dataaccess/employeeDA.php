@@ -24,7 +24,7 @@
 							sup.`employeeSSN` AS supervisorSSN,
 						    sup.`employeeLastName` AS supervisorLastName,
 						    sup.`employeeFirstName` AS supervisorFirstName,
-						    sup.`employeeEmail` AS supervisorEmailselect,
+						    sup.`employeeEmail` AS supervisorEmail,
 						    sup.`restaurantId` AS supervisorRestaurantId,
 						    sup.`employeeReportsTo` AS supervisorReportsTo,
 						    sup.`employeeJobTitle` AS supervisorJobTitle,
@@ -76,7 +76,7 @@
 			}
 		}
 
-		public function addEmployee($employee, $connection)
+		public function addEmployee($employee, $connection=null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
@@ -132,7 +132,7 @@
 			}
 		}
 
-		public function updateEmployee($employee, $connection)
+		public function updateEmployee($employee, $connection= null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
@@ -176,5 +176,29 @@
 				die($error);
 				exit();
 			}
+		}
+
+		public function deleteRole($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'DELETE FROM role
+						WHERE roleId = :id';
+
+				$prep = $connection->prepare($sql);
+
+				$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+				
+			    return '';
+			}
+			catch (PDOException $e)
+			{
+			    return 'Error deleting role: ' . $e->getMessage();
+			}	
 		}
 	}

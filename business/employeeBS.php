@@ -7,10 +7,12 @@
 	{
 		private $employeeMapper;
 
+
 		function EmployeeBS()
 		{
 			$this->employeeMapper = new EmployeeMapper();
 		}
+
 
 		function Authenticate($login, $password)
 		{	
@@ -31,4 +33,28 @@
 				return false;
 			}
 		}
+
+
+		public function getEmployees()
+		{
+			return $this->employeeMapper->getEmployees();
+		}
+
+		public function addEmployee($employee)
+		{
+			return $this->employeeMapper->addEmployee($employee);
+		}
+
+		public function updateEmployee($employee)
+		{
+		
+			return $this->employeeMapper->updateEmployee($employee);
+		}
+		
+		public function deleteEmployee($id)
+		{
+			return $this->employeeMapper->deleteEmployee($id);
+		}
+		
+
 	}

@@ -78,5 +78,23 @@
 
 			return $emp;
 		}
+
+
+		public function deleteEmployee($id)
+		{
+			$employees = $this->employeeDAO->countEmployees($id);
+			
+			if ($employees > 0)
+				return "Not possible to delete. This employee supervises at least 1 employee.";
+		
+			$orders = $this->employeeDAO->countOrders($id);
+			
+			if ($orders > 0)
+				return "Not possible to delete. The employee is associated with at least 1 order.";
+		
+	
+			return $this->employeeDAO->deleteEmployee($id);
+		}
+
 	}
 
