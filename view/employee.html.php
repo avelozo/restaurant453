@@ -15,7 +15,6 @@
 			<th>Role</th>
 			<th>Manager</th>
 			<th>Options</th>
-
 		</tr>
 		<?php foreach ($employees as $employee): ?>
 		<tr class="tableRow" valign="top">
@@ -32,7 +31,7 @@
 					<div>
 						<input type="hidden" name="id" value="<?php echo $employee->id; ?>">
 						<input type="submit" name="action" value="iedit">
-						<input type="submit" name="action" value="idelete">
+						<input type="button" onclick="confirmDelete('<?php echo $deleteMsg . $employee->firstName . $employee->lastName . "?"; ?>', '<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
 					</div>
 				</form>
 			</td>

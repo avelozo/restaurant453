@@ -10,6 +10,8 @@
 	$employeeBS = new EmployeeBS();
 	$restaurantBS = new RestaurantBS();
 	$roleBS= new RoleBS();
+	$deleteMsg = 'Do you want to delete this employee: ';
+	$deleteUrl = 'employee.php';
 
 	$employees = $employeeBS->getEmployees();
 	$restaurants = $restaurantBS->getRestaurants();
@@ -24,11 +26,10 @@
 		include 'employee.form.php';
 		exit();
 	}
-
-	if (isset($_GET['addform']))
+	elseif (isset($_GET['addform']))
 	{
 		$restaurant = new Restaurant($_POST['restaurant']);
-		$reportsTo= new Employee($_POST['reportsTo']);
+		$reportsTo = new Employee($_POST['reportsTo']);
 		$role = new Role($_POST['role']);
 		$employee = new Employee(null,
 						 $_POST['ssn'],
@@ -44,9 +45,10 @@
 						 );
 
 		$error = $employeeBS->addEmployee($employee);
-	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'iedit')
+		mainPage();
+	}
+	elseif (isset($_POST['action']) and $_POST['action'] == 'iedit')
 	{
 		$employee = $employeeBS->getEmployees($_POST['id'])[0];
 		$action	= 'editform';
@@ -54,8 +56,7 @@
 		include 'employee.form.php';
 		exit();
 	}
-
-	if (isset($_GET['editform']))
+	elseif (isset($_GET['editform']))
 	{
 		
 		$restaurant = new Restaurant($_POST['restaurant']);
@@ -74,13 +75,25 @@
 						 $role
 						 );
 		$error = $employeeBS->updateEmployee($employee);
-	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
+		mainPage();
+	}
+	elseif (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
 		$error = $employeeBS->deleteEmployee($_POST['id']);
+
+		mainPage();
+	}
+	else
+	{
+		mainPage();
 	}
 
-	
-	$employees = $employeeBS->getEmployees();
-	include 'employee.html.php';
+	function mainPage()
+	{	
+		global $employeeBS, $employees, $error, $deleteMsg, $deleteUrl;
+
+		// Display customer list
+		$employees = $employeeBS->getEmployees();
+		include 'employee.html.php';
+	}
