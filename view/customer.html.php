@@ -2,7 +2,7 @@
 <?php if($error!=""){?>
 <div class="alertWarning"><?php echo $error ?></div>
 <?php }?>
-<div class="boxContainer largeContainer marginContainer">
+<div class="boxContainer marginContainer">
 	<span>Customer</span><hr/>
 	<table class="tableClass">
 		<tr class= "tableRowHeader">
@@ -44,5 +44,4 @@
 		<input type="submit" name="add" class="submitButton  rightPosition" value="Add">
 	</form>
 </div>
-</body>
-</html>
+<?php  include 'footer.php';?>
