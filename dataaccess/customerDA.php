@@ -18,10 +18,8 @@
 
 			try
 			{
-			  	$sql = 'SELECT 
-				  			* 
-				  		  FROM 
-				  		  	`customer`';
+			  	$sql = 'SELECT * 
+				  		FROM `customer`';
 				if($id != null)
 					$sql .= " WHERE customerId = :id";
 
@@ -39,6 +37,32 @@
 			    die($error);
 			    exit();
 			}	
+		}
+
+		public function countOrders($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT COUNT(*) AS Quantity
+				  		FROM `order`
+						WHERE customerId = :id';
+
+				$prep = $connection->prepare($sql);
+
+				$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+			    return $prep->fetchAll()[0]['Quantity'];
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error counting orders by customers: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
 		}
 
 		public function addCustomer($customer, $connection = null)
@@ -71,12 +95,12 @@
 			    $prep->execute();
 
 			    $customer->id = $connection->lastInsertId();
+				
+				return '';
 		    }
 			catch (PDOException $e)
 			{
-			  $error = 'Error inserting customer: ' . $e->getMessage() ;
-			  die($error);
-			  exit();
+				return 'Error inserting customer: ' . $e->getMessage() ;
 			}
 		}
 
@@ -110,12 +134,37 @@
 				$prep->bindValue(':id', $customer->id);
 
 			    $prep->execute();
+				
+				return '';
 		    }
 			catch (PDOException $e)
 			{
-			  $error = 'Error updating customer: ' . $e->getMessage();
-			  die($error);
-			  exit();
+				return 'Error updating customer: ' . $e->getMessage();
 			}
 		}
+
+		public function deleteCustomer($id, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'DELETE FROM customer
+						WHERE customerId = :id';
+
+				$prep = $connection->prepare($sql);
+
+				$prep->bindValue(':id', $id);
+
+			    $prep->execute();
+				
+			    return '';
+			}
+			catch (PDOException $e)
+			{
+			    return 'Error deleting customer: ' . $e->getMessage();
+			}	
+		}
+
 	}

@@ -19,7 +19,7 @@
 					<div>
 						<input type="hidden" name="id" value="<?php echo $role->id; ?>">
 						<input type="submit" name="action" value="iedit">
-						<input type="submit" name="action" value="idelete">
+							<input type="button" onclick="confirmDelete('<?php echo $deleteMsg . $role->name . "?"; ?>', '<?php echo $deleteUrl; ?>', <?php echo $role->id; ?>);" name="delete" value="idelete">
 					</div>
 				</form>
 			</td>
@@ -30,5 +30,5 @@
 		<input type="submit" name="add" class="submitButton  rightPosition" value="Add">
 	</form>
 </div>
-</body>
-</html>
+
+<?php  include 'footer.php';?>

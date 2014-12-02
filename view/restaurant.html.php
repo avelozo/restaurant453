@@ -1,6 +1,7 @@
 <?php  include 'header.php';?>
-
+<?php if($error!=""){?>
 <div class="alertWarning"><?php echo $error ?></div>
+<?php }?>
 <div class="boxContainer largeContainer marginContainer">
 	<span>Restaurant</span><hr/>
 	<table class="tableClass">
@@ -30,7 +31,7 @@
 					<div>
 						<input type="hidden" name="id" value="<?php echo $restaurant->id; ?>">
 						<input type="submit" name="action" value="iedit">
-						<input type="submit" name="action" value="idelete">
+						<input type="button" onclick="confirmDelete('<?php echo $deleteMsg . $restaurant->name . "?"; ?>', '<?php echo $deleteUrl; ?>', <?php echo $restaurant->id; ?>);" name="delete" value="idelete">
 					</div>
 				</form>
 			</td>

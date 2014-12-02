@@ -21,7 +21,7 @@
 			  	$sql = 'SELECT * 
 				  		FROM restaurant';
 				if($id != null)
-					$sql .= ' WHERE roleId = :id';
+					$sql .= ' WHERE restaurantId = :id';
 
 				$prep = $connection->prepare($sql);
 

@@ -6,6 +6,8 @@
 
 	$error = '';
 	$roleBS = new RoleBS();
+	$deleteMsg = 'Do you want to delete this role: ';
+	$deleteUrl = 'role.php';
 	
 	if (isset($_POST['add']))
 	{
@@ -16,16 +18,16 @@
 		include 'role.form.php';
 		exit();
 	}
-
-	if (isset($_GET['addform']))
+	elseif (isset($_GET['addform']))
 	{
 		$role = new Role(null,
 						 $_POST['name']);
 
 		$error = $roleBS->addRole($role);
-	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'iedit')
+		mainPage();
+	}
+	elseif (isset($_POST['action']) and $_POST['action'] == 'iedit')
 	{
 		$role = $roleBS->getRoles($_POST['id'])[0];
 
@@ -34,21 +36,32 @@
 		include 'role.form.php';
 		exit();
 	}
-
-	if (isset($_GET['editform']))
+	elseif (isset($_GET['editform']))
 	{
 		$role = new Role($_POST['id'],
 						 $_POST['name']);
 
 		$error = $roleBS->updateRole($role);
-	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
+		mainPage();
+	}
+	elseif (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
 		$error = $roleBS->deleteRole($_POST['id']);
+
+		mainPage();
+	}
+	else
+	{
+		mainPage();
 	}
 
-	// Display role list
-	$roles = $roleBS->getRoles();
+	function mainPage()
+	{	
+		global $roleBS, $roles, $error, $deleteMsg, $deleteUrl;
+
+		// Display role list
+		$roles = $roleBS->getRoles();
 	
-	include 'role.html.php';
+		include 'role.html.php';
+	}
