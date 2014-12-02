@@ -27,6 +27,5 @@
 				<input type="submit" class="submitButton  rightPosition" value="Confirm">
 			</div>
 		</form>
-	</div>
-	</body>
-</html>
+
+<?php  include 'footer.php';?>

@@ -133,7 +133,7 @@
 			    $prep->bindValue(':productId', $product->id);
 			    $prep->bindValue(':restaurantId', $product->restaurant->id);
 			    $prep->bindValue(':stockQuantity', $product->quantityInStock);
-			    $prep->bindValue(':stockQuantity', $product->saleTaxRate);
+			    $prep->bindValue(':stockSaleTaxRate', $product->saleTaxRate);
 			    $prep->bindValue(':productBuyPrice', $product->buyPrice);
 				$prep->bindValue(':productPrice', $product->price);
 			   
@@ -143,7 +143,7 @@
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error inserting product: ' . $e->getMessage();
+				$error = 'Error inserting product stock: ' . $e->getMessage();
 				die($error);
 				exit();
 			}
@@ -190,7 +190,7 @@
 			{
 				$sql = 'UPDATE `stock`
 							SET
-							`stockQuantity` = :stockQuantity,
+							`stockQuantity` = `stockQuantity` + :stockQuantity,
 							`stockProductBuyPrice` = :productBuyPrice,
 							`stockProductPrice` = :productPrice
 							WHERE 
