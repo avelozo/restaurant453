@@ -1,7 +1,7 @@
 <?php  include 'header.php';?>
 
 <div class="boxContainer largeContainer marginContainer">
-		<span>Costumer</span><hr/>
+		<span>Customer</span><hr/>
 		<table class="tableClass">
 			<tr class= "tableRowHeader">
 				<th>ID</th>
@@ -16,23 +16,23 @@
 				<th>Options</th>
 			</tr>
 
-			<?php foreach ($customers as $costumer): ?>
+			<?php foreach ($customers as $customer): ?>
 			<tr class="tableRow" valign="top">
-				<td class=""><?php echo $costumer->id; ?></td>
-				<td><?php echo $costumer->name; ?></td>
-				<td><?php echo $costumer->phone; ?></td>
-				<td><?php echo $costumer->addressLine1; ?></td>
-				<td><?php echo $costumer->addressLine2; ?></td>
-				<td><?php echo $costumer->city; ?></td>
-				<td><?php echo $costumer->state; ?></td>
-				<td><?php echo $costumer->country; ?></td>
-				<td><?php echo $costumer->postalCode; ?></td>
+				<td class=""><?php echo $customer->id; ?></td>
+				<td><?php echo $customer->name; ?></td>
+				<td><?php echo $customer->phone; ?></td>
+				<td><?php echo $customer->addressLine1; ?></td>
+				<td><?php echo $customer->addressLine2; ?></td>
+				<td><?php echo $customer->city; ?></td>
+				<td><?php echo $customer->state; ?></td>
+				<td><?php echo $customer->country; ?></td>
+				<td><?php echo $customer->postalCode; ?></td>
 				<td>
 					<form action="?" method="post">
 						<div>
-							<input type="hidden" name="id" value="<?php echo $costumer->id; ?>">
+							<input type="hidden" name="id" value="<?php echo $customer->id; ?>">
 							<input type="submit" name="action" value="iedit">
-							<input type="submit" name="action" value="idelete">
+							<input type="button" onclick="confirmDelete('<?php echo $deleteMsg . $customer->name . "?"; ?>', '<?php echo $deleteUrl; ?>', <?php echo $customer->id; ?>);" name="delete" value="idelete">
 						</div>
 					</form>
 				</td>

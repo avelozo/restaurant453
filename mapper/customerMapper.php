@@ -36,6 +36,16 @@
 			$this->customerDAO->updateCustomer($customer);
 		}
 
+		public function deleteCustomer($id)
+		{
+			$orders = $this->customerDAO->countOrders($id);
+			
+			if ($orders > 0)
+				return "Not possible to delete. The customer is associated to at least 1 order.";
+		
+			return $this->customerDAO->deleteCustomer($id);
+		}
+
 		private function createCustomer($customer)
 		{
 			$cust = new Customer();

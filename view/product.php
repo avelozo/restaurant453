@@ -13,8 +13,7 @@
 	{
 		$product = new Product();
 
-		$pageTitle	= 'New Product';
-		$action		= 'addform';
+		$action	= 'addform';
 
 		include 'product.form.php';
 		exit();
@@ -34,8 +33,7 @@
 	{
 		$product = $productBS->getProducts(null, $_POST['id'])[0];
 
-		$pageTitle	= 'Edit Product';
-		$action		= 'editform';
+		$action	= 'editform';
 		
 		include 'product.form.php';
 		exit();
@@ -54,6 +52,8 @@
 	elseif (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
 		$error = $productBS->deleteProduct($_POST['id']);
+
+		mainPage();
 	}
 	else
 	{
