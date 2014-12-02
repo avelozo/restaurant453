@@ -29,23 +29,6 @@
 		
 		public function deleteCustomer($id)
 		{
-			$this->customerMapper->deleteCustomer($id);
-		}
-		
-		private function getPostData()
-		{
-			$customer = new customer();
-			
-			$customer->id = $_POST['id'];
-			$customer->name = $_POST['name'];
-			$customer->phone = $_POST['phone'];
-			$customer->addressLine1 = $_POST['addressLine1'];
-			$customer->addressLine2 = $_POST['addressLine2'];
-			$customer->city = $_POST['city'];
-			$customer->state = $_POST['state'];
-			$customer->country = $_POST['country'];
-			$customer->postalCode = $_POST['postalCode'];
-			
-			return $customer;
+			return $this->customerMapper->deleteCustomer($id);
 		}
 	}

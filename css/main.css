@@ -162,6 +162,7 @@ a:active {
     }
 
 .leftPanelLi > a{
+
     display: block;
     height: inherit;
     width: 100%;

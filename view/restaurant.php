@@ -6,6 +6,8 @@
 
 	$error = '';
 	$restaurantBS = new restaurantBS();
+	$deleteMsg = 'Do you want to delete this restaurant: ';
+	$deleteUrl = 'restaurant.php';
 	
 	if (isset($_POST['add']))
 	{
@@ -16,8 +18,7 @@
 		include 'restaurant.form.php';
 		exit();
 	}
-
-	if (isset($_GET['addform']))
+	elseif (isset($_GET['addform']))
 	{
 		$restaurant = new Restaurant(null,
 									 $_POST['name'],
@@ -30,9 +31,10 @@
 									 $_POST['postalCode']);
 
 		$error = $restaurantBS->addRestaurant($restaurant);
-	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'iedit')
+		mainPage();
+	}
+	elseif (isset($_POST['action']) and $_POST['action'] == 'iedit')
 	{
 		$restaurant = $restaurantBS->getRestaurants($_POST['id'])[0];
 
@@ -41,8 +43,7 @@
 		include 'restaurant.form.php';
 		exit();
 	}
-
-	if (isset($_GET['editform']))
+	elseif (isset($_GET['editform']))
 	{
 		$restaurant = new Restaurant($_POST['id'],
 									 $_POST['name'],
@@ -55,14 +56,26 @@
 									 $_POST['postalCode']);
 
 		$error = $restaurantBS->updateRestaurant($restaurant);
-	}
 
-	if (isset($_POST['action']) and $_POST['action'] == 'idelete')
+		mainPage();
+	}
+	elseif (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
 		$error = $restaurantBS->deleteRestaurant($_POST['id']);
+
+		mainPage();
+	}
+	else
+	{
+		mainPage();
 	}
 
-	// Display restaurant list
-	$restaurants = $restaurantBS->getRestaurants();
+	function mainPage()
+	{	
+		global $restaurantBS, $restaurants, $error, $deleteMsg, $deleteUrl;
+
+		// Display restaurant list
+		$restaurants = $restaurantBS->getRestaurants();
 	
-	include 'restaurant.html.php';
+		include 'restaurant.html.php';
+	}
