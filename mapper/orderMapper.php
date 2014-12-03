@@ -3,6 +3,7 @@
 	include_once DIR_BASE . "dataaccess/orderDA.php";
 	include_once DIR_BASE . "model/model.order.php";
 	include_once DIR_BASE . "model/model.orderdetail.php";
+	include_once DIR_BASE . "model/model.orderstats.php";
 	include_once DIR_BASE . "mapper/customerMapper.php";
 	include_once DIR_BASE . "mapper/employeeMapper.php";
 	include_once DIR_BASE . "mapper/restaurantMapper.php";
@@ -44,6 +45,20 @@
 				}
 
 				array_push($currentOrder->orderDetails, $this->createOrderDetail($order));
+			}
+
+			return $ordersRet;
+		}
+
+		public function getOrderStats($initialDate, $endDate)
+		{
+			$ordersRet = [];
+
+			$orders = $this->orderDAO->getOrderStats($initialDate, $endDate);
+
+			foreach ($orders as $order)
+			{
+				array_push($ordersRet, $this->createOrderStats($order));
 			}
 
 			return $ordersRet;
@@ -97,5 +112,22 @@
 			
 			return $ordDet;
 		}
+
+		public function createOrderStats($order)
+		{
+			$ord = new OrderStats();
+
+			$ord->orderDate = $order['orderDate'];
+			$ord->orderQuantity = $order['orderQuantity'];
+			$ord->orderPriceTotal = $order['orderPriceTotal'];
+			$ord->averageTicket = $order['averageTicket'];
+			$ord->averagePriceTotal = $order['averagePriceTotal'];
+			$ord->averageAverageTicket = $order['averageAverageTicket'];
+			$ord->priceTotalAboveAverage = $order['priceTotalAboveAverage'];
+			$ord->averageTicketAboveAverage = $order['averageTicketAboveAverage'];
+
+			return $ord;
+		}
+
 	}
 

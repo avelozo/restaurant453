@@ -83,6 +83,100 @@
 			}	
 		}
 
+		public function getOrderStats($initialDate, $endDate, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT
+							T4.orderDate AS orderDate,
+							T4.orderQuantity AS orderQuantity,
+							T4.orderPriceTotal AS orderPriceTotal,
+							T4.averageTicket AS averageTicket,
+							T3.averagePriceTotal AS averagePriceTotal,
+							T3.averageAverageTicket AS averageAverageTicket,
+							T4.orderPriceTotal > T3.averagePriceTotal AS priceTotalAboveAverage,
+							T4.averageTicket > T3.averageAverageTicket AS averageTicketAboveAverage
+						FROM
+							(
+							SELECT
+								AVG(T2.orderPriceTotal) AS averagePriceTotal,
+								AVG(T2.averageTicket) AS averageAverageTicket
+							FROM
+								(
+								SELECT
+									DATE(O1.orderDate) AS orderDate,
+									COUNT(*) AS orderQuantity,
+									SUM(T1.orderPriceSum) AS orderPriceTotal,
+									SUM(T1.orderPriceSum) / COUNT(*) AS averageTicket
+								FROM
+									(
+									SELECT
+										O1.orderId,
+										SUM(O2.orderdetailPrice) AS orderPriceSum
+									FROM
+										`order` AS O1
+									JOIN
+										orderdetail AS O2 USING (orderId)
+									WHERE
+										O1.orderDate > :initialDate
+										AND	O1.orderDate < :endDate
+									GROUP BY
+										O1.orderId
+									) AS T1
+								JOIN
+									`order` AS O1 USING (orderID)
+								GROUP BY
+									DATE(O1.orderDate)
+								) AS T2
+							) AS T3
+						JOIN
+							(
+							SELECT
+								DATE(O1.orderDate) AS orderDate,
+								COUNT(*) AS orderQuantity,
+								SUM(T1.orderPriceSum) AS orderPriceTotal,
+								SUM(T1.orderPriceSum) / COUNT(*) AS averageTicket
+							FROM
+								(
+								SELECT
+									O1.orderId,
+									SUM(O2.orderdetailPrice) AS orderPriceSum
+								FROM
+									`order` AS O1
+								JOIN
+									orderdetail AS O2 USING (orderId)
+								WHERE
+									O1.orderDate > :initialDate
+								AND	O1.orderDate < :endDate
+								GROUP BY
+									O1.orderId
+								) AS T1
+							JOIN
+								`order` AS O1 USING (orderID)
+							GROUP BY
+								DATE(O1.orderDate)
+							) AS T4
+						ORDER BY
+							T4.orderDate';
+
+			    $prep = $connection->prepare($sql);
+			    
+		    	$prep->bindValue(':initialDate', $initialDate);
+	    		$prep->bindValue(':endDate', $endDate);
+
+			    $prep->execute();
+			    return $prep->fetchAll();
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error fetching orders statistics: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}	
+		}
 
 		public function addOrder($order, $connection = null)
 		{

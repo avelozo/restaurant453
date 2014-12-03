@@ -20,6 +20,11 @@
  		{
 			return $this->orderMapper->getOrders($orderId, $restaurantId, $employeeId);
  		}
+		
+		public function getOrderStats()
+		{
+			return $this->orderMapper->getOrderStats($initialDate, $endDate);
+		}
 
 		public function addOrder($order)
 		{
