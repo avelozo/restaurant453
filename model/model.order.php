@@ -11,7 +11,7 @@ class Order
 	public $orderDetails;
 	public $endDate;
 
-	function Product($id			= '',
+	function Order($id			= '',
 				     $date			= '',
 					 $customer		= '',
 					 $tableNumber	= '',
