@@ -8,20 +8,31 @@ function showDetails(orderId)
 
 function payOrder(orderId)
 {
-	var url = 'index.php';
-	var data = { op : 'payOrder', orderId : orderId };
+	if(confirm('Would you like to close this order?'))
+	{
+		var url = 'index.php';
+		var data = { op : 'payOrder', orderId : orderId };
 
-	callServer(url, data, payOrderCallback, alert);
+		callServer(url, data, payOrderCallback, alert);
+	}
 }
 
 function addCustomer(orderId)	
 {
 	var customerId = jQuery('.customerNumber').val();
 
-	var url = 'index.php';
-	var data = { op : 'addCustomer', orderId : orderId, customerId : customerId };
+	if(customerId.trim().length == 0)
+	{
+		alert("Customer number required.");
+		clearCustomerNumber();
+	}
+	else
+	{
+		var url = 'index.php';
+		var data = { op : 'addCustomer', orderId : orderId, customerId : customerId };
 
-	callServer(url, data, fillOrderDetails, alert);
+		callServer(url, data, addCustomerCallback, alert);
+	}
 }
 
 function chooseProduct(orderId)
@@ -30,6 +41,25 @@ function chooseProduct(orderId)
 	var data = { op : 'chooseProduct', orderId : orderId };
 
 	//callServer(url, data, fillOrderDetails, alert);
+}
+
+function addCustomerCallback(response)
+{
+	if(response.status == 200)
+	{
+		fillOrderDetails(response);
+	}
+	else
+	{
+		alert(JSON.parse(response.responseText).message);
+		clearCustomerNumber();
+	}
+}
+
+function clearCustomerNumber()
+{
+	jQuery('.customerNumber').val('');
+	jQuery('.customerNumber').focus();
 }
 
 function payOrderCallback(response)
@@ -52,11 +82,6 @@ function callServer(url, data, complete, error)
 	  			{
 				  	if(complete !== undefined)
 				  		complete(response)
-				},
-	  error: function(resp)
-	  		{
-			  	if(error !== undefined)
-	   				error(resp);
-			}
+				}
   	});
 }

@@ -23,12 +23,27 @@ class OrderDetailView
 		$orderId = $_POST['orderId'];
 
 		$this->orderBS->payOrder($orderId);
+
+		exit();
 	}
 
 	public function addCustomer()
 	{
 		$orderId = $_POST['orderId'];
 		$customerId = $_POST['customerId'];
+
+		$ret = $this->orderBS->addCustomer($orderId, $customerId);
+
+		if(is_array($ret))
+		{
+			header($ret['errorCode']);
+	        header('Content-Type: application/json; charset=UTF-8');
+	        die(json_encode($ret));
+    	}
+    	else
+    	{
+    		echo $this->createOrderDetails($ret);
+    	}
 	}
 
 	public function chooseProduct()
@@ -41,7 +56,7 @@ class OrderDetailView
 		$orderTotal = 0;
 		$orderDetailsHtml = '';
 
-		if(isset($order->customer))
+		if(!isset($order->customer))
 		{
 			$orderDetailsHtml .= '<span>
 									Customer:' . $order->customer->name . '
@@ -50,15 +65,14 @@ class OrderDetailView
 		else
 		{
 			$orderDetailsHtml = '<label for="customer">
-									<input type="text" name="customer" class="customerNumber"/>
-									<input type="button" name="Add" onClick="addCustomer(' . $order->id . ');" />
+									<input type="text" name="customer" class="customerNumber" placeholder="Customer Number" />
+									<input type="button" name="Add" value="Add" onClick="addCustomer(' . $order->id . ');" />
 								</label>';
 		}
 
 		$orderDetailsHtml .= '<span>
 								Start Time: ' . $order->date . '
 							</span>
-
 							<table>
 								<thead>
 									<tr>
