@@ -18,7 +18,7 @@ class Product
 					 $description		= '',
 					 $buyPrice			= '',
 					 $price				= '',
-					 $restaurant		= '',
+					 $restaurant		= null,
 					 $quantityInStock	= '',
 					 $saleTaxRate		= '')
 	{
