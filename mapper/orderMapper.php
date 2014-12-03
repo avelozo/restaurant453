@@ -44,7 +44,10 @@
 					$currentOrder->orderDetails = [];
 				}
 
-				array_push($currentOrder->orderDetails, $this->createOrderDetail($order));
+				if(isset($order['orderdetailId']))
+				{
+					array_push($currentOrder->orderDetails, $this->createOrderDetail($order));
+				}
 			}
 
 			return $ordersRet;
@@ -90,7 +93,10 @@
 
 			$ord->id = $order['orderId'];
 			$ord->date = $order['orderDate'];
-			$ord->customer = $this->customerMapper->createCustomer($order);
+			if(isset($v['customerId']))
+			{
+				$ord->customer = $this->customerMapper->createCustomer($order);
+			}
 			$ord->tableNumber = $order['orderTableNumber'];
 			$ord->employee = $this->employeeMapper->createEmployee($order);
 			$ord->restaurant = $this->restaurantMapper->createRestaurant($order);

@@ -16,5 +16,8 @@
 		<?php  include 'products.html.php';?>
 	</div>
 
+	<script type="text/javascript">
+	   showTables();
+	</script>
 </div>
 <?php  include '../footer.php';?>
