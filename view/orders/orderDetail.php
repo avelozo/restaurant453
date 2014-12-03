@@ -29,6 +29,11 @@ class OrderDetailView
 		$customerId = $_POST['customerId'];
 	}
 
+	public function chooseProduct()
+	{
+		
+	}
+
 	function createOrderDetails($order)
 	{
 		$orderTotal = 0;
@@ -113,7 +118,8 @@ class OrderDetailView
 								</tfoot>
 							</table>
 
-							<input type="button" value="Pay" />';
+							<input type="button" value="Pay" onclick="payOrder(' . $order->id . ');"/>
+							<input type="button" value="Add Product" onclick="chooseProduct(' . $order->id . ');" />';
 
 		return $orderDetailsHtml;
 	}

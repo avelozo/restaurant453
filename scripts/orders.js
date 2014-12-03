@@ -6,6 +6,32 @@ function showDetails(orderId)
 	callServer(url, data, fillOrderDetails, alert);
 }
 
+function payOrder(orderId)
+{
+	var url = 'index.php';
+	var data = { op : 'payOrder', orderId : orderId };
+
+	callServer(url, data, fillOrderDetails, alert);
+}
+
+function addCustomer(orderId)	
+{
+	var customerId = jQuery('.customerNumber').val();
+
+	var url = 'index.php';
+	var data = { op : 'addCustomer', orderId : orderId, customerId : customerId };
+
+	callServer(url, data, fillOrderDetails, alert);
+}
+
+function chooseProduct(orderId)
+{
+	var url = 'index.php';
+	var data = { op : 'chooseProduct', orderId : orderId };
+
+	//callServer(url, data, fillOrderDetails, alert);
+}
+
 function fillOrderDetails(response)
 {
 	jQuery(".orderDetailsContent").append(response.responseText);

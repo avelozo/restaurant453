@@ -23,6 +23,11 @@
 		$orderDetail = new OrderDetailView($orderBS);
 		$orderDetail->addCustomer();
 	}
+	elseif (isset($_POST['op']) and $_POST['op'] == 'chooseProduct') 
+	{
+		$orderDetail = new OrderDetailView($orderBS);
+		$orderDetail->chooseProduct();
+	}
 	else
 	{
 		include 'orders.html.php';
