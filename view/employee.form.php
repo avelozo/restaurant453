@@ -1,7 +1,8 @@
 <?php  include 'header.php';?>
+<div id="alertWarning" class="alertWarning"></div>
 <div class="boxContainer marginContainer">
 	<span>Employee</span><hr/>
-	<form  action="?<?php echo $action; ?>" method="post">
+	<form  action="?<?php echo $action; ?>" method="post" name="formEmployee" onsubmit="return validateForm()">
 		<div><label for="ssn">SSN<input type="text" class="inputContent" name="ssn"
 			id="ssn" value="<?php echo $employee->ssn; ?>"></label></div>
 		<div><label for="firstName">First Name<input type="text" class="inputContent" name="firstName"
@@ -25,6 +26,7 @@
 		</div>
 		<div><span class="labelContent">Manager</span>
 			<select class="selectContent" name="reportsTo">
+				<option value=""></option>
 				<?php foreach ($employees as $manager): ?>
 					<option value="<?php echo $manager->id; ?>">
 						<?php echo $manager->firstName; ?>
@@ -49,4 +51,7 @@
 		</div>
 	</form>
 </div>
+<script>
+errorVisibility();
+</script>
 <?php  include 'footer.php';?>

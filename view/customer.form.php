@@ -1,8 +1,9 @@
 <?php  include 'header.php';?>
+<div id="alertWarning" class="alertWarning"></div>
 <div class="boxContainer marginContainer">
 	<span>Customer</span><hr/>
 	<form  action="?<?php echo $action; ?>" method="post">
-		<div><label for="id">ID <input type="text" class="inputContent" name="id"
+		<div><label for="id">ID <input type="text" disabled class="inputContent" name="id"
 			id="id" value="<?php echo $customer->id; ?>"></label></div>
 		<div><label for="name">Name <input type="text" class="inputContent" name="name"
 			id="name" value="<?php echo $customer->name; ?>"></label></div>
@@ -26,4 +27,7 @@
 		</div>
 	</form>
 </div>
+<script>
+errorVisibility();
+</script>
 <?php  include 'footer.php';?>

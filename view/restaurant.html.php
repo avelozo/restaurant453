@@ -2,7 +2,7 @@
 <?php if($error!=""){?>
 <div class="alertWarning"><?php echo $error ?></div>
 <?php }?>
-<div class="boxContainer largeContainer marginContainer">
+<div class="boxContainer marginContainer">
 	<span>Restaurant</span><hr/>
 	<table class="tableClass">
 		<tr class= "tableRowHeader">
