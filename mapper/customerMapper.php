@@ -46,7 +46,7 @@
 			return $this->customerDAO->deleteCustomer($id);
 		}
 
-		private function createCustomer($customer)
+		public function createCustomer($customer)
 		{
 			$cust = new Customer();
 

@@ -32,6 +32,7 @@
 			$orders = $this->orderDAO->getOrders($id);
 
 			$currentOrder = null;
+			
 
 			foreach ($orders as $order)
 			{
@@ -39,6 +40,7 @@
 				{
 					array_push($ordersRet, $this->createOrder($order));
 					$currentOrder = $ordersRet[count($ordersRet) - 1];
+					$currentOrder->orderDetails = [];
 				}
 
 				array_push($currentOrder->orderDetails, $this->createOrderDetail($order));
@@ -67,7 +69,7 @@
 			$this->orderDAO->updateOrderDetail($orderDetail);
 		}
 
-		private function createOrder($order)
+		public function createOrder($order)
 		{
 			$ord = new Order();
 
@@ -81,7 +83,7 @@
 			return $ord;
 		}
 
-		private function createOrderDetail($orderDetail)
+		public function createOrderDetail($orderDetail)
 		{
 			$ordDet = new OrderDetail();
 

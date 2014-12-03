@@ -51,8 +51,12 @@
 			$rol = new Role();
 
 			$rol->id = $role['roleId'];
-			$rol->name = $role['roleName'];
 
+			if(isset($role['roleName']))
+			{
+				$rol->name = $role['roleName'];
+			}
+			
 			return $rol;
 		}
 	}
