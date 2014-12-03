@@ -43,6 +43,43 @@ function chooseProduct(orderId)
 	//callServer(url, data, fillOrderDetails, alert);
 }
 
+function addTable(employeeId)
+{
+	var tableNumber = jQuery('.tableNumber').val();
+	
+	var url = 'index.php';
+	var data = { op : 'addTable', tableNumber : tableNumber };
+
+	callServer(url, data, addTableCallback, alert);
+}
+
+function addTableCallback(response)
+{
+	if(response.status == 200)
+	{
+		fillTables(response);
+	}
+	else
+	{
+		alert(JSON.parse(response.responseText).message);
+	}
+
+	clearTableNumber();
+}
+
+function showTables()
+{
+	var url = 'index.php';
+	var data = { op : 'showTables' };
+
+	callServer(url, data, fillTables, alert);
+}
+
+function fillTables(response)
+{
+	jQuery(".tableList").html(response.responseText);
+}
+
 function addCustomerCallback(response)
 {
 	if(response.status == 200)
@@ -52,8 +89,15 @@ function addCustomerCallback(response)
 	else
 	{
 		alert(JSON.parse(response.responseText).message);
-		clearCustomerNumber();
 	}
+
+	clearCustomerNumber();
+}
+
+function clearTableNumber()
+{
+	jQuery(".tableNumber").val('');
+	jQuery('.tableNumber').focus();
 }
 
 function clearCustomerNumber()
@@ -64,7 +108,8 @@ function clearCustomerNumber()
 
 function payOrderCallback(response)
 {
-	location.reload(true);
+	showTables();
+	fillOrderDetails({responseText : ''});
 }
 
 function fillOrderDetails(response)

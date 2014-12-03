@@ -50,15 +50,18 @@
 		{
 			$cust = new Customer();
 
-			$cust->id = $customer['customerId'];
-			$cust->name = $customer['customerName'];
-			$cust->phone = $customer['customerPhone'];
-			$cust->addressLine1 = $customer['customerAddressLine1'];
-			$cust->addressLine2 = $customer['customerAddressLine2'];
-			$cust->city = $customer['customerCity'];
-			$cust->state = $customer['customerState'];
-			$cust->country = $customer['customerCountry'];
-			$cust->postalCode = $customer['customerPostalCode'];
+			if(isset($customer['customerId']))
+			{
+				$cust->id = $customer['customerId'];
+				$cust->name = $customer['customerName'];
+				$cust->phone = $customer['customerPhone'];
+				$cust->addressLine1 = $customer['customerAddressLine1'];
+				$cust->addressLine2 = $customer['customerAddressLine2'];
+				$cust->city = $customer['customerCity'];
+				$cust->state = $customer['customerState'];
+				$cust->country = $customer['customerCountry'];
+				$cust->postalCode = $customer['customerPostalCode'];
+			}
 
 			return $cust;
 		}

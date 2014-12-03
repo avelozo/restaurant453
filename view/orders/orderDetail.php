@@ -56,24 +56,28 @@ class OrderDetailView
 		$orderTotal = 0;
 		$orderDetailsHtml = '';
 
+		$orderDetailsHtml .= '<p>
+									Table Number: ' . $order->tableNumber . '
+								</p>';
+
 		if(isset($order->customer->id))
 		{
-			$orderDetailsHtml .= '<span>
+			$orderDetailsHtml .= '<p>
 									Customer: ' . $order->customer->name . '
-								</span>';
+								</p>';
 		}
 		else
 		{
-			$orderDetailsHtml = '<label for="customer">
+			$orderDetailsHtml = '<p><label for="customer">
 									<input type="text" name="customer" class="customerNumber" placeholder="Customer Number" />
 									<input type="button" name="Add" value="Add" onClick="addCustomer(' . $order->id . ');" />
-								</label>';
+								</label></p>';
 		}
 
-		$orderDetailsHtml .= '<span>
-								Start Time: ' . $order->date . '
-							</span>
-							<table>
+		$orderDetailsHtml .= '<p>
+								Start Time: ' . date('m/d/Y H:i', strtotime($order->date)) . '
+							</p>
+							<table class="orderDetailsTable">
 								<thead>
 									<tr>
 										<th>
@@ -104,14 +108,14 @@ class OrderDetailView
 									<td>
 										 ' . $orderDetail->chair . ' 
 									</td>
-									<td>
-										 ' . $orderDetail->priceEach . ' 
+									<td class="orderDetailsTableNumber">
+										$ ' . number_format($orderDetail->priceEach, 2, '.', '') . ' 
 									</td>
-									<td>
+									<td class="orderDetailsTableNumber">
 										 ' . $orderDetail->quantityOrdered . ' 
 									</td>
-									<td>
-										 $ ' . $orderDetail->priceEach *  $orderDetail->quantityOrdered . ' 
+									<td class="orderDetailsTableNumber">
+										 $ ' . number_format($orderDetail->priceEach *  $orderDetail->quantityOrdered, 2, '.', '')  . ' 
 									</td>
 								 </tr>';
 
@@ -127,8 +131,8 @@ class OrderDetailView
 										<td></td>
 										<td></td>
 										<td>Total</td>
-										<td>
-										  $ ' . $orderTotal . '
+										<td class="orderDetailsTableNumber">
+										  $ ' . number_format($orderTotal, 2, '.', '') . '
 										</td>			
 									</tr>
 								</tfoot>

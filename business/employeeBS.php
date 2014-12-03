@@ -14,7 +14,7 @@
 		}
 
 
-		function Authenticate($login, $password)
+		public function Authenticate($login, $password)
 		{	
 			$employees = $this->employeeMapper->getEmployees(null, $login);
 			

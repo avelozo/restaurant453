@@ -18,7 +18,17 @@
 			try
 			{
 			  	$sql = 'SELECT 
-							*
+							`order`.*,
+							`customer`.*,
+							`employee`.*,
+							`restaurant`.*,
+							`product`.*,
+							`stock`.*,
+							`orderdetail`.`orderdetailId`,
+						    `orderdetail`.`productId`,
+						    `orderdetail`.`orderdetailQuantity`,
+						    `orderdetail`.`orderdetailPrice`,
+						    `orderdetail`.`orderdetailChair`
 						FROM 
 							`order`
 							LEFT JOIN
@@ -48,11 +58,11 @@
 				}
 				elseif($restaurantId != null)
 				{
-					$sql .= " WHERE `order`.`restaurantId` = :id ";
+					$sql .= " WHERE `order`.`restaurantId` = :id  AND `order`.`orderEndDate` IS NULL ";
 				}
 				elseif($employeeId != null)
 				{
-					$sql .= " WHERE `order`.`employeeId` = :id ";
+					$sql .= " WHERE `order`.`employeeId` = :id AND `order`.`orderEndDate` IS NULL ";
 				}
 
 				$sql .= " ORDER BY `order`.`orderId` ; ";
@@ -174,7 +184,6 @@
 			{
 			    $error = 'Error fetching orders statistics: ' . $e->getMessage();
 			    die($error);
-			    exit();
 			}	
 		}
 
@@ -201,8 +210,15 @@
 						:restaurantId)';
 
 			    $prep = $connection->prepare($sql);
-			    $prep->bindValue(':orderDate', $order->orderDate);
-			    $prep->bindValue(':customerId', $order->customer->id);
+			    $prep->bindValue(':orderDate', $order->date);
+			    if(isset($order->customer->id))
+			    {
+			    	$prep->bindValue(':customerId', $order->customer->id);
+			    }
+			    else
+			    {
+			    	$prep->bindValue(':customerId', null);
+			    }
 			    $prep->bindValue(':orderTableNumber', $order->tableNumber);
 				$prep->bindValue(':employeeId', $order->employee->id);
 			    $prep->bindValue(':restaurantId', $order->restaurant->id);
@@ -211,12 +227,15 @@
 
 			    $order->id = $connection->lastInsertId();
 
-			    foreach($order->orderDetails as $od)
-				{
-					$od->order = $order;
-			    	$this->addOrderDetail($od, $connection);
-			    }	
-
+			    if(isset($order->orderDetails))
+			    {
+				    foreach($order->orderDetails as $od)
+					{
+						$od->order = $order;
+				    	$this->addOrderDetail($od, $connection);
+				    }	
+			    }
+			    
 			    $connection->commit();
 
 			    return true;
