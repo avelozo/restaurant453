@@ -164,7 +164,10 @@
 			    $prep->bindValue(':employeeFirstName', $employee->firstName);
 			    $prep->bindValue(':employeeEmail', $employee->email);
 				$prep->bindValue(':restaurantId', $employee->restaurant->id);
-			    $prep->bindValue(':employeeReportsTo', $employee->reportsTo->id);
+				if ($employee->reportsTo == null)
+					$prep->bindValue(':employeeReportsTo', null);
+				else
+					$prep->bindValue(':employeeReportsTo', $employee->reportsTo->id);
 			   	$prep->bindValue(':employeeJobTitle', $employee->jobTitle);
 			    $prep->bindValue(':employeeUserName', $employee->userName);
 			    $prep->bindValue(':employeePassword', $employee->password);
@@ -178,7 +181,7 @@
 		    }
 			catch (PDOException $e)
 			{
-				return 'Error inserting employee: ' . $e->getMessage();
+				die('Error inserting employee: ' . $employee->reportsTo . $e->getMessage());
 			}
 		}
 
@@ -209,7 +212,10 @@
 			    $prep->bindValue(':employeeFirstName', $employee->firstName);
 			    $prep->bindValue(':employeeEmail', $employee->email);
 				$prep->bindValue(':restaurantId', $employee->restaurant->id);
-			    $prep->bindValue(':employeeReportsTo', $employee->reportsTo->id);
+				if ($employee->reportsTo == null)
+					$prep->bindValue(':employeeReportsTo', null);
+				else
+					$prep->bindValue(':employeeReportsTo', $employee->reportsTo->id);
 			   	$prep->bindValue(':employeeJobTitle', $employee->jobTitle);
 			    $prep->bindValue(':employeeUserName', $employee->userName);
 			    $prep->bindValue(':employeePassword', $employee->password);
