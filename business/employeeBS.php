@@ -1,6 +1,6 @@
 <?php
 
-	require_once '../mapper/employeeMapper.php';
+	require_once DIR_BASE . 'mapper/employeeMapper.php';
 	require_once 'api.password.php';
 	
 	class EmployeeBS

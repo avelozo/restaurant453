@@ -1,5 +1,5 @@
 <?php
-	$orders = $orderBS->getOrders();
+	$orders = $orderBS->getOrders(null, null, $_GET['employeeId']);
 ?>
 
 <div>

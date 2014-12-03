@@ -25,11 +25,11 @@
 			$this->productMapper = new ProductMapper();
 		}
 
-		public function getOrders($id = null)
+		public function getOrders($orderId = null, $restaurantId = null, $employeeId = null)
 		{
 			$ordersRet = [];
 
-			$orders = $this->orderDAO->getOrders($id);
+			$orders = $this->orderDAO->getOrders($orderId, $restaurantId, $employeeId);
 
 			$currentOrder = null;
 			
