@@ -16,10 +16,10 @@
 			$this->customerBS = new CustomerBS();
 		}
 
-		public function getOrders($id = null)
-		{
-			return $this->orderMapper->getOrders($id);
-		}
+		public function getOrders($orderId = null, $restaurantId = null, $employeeId = null)
+ 		{
+			return $this->orderMapper->getOrders($orderId, $restaurantId, $employeeId);
+ 		}
 
 		public function addOrder($order)
 		{
