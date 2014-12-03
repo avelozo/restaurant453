@@ -11,7 +11,6 @@ function fillOrderDetails(response)
 	jQuery(".orderDetailsContent").html(response);
 }
 
-
 function callServer(url, data, complete, error)
 {
 	jQuery.ajax({
