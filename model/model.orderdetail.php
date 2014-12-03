@@ -8,7 +8,7 @@ class OrderDetail
 	public $priceEach;
 	public $chair;
 
-	function Product($order				= '',
+	function OrderDetail($order				= '',
 				     $product			= '',
 					 $quantityOrdered	= '',
 					 $priceEach			= '',

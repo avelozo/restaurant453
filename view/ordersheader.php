@@ -4,6 +4,7 @@
     <link href="../../css/main.css" rel="stylesheet">
     <script src="../../scripts/jquery-2.1.1.min.js"></script>
     <script src="../../scripts/product.js"></script>
+     <script src="../../scripts/productOrder.js"></script>
     <script src="../../scripts/util.js"></script>
     <script src="../../scripts/validate.js"></script>
     <script src="../../scripts/orders.js"></script>
