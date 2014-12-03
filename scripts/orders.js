@@ -8,7 +8,7 @@ function showDetails(orderId)
 
 function fillOrderDetails(response)
 {
-	jQuery(".orderDetailsContent").html(response);
+	jQuery(".orderDetailsContent").append(response.responseText);
 }
 
 function callServer(url, data, complete, error)
