@@ -56,10 +56,10 @@ class OrderDetailView
 		$orderTotal = 0;
 		$orderDetailsHtml = '';
 
-		if(!isset($order->customer))
+		if(isset($order->customer->id))
 		{
 			$orderDetailsHtml .= '<span>
-									Customer:' . $order->customer->name . '
+									Customer: ' . $order->customer->name . '
 								</span>';
 		}
 		else
