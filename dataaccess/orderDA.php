@@ -227,7 +227,7 @@
 
 			    $order->id = $connection->lastInsertId();
 
-			    if(isset($order->orderDetails))
+			    if(isset($order->orderDetails) && is_array($order->orderDetails))
 			    {
 				    foreach($order->orderDetails as $od)
 					{
