@@ -3,18 +3,19 @@ class productList
 {
 
 	private $productBS;
-	private $restaurantBS;
+	private $orderBS;
 
-	function ProductList($busProduct = null, $busRestaurant = null)
+	function ProductList($busOrder=null, $busProduct = null)
 	{
+		$this->$orderBS = $busOrder;
 		$this->productBS = $busProduct;
-		$this->$restaurantBS = $busRestaurant;
+		
 	}
 
 	public function showProducts()
 	{
 		$productsListHtml="";
-		$productsList = $productBS->getProducts($restaurantBS->id);
+		$productsList = $productBS->getProducts($orderBS->restaurant->id);
 
 		foreach ($products as $product)
 		{
