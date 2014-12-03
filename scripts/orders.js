@@ -11,7 +11,7 @@ function payOrder(orderId)
 	var url = 'index.php';
 	var data = { op : 'payOrder', orderId : orderId };
 
-	callServer(url, data, fillOrderDetails, alert);
+	callServer(url, data, payOrderCallback, alert);
 }
 
 function addCustomer(orderId)	
@@ -32,9 +32,14 @@ function chooseProduct(orderId)
 	//callServer(url, data, fillOrderDetails, alert);
 }
 
+function payOrderCallback(response)
+{
+	location.reload(true);
+}
+
 function fillOrderDetails(response)
 {
-	jQuery(".orderDetailsContent").append(response.responseText);
+	jQuery(".orderDetailsContent").html(response.responseText);
 }
 
 function callServer(url, data, complete, error)

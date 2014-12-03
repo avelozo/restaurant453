@@ -32,4 +32,13 @@
 		{
 			return $this->orderMapper->deleteOrder($id);
 		}
+
+		public function payOrder($orderId)
+		{
+			$order = $this->getOrders($orderId);
+			
+			$order->endDate = date("Y-m-d H:i:s");
+			
+			$this->updateOrder($order);
+		}
 	}

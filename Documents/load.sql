@@ -41,9 +41,9 @@ INSERT INTO `employee` VALUES (0, '654-14-3698', 'Hance'	, 'Diego'	, 'diego@hotm
 -- -----------------------------------------------------
 -- Table `order` Content
 -- -----------------------------------------------------
-INSERT INTO `order` VALUES (0, '2014-12-02', NULL, 1, 3, 1, 0);
-INSERT INTO `order` VALUES (0, '2014-12-02', NULL, 2, 4, 1, 0);
-INSERT INTO `order` VALUES (0, '2014-12-02', NULL, 3, 3, 1, 0);
+INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', NULL, 1, 3, 1, 0, NULL);
+INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', NULL, 2, 4, 1, 0, NULL);
+INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', NULL, 3, 3, 1, 0, NULL);
 
 
 -- -----------------------------------------------------

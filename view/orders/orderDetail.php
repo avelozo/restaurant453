@@ -21,6 +21,8 @@ class OrderDetailView
 	public function payOrder()
 	{
 		$orderId = $_POST['orderId'];
+
+		$this->orderBS->payOrder($orderId);
 	}
 
 	public function addCustomer()
@@ -31,7 +33,7 @@ class OrderDetailView
 
 	public function chooseProduct()
 	{
-		
+
 	}
 
 	function createOrderDetails($order)

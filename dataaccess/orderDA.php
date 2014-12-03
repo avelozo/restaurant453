@@ -217,7 +217,8 @@
 						`customerId` = :customerId,
 						`orderTableNumber` = :orderTableNumber,
 						`employeeId` = :employeeId,
-						`restaurantId` = :restaurantId
+						`restaurantId` = :restaurantId,
+						`orderEndDate` = :orderEndDate,
 						WHERE `orderId` = :id';
 
 			    $prep = $connection->prepare($sql);
@@ -226,6 +227,7 @@
 			    $prep->bindValue(':orderTableNumber', $order->tableNumber);
 				$prep->bindValue(':employeeId', $order->employee->id);
 			    $prep->bindValue(':restaurantId', $order->restaurant->id);
+			    $prep->bindValue(':orderEndDate', $order->orderEndDate);
 			    $prep->bindValue(':id', $order->id);
 			   
 			    $prep->execute();
