@@ -1,19 +1,17 @@
 <div>
 	<?php 
-	include "../../config.php";
-	 include DIR_BASE . 'business/orderBS.php';
+	include DIR_BASE . 'business/productBS.php';
 	include "orderProducts.php"; 
-	
+	$product= new ProductBS();
 
-	$order= new OrderBS();
-	$order= $order->getOrders(1);
-	$productList= new ProductList($order);
+	$order = $orderBS->getOrders(1);
+	$productList= new ProductList($order[0],$product );
 ?>
 	<form  action="?<?php echo $action; ?>" method="post" name="formEmployee" >
-	echo $productList->showProducts(); 
+	<?php echo $productList->showProducts(); ?>
 
-	<input type="text" name="quantity" value="<?php $productQuantity ?>"> 
+	<input type="text" name="productQuantity" value="<?php $productQuantity ?>"> 
 	<input type="submit" class="submitButton" value="Confirm">
 	</form>
-	?>
+	
 </div>
