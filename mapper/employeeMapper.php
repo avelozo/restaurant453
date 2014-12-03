@@ -42,10 +42,10 @@
 			$this->employeeDAO->updateEmployee($employee);
 		}
 
-		private function createEmployee($employee)
+		public function createEmployee($employee)
 		{
 			$emp = new Employee();
-
+			
 			$emp->id = $employee['employeeId'];
 			$emp->ssn = $employee['employeeSSN'];
 			$emp->lastName = $employee['employeeLastName'];
@@ -61,21 +61,22 @@
 			return $emp;
 		}
 
-		private function createSupervisor($employee)
+		public function createSupervisor($employee)
 		{
 			$emp = new Employee();
-
-			$emp->id = $employee['supervisorId'];
-			$emp->ssn = $employee['supervisorSSN'];
-			$emp->lastName = $employee['supervisorLastName'];
-			$emp->firstName = $employee['supervisorFirstName'];
-			$emp->email = $employee['supervisorEmail'];
-			$emp->restaurant = $this->restaurantMapper->createRestaurant($employee);			
-			$emp->jobTitle = $employee['supervisorJobTitle'];
-			$emp->userName = $employee['supervisorUserName'];
-			$emp->password = $employee['supervisorPassword'];
-			$emp->role = $this->roleMapper->createRole($employee);
-
+			if(isset($employee['supervisorId']))
+			{
+				$emp->id = $employee['supervisorId'];
+				$emp->ssn = $employee['supervisorSSN'];
+				$emp->lastName = $employee['supervisorLastName'];
+				$emp->firstName = $employee['supervisorFirstName'];
+				$emp->email = $employee['supervisorEmail'];
+				$emp->restaurant = $this->restaurantMapper->createRestaurant($employee);			
+				$emp->jobTitle = $employee['supervisorJobTitle'];
+				$emp->userName = $employee['supervisorUserName'];
+				$emp->password = $employee['supervisorPassword'];
+				$emp->role = $this->roleMapper->createRole($employee);
+			}
 			return $emp;
 		}
 

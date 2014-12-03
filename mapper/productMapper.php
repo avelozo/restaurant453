@@ -54,7 +54,7 @@
 			$this->productDAO->deleteProduct($productId);
 		}
 
-		private function createProduct($product)
+		public function createProduct($product)
 		{
 			$prod = new Product();
 

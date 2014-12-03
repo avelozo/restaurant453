@@ -35,13 +35,19 @@
 							ON `order`.`orderId` = `orderdetail`.`orderId`
 							LEFT JOIN
 							`product`
-							ON `orderdetail`.`productId` = `product`.`productId`
-						ORDER BY `order`.`orderId`';
+							ON `orderdetail`.`productId` = `product`.`productId` 
+							LEFT JOIN
+							`stock`
+							ON `stock`.`productId` = `product`.`productId` 
+								AND `stock`.`restaurantId` = `restaurant`.`restaurantId` ';
+
 
 				if($id != null)
 				{
-					$sql .= " WHERE `order`.`orderId` = :id";
+					$sql .= " WHERE `order`.`orderId` = :id ";
 				}
+
+				$sql .= " ORDER BY `order`.`orderId` ; ";
 
 			    $prep = $connection->prepare($sql);
 			    
@@ -95,7 +101,7 @@
 
 			    $order->id = $connection->lastInsertId();
 
-			    for($order->orderDetails as $od)
+			    foreach($order->orderDetails as $od)
 				{
 					$od->order = $order;
 			    	$this->addOrderDetail($od, $connection);

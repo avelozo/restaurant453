@@ -6,6 +6,7 @@
     <script src="../../scripts/product.js"></script>
     <script src="../../scripts/util.js"></script>
     <script src="../../scripts/validate.js"></script>
+    <script src="../../scripts/orders.js"></script>
     <title>Rousseff Restaurant</title>
   </head>
   <body>
