@@ -25,6 +25,7 @@
         	<li class="leftPanelLi"><a href="../view/employee.php"><img src="../img/iemployee.png" class="leftPIcon"></i> <span>Employee</span></a></li>
         	<li class="leftPanelLi"><a href="../view/restaurant.php"><img src="../img/irestaurant.png" class="leftPIcon"></i> <span>Restaurant</span></a></li>
         	<li class="leftPanelLi"><a href="../view/role.php"><img src="../img/irole.png" class="leftPIcon"></i> <span>Role</span></a></li>
+
           <li class="leftPanelLi"><a href="../view/product.php"><img src="../img/iproduct.png" class="leftPIcon"></i> <span>Product</span></a></li>
           <li class="leftPanelLi"><a href="../view/customer.php"><img src="../img/icustomer.png" class="leftPIcon"></i> <span>Customer</span></a></li>
           <li class="leftPanelLi"><a href="../view/stock.php"><img src="../img/istock.png" class="leftPIcon"></i> <span>Stock</span></a></li>

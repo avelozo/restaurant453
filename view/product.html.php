@@ -4,7 +4,7 @@
 <?php } ?>
 <div class="boxContainer marginContainer">
 	<span>Products</span><hr/>
-	<select id="restaurants" name="restaurant"  onchange="filterRestaurant(this, 'product.php')">
+	<select id="restaurants" name="restaurant"  onchange="filterRestaurant(this, 'product.php', fillTable)">
 		 <option selected value="-1">All restaurants</option>
 		<?php foreach ($restaurants as $restaurant) : ?> 
 			<option value="<?php echo $restaurant->id; ?>"><?php echo $restaurant->name; ?></option>

@@ -1,8 +1,5 @@
 function filterRestaurant(el, url, callback)
 {
-	if(typeof callback == undefined)
-		callback = fillTable;
-
 	getProductTableBody(url, jQuery(el).val(), callback);
 }
 
@@ -18,7 +15,7 @@ function getProductTableBody(url, restaurantId, callback)
   	});
 }
 
-function fillTable(data)
+function fillTable(data, url, restaurantId)
 {
 	jQuery('.tableClass tbody').html(data);
 }

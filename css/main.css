@@ -298,3 +298,22 @@ a:active {
   transform: translate(-5%, -20%);
 
 }
+
+.verticalLine{
+  border-right: thick solid #ff0000;
+}
+
+.ordersTables{
+  width: 20%;
+  float: left;
+}
+
+.ordersDetails{
+  width: 40%;
+  float: left;
+}
+
+.ordersProducts{
+  width: 40%;
+  float: left;
+}

@@ -23,7 +23,7 @@ function callDeleteRoutine(url, id, getTableBody, callback)
 	  data: { action: "idelete", id: id },
 	  complete: function (response) {
 	  	if(getTableBody !== undefined)
-	  		getTableBody(-1 , callback);
+	  		getTableBody(url, -1 , callback);
 	  	else
 	  		location.reload(true);
 	  },
