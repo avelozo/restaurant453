@@ -116,12 +116,13 @@ DROP TABLE IF EXISTS `order` ;
 
 CREATE TABLE IF NOT EXISTS `order` (
   `orderId` INT(11) NOT NULL AUTO_INCREMENT,
-  `orderDate` DATE NOT NULL,
+  `orderDate` DATETIME NOT NULL,
   `customerId` INT(11) NULL DEFAULT NULL,
   `orderTableNumber` INT(11) NOT NULL,
   `employeeId` INT(11) NULL DEFAULT NULL,
   `restaurantId` INT(11) NULL DEFAULT NULL,
   `orderDeleted` BINARY NOT NULL DEFAULT 0,
+  `orderEndDate` DATETIME NULL,
   PRIMARY KEY (`orderId`),
   CONSTRAINT `FK_orders_ibfk_1`
     FOREIGN KEY (`customerId`)
