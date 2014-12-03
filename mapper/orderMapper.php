@@ -79,6 +79,7 @@
 			$ord->tableNumber = $order['orderTableNumber'];
 			$ord->employee = $this->employeeMapper->createEmployee($order);
 			$ord->restaurant = $this->restaurantMapper->createRestaurant($order);
+			$ord->endDate = $order['orderEndDate'];
 
 			return $ord;
 		}

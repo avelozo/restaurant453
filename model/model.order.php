@@ -9,6 +9,7 @@ class Order
 	public $employee;
 	public $restaurant;
 	public $orderDetails;
+	public $endDate;
 
 	function Product($id			= '',
 				     $date			= '',
@@ -16,7 +17,8 @@ class Order
 					 $tableNumber	= '',
 					 $employee		= '',
 					 $restaurant	= '',
-					 $orderDetails	= '')
+					 $orderDetails	= '',
+					 $endDate       = '')
 	{
 		$this->id			= $id;
 		$this->date			= $date;
@@ -25,5 +27,6 @@ class Order
 		$this->employee		= $employee;
 		$this->restaurant	= $restaurant;
 		$this->orderDetails	= $orderDetails;
+		$this->endDate	    = $endDate;
 	}
 }
