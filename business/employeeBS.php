@@ -35,9 +35,9 @@
 		}
 
 
-		public function getEmployees()
+		public function getEmployees($id = null)
 		{
-			return $this->employeeMapper->getEmployees();
+			return $this->employeeMapper->getEmployees($id);
 		}
 
 		public function addEmployee($employee)

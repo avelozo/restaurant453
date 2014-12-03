@@ -29,7 +29,10 @@
 	elseif (isset($_GET['addform']))
 	{
 		$restaurant = new Restaurant($_POST['restaurant']);
-		$reportsTo = new Employee($_POST['reportsTo']);
+		if ($_POST['reportsTo'] == '')
+			$reportsTo= null;
+		else
+			$reportsTo= new Employee($_POST['reportsTo']);
 		$role = new Role($_POST['role']);
 		$employee = new Employee(null,
 						 $_POST['ssn'],
@@ -58,9 +61,11 @@
 	}
 	elseif (isset($_GET['editform']))
 	{
-		
 		$restaurant = new Restaurant($_POST['restaurant']);
-		$reportsTo= new Employee($_POST['reportsTo']);
+		if ($_POST['reportsTo'] == '')
+			$reportsTo= null;
+		else
+			$reportsTo= new Employee($_POST['reportsTo']);
 		$role = new Role($_POST['role']);
 		$employee = new Employee($_POST['id'],
 						 $_POST['ssn'],
@@ -74,6 +79,7 @@
 						 $_POST['password'],
 						 $role
 						 );
+
 		$error = $employeeBS->updateEmployee($employee);
 
 		mainPage();
