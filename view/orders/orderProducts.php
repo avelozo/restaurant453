@@ -1,5 +1,6 @@
 <?php
-class productList
+
+class ProductList
 {
 
 	private $productBS;
@@ -7,6 +8,7 @@ class productList
 
 	function ProductList($busOrder=null, $busProduct = null)
 	{
+
 		$this->$orderBS = $busOrder;
 		$this->productBS = $busProduct;
 		
