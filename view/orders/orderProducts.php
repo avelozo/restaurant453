@@ -1,12 +1,12 @@
 <?php
 
-class ProductList
+class OrderProduct
 {
 
 	public $productBS;
 	public $orderBS;
 
-	function ProductList($busOrder=null, $busProduct = null)
+	function OrderProduct($busOrder=null, $busProduct = null)
 	{
 
 		$this->orderBS = $busOrder;
@@ -33,8 +33,10 @@ class ProductList
 
 
 	public function addProducts(){
-		$productQuantity= $POST["productQuantity"]
-		$this->order->orderDetails->quantityOrdered = $productQuantity;
+		$productQuantity= $POST["productQuantity"];
+		$orderId = $_POST['orderId'];
+		$order = $this->orderBS->getOrders($orderId);
+		$order->orderDetails->quantityOrdered = $productQuantity;
 	}
 
 	
