@@ -10,7 +10,7 @@
 			$this->conn = parent::connectDatabase();
 		}
 
-		public function getOrders($id = null, $connection = null)
+		public function getOrders($orderId = null, $restaurantId = null, $employeeId = null, $connection = null)
 		{
 			if($connection == null)
 				$connection = $this->conn;
@@ -42,18 +42,34 @@
 								AND `stock`.`restaurantId` = `restaurant`.`restaurantId` ';
 
 
-				if($id != null)
+				if($orderId != null)
 				{
 					$sql .= " WHERE `order`.`orderId` = :id ";
+				}
+				elseif($restaurantId != null)
+				{
+					$sql .= " WHERE `order`.`restaurantId` = :id ";
+				}
+				elseif($employeeId != null)
+				{
+					$sql .= " WHERE `order`.`employeeId` = :id ";
 				}
 
 				$sql .= " ORDER BY `order`.`orderId` ; ";
 
 			    $prep = $connection->prepare($sql);
 			    
-			    if($id != null)
+			    if($orderId != null)
 			    {
-		    		$prep->bindValue(':id', $id);
+		    		$prep->bindValue(':id', $orderId);
+		    	}
+				elseif($restaurantId != null)
+				{
+		    		$prep->bindValue(':id', $restaurantId);
+		    	}
+				elseif($employeeId != null)
+				{
+		    		$prep->bindValue(':id', $employeeId);
 		    	}
 
 			    $prep->execute();
@@ -218,16 +234,16 @@
 						`orderTableNumber` = :orderTableNumber,
 						`employeeId` = :employeeId,
 						`restaurantId` = :restaurantId,
-						`orderEndDate` = :orderEndDate,
+						`orderEndDate` = :orderEndDate
 						WHERE `orderId` = :id';
 
 			    $prep = $connection->prepare($sql);
-			    $prep->bindValue(':orderDate', $order->orderDate);
+			    $prep->bindValue(':orderDate', $order->date);
 			    $prep->bindValue(':customerId', $order->customer->id);
 			    $prep->bindValue(':orderTableNumber', $order->tableNumber);
 				$prep->bindValue(':employeeId', $order->employee->id);
 			    $prep->bindValue(':restaurantId', $order->restaurant->id);
-			    $prep->bindValue(':orderEndDate', $order->orderEndDate);
+			    $prep->bindValue(':orderEndDate', $order->endDate);
 			    $prep->bindValue(':id', $order->id);
 			   
 			    $prep->execute();
@@ -236,7 +252,7 @@
 		    }
 			catch (PDOException $e)
 			{
-				$error = 'Error inserting product: ' . $e->getMessage();
+				$error = 'Error updating product: ' . $e->getMessage();
 				die($error);
 				exit();
 			}

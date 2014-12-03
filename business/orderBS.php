@@ -13,9 +13,9 @@
 			$this->orderMapper = new OrderMapper();
 		}
 
-		public function getOrders($id = null)
+		public function getOrders($orderId = null, $restaurantId = null, $employeeId = null)
 		{
-			return $this->orderMapper->getOrders($id);
+			return $this->orderMapper->getOrders($orderId, $restaurantId, $employeeId);
 		}
 
 		public function addOrder($order)
@@ -35,7 +35,7 @@
 
 		public function payOrder($orderId)
 		{
-			$order = $this->getOrders($orderId);
+			$order = $this->getOrders($orderId)[0];
 			
 			$order->endDate = date("Y-m-d H:i:s");
 			
