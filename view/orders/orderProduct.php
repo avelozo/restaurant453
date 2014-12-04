@@ -62,5 +62,9 @@ class OrderProduct
 	        header('Content-Type: application/json; charset=UTF-8');
 	        die(json_encode($ret));
     	}
+    	else
+    	{
+    		die('');
+    	}
 	}
 }
