@@ -144,13 +144,13 @@ function addProducts(orderId)
 
 function processAdd(response, orderId)
 {
-	if(response.status == 200)
+	if(response.responseText.indexOf("Insufficient") != 0 && response.status == 200)
 	{
 		showDetails(orderId);
 	}
 	else
 	{
-		alert(JSON.parse(response.responseText).message);
+		alert(response.responseText.message);
 	}
 	jQuery(".productQuantity").val("");
 	jQuery(".chair").val("");

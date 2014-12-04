@@ -26,7 +26,7 @@ INSERT INTO `role` VALUES (0, 'Operator'		, 0, 'Servers');
 -- -----------------------------------------------------
 -- Table `employee` Content
 -- -----------------------------------------------------
-INSERT INTO `employee` VALUES (0, '123-45-6789', 'Tuttle'	, 'Dennis'	, 'dennis@gmail.com'	, 1, NULL	, 'IT Manager'	, 'dennis'	, NULL, 1, 0);
+INSERT INTO `employee` VALUES (0, '123-45-6789', 'Tuttle'	, 'Dennis'	, 'dennis@gmail.com'	, 1, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i'	, 'IT Manager'	, 'dennis'	, NULL, 1, 0);
 INSERT INTO `employee` VALUES (0, '234-56-7891', 'Hruby'	, 'Marylin'	, 'marylin@hotmail.com'	, 1, NULL	, 'Manager'		, 'marylin'	, NULL, 2, 0);
 INSERT INTO `employee` VALUES (0, '321-54-9876', 'Defranco'	, 'Juana'	, 'juana@gmail.com'		, 1, 2		, 'Waitress'	, 'juana'	, NULL, 2, 0);
 INSERT INTO `employee` VALUES (0, '456-78-9123', 'Kimery'	, 'Lewis'	, 'lewis@hotmail.com'	, 1, 2		, 'Waiter'		, 'lewis'	, NULL, 2, 0);
