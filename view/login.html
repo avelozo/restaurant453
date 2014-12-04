@@ -1,0 +1,38 @@
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <title>Login - Rousseff Restaurant</title>
+    
+    <link rel="stylesheet" type="text/css" href="../css/login_page.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/main.css"/>
+</head>
+
+<body> -->
+<?php if(isset($_SESSION['UserId']) && $_SESSION['Role'] == 'Operator')
+{
+  header("Location: " . ROOT . '/view/orders/');
+  
+  exit();
+} 
+?>
+<?php if(!isset($_SESSION['UserId'])) : ?>
+  <div class="logoRousseff"></div>
+    <div id="content">
+    
+    <form  action="?" method="POST" >
+        
+           <div class= "error" > </div>
+           <div class= "loginBorder">
+           <label for="username" class= "labelInput">Username:</label> <input type="text" class= "inputBorder" id="username"  name="username" placeholder="Username"value=""><br/>
+           <label for="password" class= "labelInput">Password:</label> <input type="password" class= "inputBorder" id="password" name="password" placeholder="Password" value=""><br/>       
+           <input type="submit" id= "submitLogin"class="submitButton" value="Submit">             
+        </div>
+       </form>
+    </div>
+<?php exit(); endif; ?>
+<!--
+</body>
+</html> -->
