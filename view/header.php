@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<html>
   <head>
     <meta charset="utf-8">
     <link href="<?php echo ROOT; ?>/css/jquery-ui.css" rel="stylesheet">
@@ -15,6 +17,7 @@
     <title>Rousseff Restaurant</title>
   </head>
   <body>
+    
     <div class="previewHeader">
     	<img id="logoHeader" src="<?php echo ROOT; ?>/img/logoRousseff120.png" alt="Logout">
     	<ul class="navHeader">
@@ -23,6 +26,7 @@
       </ul>
     </div>
 
+    <?php include DIR_BASE . '/view/login.php'; ?>
   
     <div class="leftPanel">
       <div class="leftMenu">

@@ -38,10 +38,6 @@ function addCustomer(orderId)
 function chooseProduct(orderId)
 {
 	showProducts(orderId);
-	//var url = 'index.php';
-	//var data = { op : 'chooseProduct', orderId : orderId };
-
-	//callServer(url, data, fillOrderDetails, alert);
 }
 
 function addTable(employeeId)
@@ -111,6 +107,7 @@ function payOrderCallback(response)
 {
 	showTables();
 	fillOrderDetails({responseText : ''});
+	fillProductDetails({responseText : ''});
 }
 
 function fillOrderDetails(response)
@@ -132,9 +129,18 @@ function addProducts(orderId)
 	var productQuantity = jQuery(".productQuantity").val();
 	var chair = jQuery(".chair").val();
 	var productId = jQuery(".productId:checked").val();
-	var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity, chair : chair, productId : productId };
+	
 
-	callServer(url, data, function () { processAdd(orderId); }, alert);
+	if(productId.trim().length == 0
+		|| productQuantity .trim().length == 0)
+	{
+		alert('Please select one product and enter quantity.');
+	}
+	else
+	{
+		var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity, chair : chair, productId : productId };
+		callServer(url, data, function () { processAdd(orderId); }, alert);
+	}
 }
 
 function processAdd(orderId)

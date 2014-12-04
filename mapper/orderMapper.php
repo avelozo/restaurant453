@@ -93,7 +93,7 @@
 
 			$ord->id = $order['orderId'];
 			$ord->date = $order['orderDate'];
-			if(isset($v['customerId']))
+			if(isset($order['customerId']))
 			{
 				$ord->customer = $this->customerMapper->createCustomer($order);
 			}

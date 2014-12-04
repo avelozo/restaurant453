@@ -20,4 +20,4 @@
 	   showTables();
 	</script>
 </div>
-<?php  include '../footer.php';?>
+<?php  include DIR_BASE . 'view/footer.php';?>
