@@ -2,7 +2,7 @@
 
 	if(isset($_POST['username']))
 	{
-		require_once('../config.php');
+		//require_once('../config.php');
 		require_once DIR_BASE . '/business/employeeBS.php';
 
 		$login = $_POST['username'];
