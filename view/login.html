@@ -9,11 +9,14 @@ if(isset($_POST['action']) && $_POST['action'] == "logout")
 
   header("Location: " . ROOT);
 }
-elseif(isset($_SESSION['UserId']) && isset($_SESSION['Role']) && $_SESSION['Role'] == 'Operator')
+elseif(isset($_SESSION['UserId']) 
+    && isset($_SESSION['Role']) 
+    && $_SESSION['Role'] == 'Operator' 
+    && !strpos($_SERVER['REQUEST_URI'], '/view/orders/'))
 {
   header("Location: " . ROOT . '/view/orders/');
   
-  exit();
+  //exit();
 } 
 ?>
 

@@ -56,7 +56,7 @@
 			try
 			{
 				$connection->exec('LOCK TABLES `stock` WRITE, 
-											   `orderDetail` WRITE, 
+											   `orderdetail` WRITE, 
 											   `vwproduct` WRITE, 
 											   `vwrestaurant` WRITE ');
 
@@ -71,7 +71,7 @@
 				{
 					throw new Exception('Insufficient stock. Cannot sell this quantity.');
 				}
-				
+
 				$product->quantityInStock -= $orderDetail->quantityOrdered;
 
 				$this->productBS->updateProductStock($product, $connection);	

@@ -5,9 +5,9 @@
 	include_once DIR_BASE . "business/productBS.php";
 	include_once DIR_BASE . "model/model.order.php";
 	include_once DIR_BASE . "model/model.orderdetail.php";
-	include_once DIR_BASE . "view/orders/orderdetail.php";
+	include_once DIR_BASE . "view/orders/orderDetail.php";
 	include_once DIR_BASE . "model/model.product.php";
-	include_once DIR_BASE . "view/orders/ordertable.php";
+	include_once DIR_BASE . "view/orders/orderTable.php";
 	include_once DIR_BASE . "view/orders/orderProduct.php";
 
 	$orderBS = new OrderBS();
