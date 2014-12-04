@@ -14,11 +14,11 @@
 		<div><label for="userName">Username<input type="text" class="inputContent" name="userName"
 			id="userName" value="<?php echo $employee->userName; ?>"></label></div>
 		<div><label for="password">Password<input type="password" class="inputContent" name="password"
-			id="password" value="<?php echo $employee->password; ?>"></label></div>
+			id="password" value=""></label></div>
 		<div><span class="labelContent">Restaurant</span>
 			<select class="selectContent" id="restaurant" name="restaurant"> 
 				<?php foreach ($restaurants as $restaurant): ?>
-					<option value="<?php echo $restaurant->id; ?>">
+					<option <?php echo $employee->restaurant->id == $restaurant->id ? 'selected' : ''?> value="<?php echo $restaurant->id; ?>">
 						<?php echo $restaurant->name; ?>
 					</option>
 				<?php endforeach; ?>
@@ -28,7 +28,7 @@
 			<select class="selectContent" name="reportsTo">
 				<option value=""></option>
 				<?php foreach ($employees as $manager): ?>
-					<option value="<?php echo $manager->id; ?>">
+					<option <?php echo $employee->reportsTo->id == $manager->id ? 'selected' : ''?> value="<?php echo $manager->id; ?>">
 						<?php echo $manager->firstName; ?>
 					</option>
 				<?php endforeach; ?>
@@ -39,7 +39,7 @@
 		<div><span class="labelContent">Role</span>
 			<select class="selectContent" name="role">
 				<?php foreach ($roles as $role): ?>
-					<option value="<?php echo $role->id; ?>">
+					<option <?php echo $employee->role->id == $role->id ? 'selected' : ''?> value="<?php echo $role->id; ?>">
 						<?php echo $role->name; ?>
 					</option>
 				<?php endforeach; ?>
