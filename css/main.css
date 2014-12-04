@@ -35,6 +35,43 @@ th{
     background: #FFEBBF;
 }
 
+
+input[type=radio].css-checkbox {
+                            position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+                            
+                        }
+
+                        input[type=radio].css-checkbox + label.css-label {
+                            padding-left:55px;
+                            margin: 10px 20px;
+                            height:30px; 
+                            display:inline-block;
+                           color: #4BA041;
+                           font-family:'Times New Roman','arial',sans-serif;
+                            background-repeat:no-repeat;
+                            background-position: 0 0;
+                            font-size:20px;
+                            vertical-align:middle;
+                            cursor:pointer;
+                            background-size: 30px;
+                            text-align:left;
+
+                        }
+
+                        input[type=radio].css-checkbox:checked + label.css-label {
+                            background-position: 0 -30px;
+                        }
+                        label.css-label {
+                background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_2b083af82f95041b90466f597b3634fc.png);
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+
   /*Positions*/
 
 .rightPosition {
@@ -73,6 +110,10 @@ input[type="button"][value="idelete"] {
     border-radius: 8px;
 }
 
+#submitLogin{
+
+    background: #23BE72;
+}
 
 
 /* unvisited link */
@@ -299,26 +340,28 @@ a:active {
 }
 
 .ordersTables {
-    width: 15%;
+    width: 16%;
     float: left;
     min-height: 800px;
 }
 
 .ordersDetails {
-    width: 40%;
+    width: 47%;
     float: left;
     min-height: 800px;
 }
 
 .ordersProducts {
-    width: 40%;
+    width: 36%;
     float: left;
     min-height: 800px;
 }
 
 .orderDetailsTable{
-    width: 100%;
-    margin: 15px 0px;
+    width: 92%;
+    margin: 15px 20px;
+    border: 2px solid;
+    border-color: rgb(147, 147, 147);
 }
 
 .orderDetailsTable tr{
@@ -329,15 +372,18 @@ a:active {
 .orderDetailsTable tbody td{
     text-align: left;
 
+    padding: 10px;
 }
 
 .orderDetailsTable thead th{
-    background: green;
+    background: rgb(205, 247, 205);
 
 }
 .orderDetailsTable tbody td{
    background:White;
 
+   font-family: "Times New Roman",sans-serif;
+   font-size: 1.2em;
 }
 
 .orderDetailsTableNumber{
@@ -352,12 +398,13 @@ a:active {
     font-family:cursive;
     background-color: rgb(0, 163, 163);
     margin: 3px 0;
-
+}
 
 .customerNumber{
     display:inline;
     width: 70%;
 
+    margin-left: 8%;
 }
 
 .payButton{
@@ -368,4 +415,29 @@ a:active {
 .addProductButton{
 
     background:rgb(245, 65, 41);
+}
+
+.orderProductsList{
+    margin-top:20px;
+    text-align: left;
+}
+
+.productQuantity{
+    width: 22%;
+    font-size: 19px;
+    margin:5% 2% 0 5%;
+    display:inline-block;
+}
+
+.chair{
+    width: 31%;
+    font-size: 18px;
+    display:inline-block;
+
+}
+
+.totalOrder{
+
+    font-weight: 900;
+    background: #90FCBA;
 }
