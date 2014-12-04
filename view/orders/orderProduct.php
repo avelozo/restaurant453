@@ -26,11 +26,11 @@ class OrderProduct
 	     
 		foreach ($productsList as $product)
 		{
-			$productsListHtml.= "<input class='productId' type='radio' name='productId' value='".$product->id . "'> " .$product->name."</input> <br />";
+			$productsListHtml.= "<input class='productId css-checkbox' id='".$product->id ."' type='radio' name='productId' value='".$product->id . "'> </input> <label for='".$product->id ."' class='css-label'>".$product->name."</label><br />";
 		}
 
-		$productsListHtml.="<input class='productQuantity' type='text' name='productQuantity' placeholder='Quantity' value=''> ".
-		"<input class='chair' type='text' name='chair' placeholder='Chair Number' value=''> ".
+		$productsListHtml.="<input class='productQuantity inputContent' type='text' name='productQuanti.$product->name.ty' placeholder='Quantity' value=''> ".
+		"<input class='chair inputContent' type='text' name='chair' placeholder='Chair Number' value=''> ".
 	    "<input type='button' onClick='addProducts(" . $orderId . ")' class='submitButton' value='Confirm'>";//</form>";
 	
 

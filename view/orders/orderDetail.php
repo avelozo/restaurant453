@@ -127,11 +127,11 @@ class OrderDetailView
 		$orderDetailsHtml .= ' </tbody>
 								<tfoot>
 									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td>Total</td>
-										<td class="orderDetailsTableNumber">
+										<td class="totalOrder"></td>
+										<td class="totalOrder"></td>
+										<td class="totalOrder"></td>
+										<td class="totalOrder">Total</td>
+										<td class="orderDetailsTableNumber totalOrder">
 										  $ ' . number_format($orderTotal, 2, '.', '') . '
 										</td>			
 									</tr>
