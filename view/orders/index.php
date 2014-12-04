@@ -50,10 +50,10 @@
 		$orderDetail->addCustomer();
 	}
 	// Products
-	elseif (isset($_POST['op']) && $_POST['op'] == 'chooseProduct') 
+	elseif (isset($_POST['op']) && $_POST['op'] == 'addProducts') 
 	{
-		$orderDetail = new OrderDetailView($orderBS);
-		$orderDetail->chooseProduct();
+		$orderDetail = new OrderProduct($orderBS, $productBS);
+		$orderDetail->addProducts();
 	}
 	elseif (isset($_POST['op']) and $_POST['op'] == 'showProducts') 
 	{

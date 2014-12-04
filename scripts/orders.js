@@ -129,9 +129,20 @@ function showProducts(orderId)
 function addProducts(orderId)
 {
 	var url = 'index.php';
-	var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity };
+	var productQuantity = jQuery(".productQuantity").val();
+	var chair = jQuery(".chair").val();
+	var productId = jQuery(".productId:checked").val();
+	var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity, chair : chair, productId : productId };
 
-	callServer(url, data, fillOrderDetails, alert);
+	callServer(url, data, function () { processAdd(orderId); }, alert);
+}
+
+function processAdd(orderId)
+{
+	showDetails(orderId);
+	jQuery(".productQuantity").val("");
+	jQuery(".chair").val("");
+	jQuery(".productId:checked").prop("checked", false);
 }
 
 function fillProductDetails(response)
