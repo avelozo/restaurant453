@@ -131,15 +131,14 @@ function addProducts(orderId)
 	var productId = jQuery(".productId:checked").val();
 	
 
-	if(productId.trim().length == 0
-		|| productQuantity .trim().length == 0)
-	{
-		alert('Please select one product and enter quantity.');
-	}
-	else
+	if(productId !== undefined && productQuantity !== undefined && productQuantity.trim().length > 0)
 	{
 		var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity, chair : chair, productId : productId };
 		callServer(url, data, function () { processAdd(orderId); }, alert);
+	}
+	else
+	{
+		alert('Please select one product and enter quantity.');
 	}
 }
 

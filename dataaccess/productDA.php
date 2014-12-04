@@ -190,7 +190,7 @@
 			{
 				$sql = 'UPDATE `stock`
 							SET
-							`stockQuantity` = `stockQuantity` + :stockQuantity,
+							`stockQuantity` = :stockQuantity,
 							`stockProductBuyPrice` = :productBuyPrice,
 							`stockProductPrice` = :productPrice
 							WHERE 
@@ -209,8 +209,7 @@
 			catch (PDOException $e)
 			{
 			  $error = 'Error updating stock: ' . $e->getMessage();
-			  die($error);
-			  exit();
+			  throw new Exception($error, 1);
 			}
 		}
 

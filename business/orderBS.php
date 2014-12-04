@@ -7,6 +7,7 @@
 	include_once DIR_BASE . "business/customerBS.php";
 	include_once DIR_BASE . "business/employeeBS.php";
 	include_once DIR_BASE . "business/restaurantBS.php";
+	include_once DIR_BASE . "business/productBS.php";
 
 	class OrderBS
 	{
@@ -14,6 +15,7 @@
 		private $customerBS;
 		private $employeeBS;
 		private $restaurantBS;
+		private $productBS;
 
 		function OrderBS()
 		{
@@ -21,6 +23,7 @@
 			$this->customerBS = new CustomerBS();
 			$this->employeeBS = new EmployeeBS();
 			$this->restaurantBS = new RestaurantBS();
+			$this->productBS = new ProductBS();
 		}
 
 		public function getOrders($orderId = null, $restaurantId = null, $employeeId = null)
@@ -46,7 +49,42 @@
 		
 		public function addOrderDetail($orderDetail)
 		{
-			$this->orderMapper->addOrderDetail($orderDetail);
+			$connection = $this->orderMapper->getConnection();
+
+
+
+			try
+			{
+				$connection->exec('LOCK TABLES `stock` WRITE, 
+											   `orderDetail` WRITE, 
+											   `vwproduct` WRITE, 
+											   `vwrestaurant` WRITE ');
+
+				$connection->beginTransaction();
+
+				$product = $this->productBS->getProducts($orderDetail->product->restaurant->id, $orderDetail->product->id, false, $connection)[0];
+
+				if($product->quantityInStock < $orderDetail->quantityOrdered)
+				{
+					throw new Exception('Insuficient stock. Can not sell this product.');
+				}
+
+				$this->orderMapper->addOrderDetail($orderDetail, $connection);
+
+				$product->quantityInStock -= $orderDetail->quantityOrdered;
+
+				$this->productBS->updateProductStock($product, $connection);	
+
+			    $connection->commit();
+				$connection->exec('UNLOCK TABLES');
+				
+			}
+			catch(Exception $e)
+			{
+				$connection->rollBack();
+				$connection->exec('UNLOCK TABLES');
+ 				throw $e;
+			} 
 		}
 
 		public function updateOrder($order)
