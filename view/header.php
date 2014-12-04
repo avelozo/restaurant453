@@ -13,6 +13,8 @@
     <script src="<?php echo ROOT; ?>/scripts/validate.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/orderStats.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/orders.js"></script>
+    <script src="<?php echo ROOT; ?>/scripts/customerStats.js"></script>
+    <script src="<?php echo ROOT; ?>/scripts/employeeStats.js"></script>
 
     <title>Rousseff Restaurant</title>
   </head>

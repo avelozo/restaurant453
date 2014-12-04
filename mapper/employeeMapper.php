@@ -86,8 +86,6 @@
 			$emp->firstName = $employee['employeeFirstName'];
 			$emp->email = $employee['employeeEmail'];
 			$emp->jobTitle = $employee['employeeJobTitle'];
-			$emp->userName = $employee['employeeUserName'];
-			$emp->password = $employee['employeePassword'];
 			$emp->total = $employee['EmployeeTotal'];
 
 			return $emp;

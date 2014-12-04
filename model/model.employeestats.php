@@ -7,8 +7,6 @@ class EmployeeStats
 	public $firstName;
 	public $email;
 	public $jobTitle;
-	public $userName;
-	public $password;
 	public $total;
 
 	
@@ -19,8 +17,6 @@ class EmployeeStats
 					 $firstName		= '',
 					 $email			= '',
 					 $jobTitle		= '',
-					 $userName		= '',
-					 $password		= '',
 					 $total			= '')
 	{	
 		$this->id			= $id;
@@ -29,8 +25,6 @@ class EmployeeStats
 		$this->firstName	= $firstName;
 		$this->email		= $email;
 		$this->jobTitle		= $jobTitle;
-		$this->userName		= $userName;
-		$this->password		= $password;
 		$this->total		= $total;
 	}
 
