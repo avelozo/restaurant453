@@ -5,11 +5,11 @@
     <link href="<?php echo ROOT; ?>/css/jquery-ui.css" rel="stylesheet">
     <link href="<?php echo ROOT; ?>/css/normalize.css" rel="stylesheet">
     <link href="<?php echo ROOT; ?>/css/main.css" rel="stylesheet">
+    <link  href="<?php echo ROOT; ?>/css/login_page.css"  rel="stylesheet"/>
     <script src="<?php echo ROOT; ?>/scripts/jquery-2.1.1.min.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/jquery-ui.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/util.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/product.js"></script>
-    
     <script src="<?php echo ROOT; ?>/scripts/validate.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/orderStats.js"></script>
     <script src="<?php echo ROOT; ?>/scripts/orders.js"></script>
@@ -36,7 +36,7 @@
     <div class="leftPanel">
       <div class="leftMenu">
         <ul>
-          <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/order.php"><img src="<?php echo ROOT; ?>/img/iorder.png" class="leftPIcon"></i> <span>Order</span></a></li>
+          <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/orders/"><img src="<?php echo ROOT; ?>/img/iorder.png" class="leftPIcon"></i> <span>Order</span></a></li>
         	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/employee.php"><img src="<?php echo ROOT; ?>/img/iemployee.png" class="leftPIcon"></i> <span>Employee</span></a></li>
         	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/restaurant.php"><img src="<?php echo ROOT; ?>/img/irestaurant.png" class="leftPIcon"></i> <span>Restaurant</span></a></li>
         	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/role.php"><img src="<?php echo ROOT; ?>/img/irole.png" class="leftPIcon"></i> <span>Role</span></a></li>
