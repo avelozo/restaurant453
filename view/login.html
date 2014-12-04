@@ -1,0 +1,34 @@
+<?php 
+
+if(isset($_POST['action']) && $_POST['action'] == "logout")
+{
+  if(isset($_SESSION['UserId']))
+    unset($_SESSION['UserId']);
+  if(isset($_SESSION['Role']))
+    unset($_SESSION['Role']);
+
+  header("Location: " . ROOT);
+}
+elseif(isset($_SESSION['UserId']) && isset($_SESSION['Role']) && $_SESSION['Role'] == 'Operator')
+{
+  header("Location: " . ROOT . '/view/orders/');
+  
+  exit();
+} 
+?>
+
+<?php if(!isset($_SESSION['UserId'])) : ?>
+
+    <div id="content">
+    
+    <form  action="?" method="POST" >
+        
+           <div class= "error" > </div>
+           <div class= "loginBorder">
+           <label for="username" class= "labelInput">Username:</label> <input type="text" class= "inputBorder" id="username"  name="username" placeholder="Username"value=""><br/>
+           <label for="password" class= "labelInput">Password:</label> <input type="password" class= "inputBorder" id="password" name="password" placeholder="Password" value=""><br/>       
+           <input type="submit" id= "submitLogin"class="submitButton" value="Submit">             
+        </div>
+       </form>
+    </div>
+<?php exit(); endif; ?>
