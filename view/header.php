@@ -22,7 +22,12 @@
     	<img id="logoHeader" src="<?php echo ROOT; ?>/img/logoRousseff120.png" alt="Logout">
     	<ul class="navHeader">
     	 <li class="liClass">Welcome</li>
-    	 <li class="liClass"><img src="<?php echo ROOT; ?>/img/logout.png" alt="Logout"></li>
+    	 <li class="liClass">
+        <form action="?" method="post">
+          <input type="hidden" name="action" value="logout">
+          <input type="image" src="<?php echo ROOT; ?>/img/logout.png" alt="Logout">
+        </form>
+       </li>
       </ul>
     </div>
 
