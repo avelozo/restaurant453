@@ -253,13 +253,8 @@
 		public function addOrderDetail($orderDetail, $connection = null)
 		{
 			if($connection == null)
-			{
 				$connection = $this->conn;
-			}
-
-			if($localConnection)
-				$connection->beginTransaction();
-
+			
 			try
 			{
 				$sql = 'INSERT INTO `orderdetail`

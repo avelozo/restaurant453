@@ -44,6 +44,11 @@
 			return $this->orderMapper->addOrder($order);
 		}
 		
+		public function addOrderDetail($orderDetail)
+		{
+			$this->orderMapper->addOrderDetail($orderDetail);
+		}
+
 		public function updateOrder($order)
 		{
 			return $this->orderMapper->updateOrder($order);
