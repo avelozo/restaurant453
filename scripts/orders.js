@@ -43,11 +43,19 @@ function chooseProduct(orderId)
 function addTable(employeeId)
 {
 	var tableNumber = jQuery('.tableNumber').val();
-	
-	var url = 'index.php';
-	var data = { op : 'addTable', tableNumber : tableNumber };
+	if(tableNumber.trim().length > 0 && isNumber(tableNumber))
+	{
+		var url = 'index.php';
+		var data = { op : 'addTable', tableNumber : tableNumber };
 
-	callServer(url, data, addTableCallback, alert);
+		callServer(url, data, addTableCallback, alert);
+	}
+	else
+	{
+		alert('Please enter a number for a new table.');
+		jQuery('.tableNumber').val('');
+		jQuery('.tableNumber').focus();
+	}
 }
 
 function addTableCallback(response)
@@ -160,4 +168,8 @@ function processAdd(response, orderId)
 function fillProductDetails(response)
 {
 	jQuery(".orderProductsList").html(response.responseText);
+}
+
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
 }
