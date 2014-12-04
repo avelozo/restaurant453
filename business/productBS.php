@@ -12,9 +12,9 @@
 			$this->productMapper = new ProductMapper();
 		}
 
-		public function getProducts($restaurantId = null, $id = null, $group = true)
+		public function getProducts($restaurantId = null, $id = null, $group = true, $connection = null)
 		{
-			return $this->productMapper->getProducts($restaurantId, $id, $group);
+			return $this->productMapper->getProducts($restaurantId, $id, $group, $connection);
 		}
 
 		public function addProduct($product)
@@ -40,9 +40,9 @@
 			$this->productMapper->updateProduct($product);
 		}
 		
-		public function updateProductStock($product)
+		public function updateProductStock($product, $connection = null)
 		{
-			$this->productMapper->updateProductStock($product);
+			$this->productMapper->updateProductStock($product, $connection);
 		}
 
 		public function deleteProduct($id)

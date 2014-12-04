@@ -301,6 +301,8 @@
 			}
 		}	
 
+
+
 		public function updateOrderDetail($orderDetail, $connection = null)
 		{
 			if($connection == null)
@@ -329,10 +331,11 @@
 			   
 			    $prep->execute();
 			 
-			    return true;
+				return true;
 		    }
 			catch (PDOException $e)
 			{
+				$connection->rollBack();
 				$error = 'Error inserting product: ' . $e->getMessage();
 				die($error);
 				exit();

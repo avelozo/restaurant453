@@ -15,11 +15,11 @@
 			$this->restaurantMapper = new RestaurantMapper();
 		}
 
-		public function getProducts($restaurantId = null, $id = null, $group = true)
+		public function getProducts($restaurantId = null, $id = null, $group = true, $connection = null)
 		{
 			$productRet = [];
 
-			$products = $this->productDAO->getProducts($restaurantId, $id, $group);
+			$products = $this->productDAO->getProducts($restaurantId, $id, $group, $connection);
 
 			foreach ($products as $product)
 			{
@@ -44,9 +44,9 @@
 			$this->productDAO->updateProduct($product);
 		}
 
-		public function updateProductStock($product)
+		public function updateProductStock($product, $connection = null)
 		{
-			$this->productDAO->updateProductStock($product);
+			$this->productDAO->updateProductStock($product, $connection);
 		}
 
 		public function deleteProduct($productId)

@@ -26,6 +26,11 @@
 			$this->productMapper = new ProductMapper();
 		}
 
+		public function getConnection()
+		{
+			return $this->orderDAO->connectDatabase();
+		}
+
 		public function getOrders($orderId = null, $restaurantId = null, $employeeId = null)
 		{
 			$ordersRet = [];
@@ -72,9 +77,9 @@
 			$this->orderDAO->addOrder($order);
 		}
 
-		public function addOrderDetail($orderDetail)
+		public function addOrderDetail($orderDetail, $connection = null)
 		{
-			$this->orderDAO->addOrderDetail($orderDetail);
+			$this->orderDAO->addOrderDetail($orderDetail, $connection);
 		}
 
 		public function updateOrder($order)

@@ -19,8 +19,8 @@ INSERT INTO `restaurant` VALUES (0, 'Uptown'		, '425-858-7413', '1250 W Foster'	
 -- -----------------------------------------------------
 -- Table `role` Content
 -- -----------------------------------------------------
-INSERT INTO `role` VALUES (0, 'Administrator'	, 0);
-INSERT INTO `role` VALUES (0, 'Operator'		, 0);
+INSERT INTO `role` VALUES (0, 'Administrator'	, 0, 'System administrators');
+INSERT INTO `role` VALUES (0, 'Operator'		, 0, 'Servers');
 
 
 -- -----------------------------------------------------
