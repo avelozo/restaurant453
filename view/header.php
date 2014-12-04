@@ -46,7 +46,9 @@
           <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/product.php"><img src="<?php echo ROOT; ?>/img/iproduct.png" class="leftPIcon"></i> <span>Product</span></a></li>
           <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/customer.php"><img src="<?php echo ROOT; ?>/img/icustomer.png" class="leftPIcon"></i> <span>Customer</span></a></li>
           <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/stock.php"><img src="<?php echo ROOT; ?>/img/istock.png" class="leftPIcon"></i> <span>Stock</span></a></li>
-        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/chart.php"><img src="<?php echo ROOT; ?>/img/ichart.png" class="leftPIcon"></i> <span>Charts</span></a></li>
+        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/reports/orderreport.php"><img src="<?php echo ROOT; ?>/img/ichart.png" class="leftPIcon"></i> <span>Order Report</span></a></li>
+        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/reports/employeereport.php"><img src="<?php echo ROOT; ?>/img/ichart.png" class="leftPIcon"></i> <span>Employee Report</span></a></li>
+        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/reports/customerreport.php"><img src="<?php echo ROOT; ?>/img/ichart.png" class="leftPIcon"></i> <span>Customer Report</span></a></li>
         </ul>
       </div>
     </div>  
