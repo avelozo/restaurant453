@@ -107,8 +107,16 @@
 							T4.averageTicket AS averageTicket,
 							T3.averagePriceTotal AS averagePriceTotal,
 							T3.averageAverageTicket AS averageAverageTicket,
-							T4.orderPriceTotal > T3.averagePriceTotal AS priceTotalAboveAverage,
-							T4.averageTicket > T3.averageAverageTicket AS averageTicketAboveAverage
+							CASE
+								WHEN T4.orderPriceTotal > T3.averagePriceTotal THEN 1
+								WHEN T4.orderPriceTotal = T3.averagePriceTotal THEN 0
+								WHEN T4.orderPriceTotal < T3.averagePriceTotal THEN -1
+							END	AS priceTotalAboveAverage,
+							CASE
+								WHEN T4.averageTicket > T3.averageAverageTicket THEN 1
+								WHEN T4.averageTicket = T3.averageAverageTicket THEN 0
+								WHEN T4.averageTicket < T3.averageAverageTicket THEN -1
+							END AS averageTicketAboveAverage
 						FROM
 							(
 							SELECT
@@ -131,8 +139,9 @@
 									JOIN
 										orderdetail AS O2 USING (orderId)
 									WHERE
-										O1.orderDate > :initialDate
-										AND	O1.orderDate < :endDate
+										O1.orderDate >= DATE(:initialDate)
+										AND	O1.orderDate <= DATE(:endDate)
+										AND O1.orderEndDate IS NOT NULL
 									GROUP BY
 										O1.orderId
 									) AS T1
@@ -159,8 +168,9 @@
 								JOIN
 									orderdetail AS O2 USING (orderId)
 								WHERE
-									O1.orderDate > :initialDate
-								AND	O1.orderDate < :endDate
+									O1.orderDate >= DATE(:initialDate)
+								AND	O1.orderDate <= DATE(:endDate)
+								AND O1.orderEndDate IS NOT NULL
 								GROUP BY
 									O1.orderId
 								) AS T1
