@@ -144,13 +144,13 @@ function addProducts(orderId)
 
 function processAdd(response, orderId)
 {
-	if(response.responseText.indexOf("Insufficient") != 0 && response.status == 200)
+	if(response.responseText.length == 0 && response.status == 200)
 	{
 		showDetails(orderId);
 	}
 	else
 	{
-		alert(response.responseText.message);
+		alert('Insufficient stock. Cannot sell this quantity.');
 	}
 	jQuery(".productQuantity").val("");
 	jQuery(".chair").val("");
