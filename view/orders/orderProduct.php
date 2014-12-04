@@ -54,13 +54,13 @@ class OrderProduct
 									   $product->price,
 									   $chair);
 		
-		$this->orderBS->addOrderDetail($orderDetail);
+		$ret = $this->orderBS->addOrderDetail($orderDetail);
 
-		//$productQuantity= $_POST['productQuantity'];
-		//$productID= $_POST['productId']; 
-		//$orderId= $_POST['orderId'];
-		//$order = $this->orderBS->getOrders($orderId);
-		//$orderDetail->product->id=
-		//$order->orderDetails->quantityOrdered = $productQuantity;
+		if(is_array($ret))
+		{
+			header($ret['errorCode']);
+	        header('Content-Type: application/json; charset=UTF-8');
+	        die(json_encode($ret));
+    	}
 	}
 }

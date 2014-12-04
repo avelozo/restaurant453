@@ -64,13 +64,14 @@
 
 				$product = $this->productBS->getProducts($orderDetail->product->restaurant->id, $orderDetail->product->id, false, $connection)[0];
 
-				if($product->quantityInStock < $orderDetail->quantityOrdered)
-				{
-					throw new Exception('Insuficient stock. Can not sell this product.');
-				}
-
 				$this->orderMapper->addOrderDetail($orderDetail, $connection);
 
+
+				if($product->quantityInStock < $orderDetail->quantityOrdered)
+				{
+					throw new Exception('Insuficient stock. Cannot sell this quantity.');
+				}
+				
 				$product->quantityInStock -= $orderDetail->quantityOrdered;
 
 				$this->productBS->updateProductStock($product, $connection);	
@@ -78,12 +79,15 @@
 			    $connection->commit();
 				$connection->exec('UNLOCK TABLES');
 				
+				return true;
 			}
 			catch(Exception $e)
 			{
 				$connection->rollBack();
 				$connection->exec('UNLOCK TABLES');
- 				throw $e;
+ 				
+ 				return array('message' => $e->getMessage(),
+					'errorCode' => 'HTTP/1.1 409 Conflict');
 			} 
 		}
 
