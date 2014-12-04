@@ -37,6 +37,13 @@ class OrderProduct
 		$orderId = $_POST['orderId'];
 		$order = $this->orderBS->getOrders($orderId);
 		$order->orderDetails->quantityOrdered = $productQuantity;
+
+		if(is_array($ret))
+		{
+			header($ret['errorCode']);
+	        header('Content-Type: application/json; charset=UTF-8');
+	        die(json_encode($ret));
+    	}
 	}
 
 	

@@ -28,4 +28,6 @@
        </li>
       </ul>
     </div>
+
+     <?php include DIR_BASE . '/view/login.php'; ?>
  

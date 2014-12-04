@@ -14,7 +14,7 @@
 	$productBS= new ProductBS();
 
 	session_start();
-
+	if(isset($_SESSION['UserId']))
 	$employeeId = $_SESSION['UserId'];
 
 	// Tables
