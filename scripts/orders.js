@@ -37,8 +37,9 @@ function addCustomer(orderId)
 
 function chooseProduct(orderId)
 {
-	var url = 'index.php';
-	var data = { op : 'chooseProduct', orderId : orderId };
+	showProducts(orderId);
+	//var url = 'index.php';
+	//var data = { op : 'chooseProduct', orderId : orderId };
 
 	//callServer(url, data, fillOrderDetails, alert);
 }
@@ -117,3 +118,23 @@ function fillOrderDetails(response)
 	jQuery(".orderDetailsContent").html(response.responseText);
 }
 
+function showProducts(orderId)
+{
+	var url = 'index.php';
+	var data = { op : 'showProducts', orderId : orderId };
+
+	callServer(url, data, fillProductDetails, alert);
+}
+
+function addProducts(orderId)
+{
+	var url = 'index.php';
+	var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity };
+
+	callServer(url, data, fillOrderDetails, alert);
+}
+
+function fillProductDetails(response)
+{
+	jQuery(".orderProductsList").html(response.responseText);
+}
