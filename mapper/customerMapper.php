@@ -26,6 +26,20 @@
 			return $customerRet;
 		}
 
+		public function getCustomerStats($startDate, $endDate, $minValue)
+		{
+			$customerRet = [];
+
+			$customers = $this->customerDAO->getCustomerStats($startDate, $endDate, $minValue);
+
+			foreach ($customers as $customer)
+			{
+				array_push($customerRet, $this->createCustomer($customer));
+			}
+
+			return $customerRet;
+		}
+
 		public function addCustomer($customer)
 		{
 			$this->customerDAO->addCustomer($customer);

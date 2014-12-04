@@ -76,6 +76,69 @@
 			}
 		}
 
+		public function getEmployeeStats($startDate, $endDate, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+				$sql = 'SELECT
+							E1.*,
+							SUM(O2.orderdetailPrice * O2.orderdetailQuantity) AS EmployeeTotal
+						FROM
+							employee AS E1
+							JOIN
+							`order` AS O1 USING (employeeId)
+							JOIN
+							orderdetail AS O2 USING (orderId)
+						WHERE
+							DATE(O1.orderDate) >= DATE(:startDate)
+						AND DATE(O1.orderDate) <= DATE(:endDate)
+						GROUP BY
+							E1.employeeId
+						HAVING
+							EmployeeTotal >=
+							(
+							SELECT
+								AVG(T1.EmployeeTotal)
+							FROM
+								(
+								SELECT
+									E2.*,
+									SUM(O4.orderdetailPrice * O4.orderdetailQuantity) AS EmployeeTotal
+								FROM
+									employee AS E2
+									JOIN
+									`order` AS O3 USING (employeeId)
+									JOIN
+									orderdetail AS O4 USING (orderId)
+								WHERE
+									DATE(O3.orderDate) >= DATE(:startDate)
+								AND DATE(O3.orderDate) <= DATE(:endDate)
+								GROUP BY
+									E2.employeeId
+								) AS T1
+							WHERE
+								T1.employeeReportsTo = E1.employeeReportsTo
+							)';
+
+				$prep = $connection->prepare($sql);
+			    
+	    		$prep->bindValue(':startDate', $startDate);
+				$prep->bindValue(':endDate', $endDate);
+
+			    $prep->execute();
+			    return $prep->fetchAll();
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error fetching employees statistics: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}
+		}
+
 		public function countEmployees($id, $connection = null)
 		{
 			if($connection == null)

@@ -7,7 +7,6 @@
 	{
 		private $employeeMapper;
 
-
 		function EmployeeBS()
 		{
 			$this->employeeMapper = new EmployeeMapper();
@@ -37,6 +36,17 @@
 		public function getEmployees($id = null)
 		{
 			return $this->employeeMapper->getEmployees($id);
+		}
+
+		public function getEmployeeStats($startDate, $endDate)
+		{
+			$time = strtotime($startDate);
+			$startDate = date('Y-m-d',$time);
+
+			$time = strtotime($endDate);
+			$endDate = date('Y-m-d',$time);
+
+			return $this->employeeMapper->getEmployeeStats($startDate, $endDate);
 		}
 
 		public function addEmployee($employee)

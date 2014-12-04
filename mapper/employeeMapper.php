@@ -2,6 +2,7 @@
 
 	include_once DIR_BASE . "dataaccess/employeeDA.php";
 	include_once DIR_BASE . "model/model.employee.php";
+	include_once DIR_BASE . "model/model.employeestats.php";
 	include_once DIR_BASE . "mapper/restaurantMapper.php";
 	include_once DIR_BASE . "mapper/roleMapper.php";
 
@@ -32,6 +33,20 @@
 			return $employeeRet;
 		}
 
+		public function getEmployeeStats($startDate, $endDate, $connection = null)
+		{
+			$employeeRet = [];
+
+			$employees = $this->employeeDAO->getEmployeeStats($startDate, $endDate);
+
+			foreach ($employees as $employee)
+			{
+				array_push($employeeRet, $this->createEmployeeStats($employee));
+			}
+
+			return $employeeRet;
+		}
+
 		public function addEmployee($employee)
 		{
 			$this->employeeDAO->addEmployee($employee);
@@ -57,6 +72,23 @@
 			$emp->userName = $employee['employeeUserName'];
 			$emp->password = $employee['employeePassword'];
 			$emp->role = $this->roleMapper->createRole($employee);
+
+			return $emp;
+		}
+
+		public function createEmployeeStats($employee)
+		{
+			$emp = new EmployeeStats();
+			
+			$emp->id = $employee['employeeId'];
+			$emp->ssn = $employee['employeeSSN'];
+			$emp->lastName = $employee['employeeLastName'];
+			$emp->firstName = $employee['employeeFirstName'];
+			$emp->email = $employee['employeeEmail'];
+			$emp->jobTitle = $employee['employeeJobTitle'];
+			$emp->userName = $employee['employeeUserName'];
+			$emp->password = $employee['employeePassword'];
+			$emp->total = $employee['EmployeeTotal'];
 
 			return $emp;
 		}
