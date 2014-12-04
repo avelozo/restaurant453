@@ -134,7 +134,7 @@ function addProducts(orderId)
 	if(productId !== undefined && productQuantity !== undefined && productQuantity.trim().length > 0)
 	{
 		var data = { op : 'addProducts', orderId : orderId, productQuantity : productQuantity, chair : chair, productId : productId };
-		callServer(url, data, function () { processAdd(orderId); }, alert);
+		callServer(url, data, function (response) { processAdd(response, orderId); }, alert);
 	}
 	else
 	{
@@ -142,9 +142,16 @@ function addProducts(orderId)
 	}
 }
 
-function processAdd(orderId)
+function processAdd(response, orderId)
 {
-	showDetails(orderId);
+	if(response.status == 200)
+	{
+		showDetails(orderId);
+	}
+	else
+	{
+		alert(JSON.parse(response.responseText).message);
+	}
 	jQuery(".productQuantity").val("");
 	jQuery(".chair").val("");
 	jQuery(".productId:checked").prop("checked", false);
