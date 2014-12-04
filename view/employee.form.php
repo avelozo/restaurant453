@@ -18,7 +18,7 @@
 		<div><span class="labelContent">Restaurant</span>
 			<select class="selectContent" id="restaurant" name="restaurant"> 
 				<?php foreach ($restaurants as $restaurant): ?>
-					<option <?php echo $employee->restaurant->id == $restaurant->id ? 'selected' : ''?> value="<?php echo $restaurant->id; ?>">
+					<option <?php echo isset($employee->restaurant) && $employee->restaurant->id == $restaurant->id ? 'selected' : ''?> value="<?php echo $restaurant->id; ?>">
 						<?php echo $restaurant->name; ?>
 					</option>
 				<?php endforeach; ?>
@@ -28,7 +28,7 @@
 			<select class="selectContent" name="reportsTo">
 				<option value=""></option>
 				<?php foreach ($employees as $manager): ?>
-					<option <?php echo $employee->reportsTo->id == $manager->id ? 'selected' : ''?> value="<?php echo $manager->id; ?>">
+					<option <?php echo isset($employee->reportsTo) && $employee->reportsTo->id == $manager->id ? 'selected' : ''?> value="<?php echo $manager->id; ?>">
 						<?php echo $manager->firstName; ?>
 					</option>
 				<?php endforeach; ?>
@@ -39,7 +39,7 @@
 		<div><span class="labelContent">Role</span>
 			<select class="selectContent" name="role">
 				<?php foreach ($roles as $role): ?>
-					<option <?php echo $employee->role->id == $role->id ? 'selected' : ''?> value="<?php echo $role->id; ?>">
+					<option <?php echo isset($employee->role) && $employee->role->id == $role->id ? 'selected' : ''?> value="<?php echo $role->id; ?>">
 						<?php echo $role->name; ?>
 					</option>
 				<?php endforeach; ?>

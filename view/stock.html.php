@@ -5,15 +5,15 @@
 <div class="boxContainer marginContainer">
 	<span>Stock</span><hr/>
 	<select id="restaurants" name="restaurant" onchange="filterRestaurant(this, 'stock.php', fillTableAndHead)">
-		<option selected value="-1">All restaurants</option>
+		<option <?php echo !isset($restaurantId) ? 'selected' : '' ?> value="-1">All restaurants</option>
 		<?php foreach ($restaurants as $restaurant) : ?> 
-			<option value="<?php echo $restaurant->id; ?>"><?php echo $restaurant->name; ?></option>
+
+			<option <?php echo isset($restaurantId) && $restaurantId == $restaurant->id ? 'selected' : '' ?> value="<?php echo $restaurant->id; ?>"><?php echo $restaurant->name; ?></option>
 		<?php endforeach;?>
 	</select>
 	<table class="tableClass">
 		<thead>
 			<tr class= "tableRowHeader">
-				<th>Restaurant</th>
 				<th>Product</th>
 				<?php if($restaurantId != null && $restaurantId > 0) : ?>
 					<th>Buy Price</th>

@@ -10,7 +10,7 @@
 	$productBS = new ProductBS();
 	$restaurantBS = new RestaurantBS();
 	$tableBody = '';
-
+	$restaurantId;
 	$restaurants = $restaurants = $restaurantBS->getRestaurants();
 
 	if (isset($_POST['action']) and $_POST['action'] == 'add')
@@ -92,7 +92,7 @@
 	}
 	else
 	{
-		$restaurantId = null;
+		global $restaurantId;
 		$productId = null;
 
 		if(isset($_GET['restaurantId']))
@@ -101,13 +101,14 @@
 		if(isset($_GET['productId']))
 			$productId = $_GET['productId'];
 
-		mainPage($restaurantId, $productId);
+		mainPage(null, $productId);
 	}
 	
-	function mainPage($restaurantId = null, $productId = null)
+	function mainPage($restaurantIdP = null, $productId = null)
 	{	
 		global $productBS, $products, $restaurantBS, $restaurants, $error, $deleteMsg, $deleteUrl;
 		global $tableBody;
+		global $restaurantId;
 
 		// Display product list
 		$products = $productBS->getProducts($restaurantId, $productId);
@@ -124,13 +125,13 @@
 		foreach ($products as $product)
 		{
 			$tableBody .= '<tr class="tableRow" valign="top">
-				<td>' . $product->restaurant->name . '</td>
+				
 				<td>' . $product->name . '</td>';
 			if($restaurantId != null && $restaurantId > 0)
-				$tableBody .= '<td>' . $product->buyPrice . '</td>
-					<td>' . $product->price . '</td>
+				$tableBody .= '<td> $ ' . $product->buyPrice . '</td>
+					<td> $ ' . $product->price . '</td>
 					<td>' . $product->quantityInStock . '</td>
-					<td>' . $product->saleTaxRate . '</td> ';
+					<td>' . $product->saleTaxRate . '% </td> ';
 
 			$tableBody .= '<td>
 					<form action="?" method="post">
@@ -157,7 +158,7 @@
 		$tableHead = '';
 		
 		$tableHead .= '<tr class= "tableRowHeader">
-				<th>Restaurant</th>
+				
 				<th>Product</th>';
 		if($restaurantId != null && $restaurantId > 0)
 			$tableHead .= '<th>Buy Price</th>
