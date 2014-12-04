@@ -17,20 +17,21 @@ class OrderProduct
 	public function showProducts()
 	{
 
-		$orderId =1;// $_POST['orderId'];
+		$orderId = $_POST['orderId'];
 		$order = $this->orderBS->getOrders($orderId);
 
 		$productsListHtml="";
 		$productsList = $this->productBS->getProducts($order[0]->restaurant->id);
-		$productsListHtml="<form  action='?'' method='post' name='formOrderProduct'>";
+		//$productsListHtml="<form  action='?'' method='post' name='formOrderProduct'>";
 	     
 		foreach ($productsList as $product)
 		{
-			$productsListHtml.= "<input type='radio' name='productId' value='".$product->id ."'>".$product->name."</button>";
+			$productsListHtml.= "<input type='radio' name='productId' value='".$product->id . "'> " .$product->name."</input> <br />";
 		}
 
-		$productsListHtml.="<input type='text' name='productQuantity' value='<?php $productQuantity ?>'> ".
-	    "<input type='submit' class='submitButton' value='Confirm'></form>";
+		$productsListHtml.="<input type='text' name='productQuantity' placeholder='Quantity' value=''> ".
+		"<input type='text' name='chair' placeholder='Chair Number' value=''> ".
+	    "<input type='submit' class='submitButton' value='Confirm'>";//</form>";
 	
 
 		echo $productsListHtml;

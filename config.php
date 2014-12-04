@@ -3,4 +3,4 @@
 
 	date_default_timezone_set('America/Chicago');
 
-	define('ROOT', 'http://localhost:9090/project/');
+	define('ROOT', 'http://localhost:9090/project');
