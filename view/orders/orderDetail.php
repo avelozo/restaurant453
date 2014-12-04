@@ -60,7 +60,7 @@ class OrderDetailView
 									Table Number: ' . $order->tableNumber . '
 								</p>';
 
-		if(isset($order->customer->id))
+		if(isset($order->customer->name))
 		{
 			$orderDetailsHtml .= '<p>
 									Customer: ' . $order->customer->name . '
@@ -68,7 +68,7 @@ class OrderDetailView
 		}
 		else
 		{
-			$orderDetailsHtml = '<p><label for="customer">
+			$orderDetailsHtml .= '<p><label for="customer">
 									<input type="text" name="customer" class="customerNumber" placeholder="Customer Number" />
 									<input type="button" name="Add" value="Add" onClick="addCustomer(' . $order->id . ');" />
 								</label></p>';

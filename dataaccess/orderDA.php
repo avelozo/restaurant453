@@ -139,8 +139,8 @@
 									JOIN
 										orderdetail AS O2 USING (orderId)
 									WHERE
-										O1.orderDate >= DATE(:initialDate)
-										AND	O1.orderDate <= DATE(:endDate)
+										DATE(O1.orderDate) >= DATE(:initialDate)
+										AND	DATE(O1.orderDate) <= DATE(:endDate)
 										AND O1.orderEndDate IS NOT NULL
 									GROUP BY
 										O1.orderId
@@ -168,8 +168,8 @@
 								JOIN
 									orderdetail AS O2 USING (orderId)
 								WHERE
-									O1.orderDate >= DATE(:initialDate)
-								AND	O1.orderDate <= DATE(:endDate)
+									DATE(O1.orderDate) >= DATE(:initialDate)
+								AND	DATE(O1.orderDate) <= DATE(:endDate)
 								AND O1.orderEndDate IS NOT NULL
 								GROUP BY
 									O1.orderId

@@ -17,8 +17,12 @@
 		public function Authenticate($login, $password)
 		{	
 			$employees = $this->employeeMapper->getEmployees(null, $login);
-			
-			if(count($employees) > 0 && password_verify($password, $employees[0]->password))
+
+			if(count($employees) ==  0 || !password_verify($password, $employees[0]->password))
+			{
+				return false;
+			}
+			else
 			{
 				if(password_needs_rehash($employees[0]->password, PASSWORD_BCRYPT))
 				{
@@ -26,14 +30,9 @@
 					$this->employeeMapper->updateEmployee($employees[0]);
 				}
 
-				return true;
-			}
-			else
-			{
-				return false;
+				return $employees[0];
 			}
 		}
-
 
 		public function getEmployees($id = null)
 		{
@@ -42,12 +41,13 @@
 
 		public function addEmployee($employee)
 		{
+			$employee->password = password_hash($employee->password, PASSWORD_BCRYPT);
 			return $this->employeeMapper->addEmployee($employee);
 		}
 
 		public function updateEmployee($employee)
 		{
-		
+			$employee->password = password_hash($employee->password, PASSWORD_BCRYPT);
 			return $this->employeeMapper->updateEmployee($employee);
 		}
 		

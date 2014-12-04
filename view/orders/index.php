@@ -1,6 +1,6 @@
 <?php
 
-	require('../../config.php');
+	require_once('../../config.php');
 	include_once DIR_BASE . "business/orderBS.php";
 	include_once DIR_BASE . "business/productBS.php";
 	include_once DIR_BASE . "model/model.order.php";
@@ -15,12 +15,7 @@
 
 	session_start();
 
-	if(isset($_GET['employeeId']))
-	{
-		$_SESSION['employeeId'] = $_GET['employeeId'];
-	}
-
-	$employeeId = $_SESSION['employeeId'];
+	$employeeId = $_SESSION['UserId'];
 
 	// Tables
 	if(isset($_POST['op']) && $_POST['op'] == 'showTables')
@@ -62,7 +57,7 @@
 	}
 	else
 	{
-		include 'orders.html.php';
+		include DIR_BASE . 'view/orders/orders.html.php';
 		exit();
 	}
 

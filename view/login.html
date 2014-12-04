@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -10,12 +10,19 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css"/>
 </head>
 
-<body>
+<body> -->
+<?php if(isset($_SESSION['UserId']) && $_SESSION['Role'] == 'Operator')
+{
+  header("Location: " . ROOT . '/view/orders/');
+  
+  exit();
+} 
+?>
+<?php if(!isset($_SESSION['UserId'])) : ?>
   <div class="logoRousseff"></div>
-  <div class="desc">Welcome!</div>
     <div id="content">
     
-    <form  action="login.php" method="POST" >
+    <form  action="?" method="POST" >
         
            <div class= "error" > </div>
            <div class= "loginBorder">
@@ -25,5 +32,7 @@
         </div>
        </form>
     </div>
+<?php exit(); endif; ?>
+<!--
 </body>
-</html>
+</html> -->
