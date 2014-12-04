@@ -69,7 +69,7 @@
 
 				if($product->quantityInStock < $orderDetail->quantityOrdered)
 				{
-					throw new Exception('Insuficient stock. Cannot sell this quantity.');
+					throw new Exception('Insufficient stock. Cannot sell this quantity.');
 				}
 				
 				$product->quantityInStock -= $orderDetail->quantityOrdered;
