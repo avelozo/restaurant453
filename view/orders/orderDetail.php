@@ -69,8 +69,8 @@ class OrderDetailView
 		else
 		{
 			$orderDetailsHtml .= '<p><label for="customer">
-									<input type="text" name="customer" class="customerNumber" placeholder="Customer Number" />
-									<input type="button" name="Add" value="Add" onClick="addCustomer(' . $order->id . ');" />
+									<input type="text" name="customer" class="inputContent customerNumber" placeholder="Customer Number" />
+									<input type="button" class="submitButton" name="Add" value="Add" onClick="addCustomer(' . $order->id . ');" />
 								</label></p>';
 		}
 
@@ -138,8 +138,8 @@ class OrderDetailView
 								</tfoot>
 							</table>
 
-							<input type="button" value="Pay" onclick="payOrder(' . $order->id . ');"/>
-							<input type="button" value="Add Product" onclick="chooseProduct(' . $order->id . ');" />';
+							<input type="button" class="submitButton PayButton" value="Pay" onclick="payOrder(' . $order->id . ');"/>
+							<input type="button" class="submitButton AddProductButton"value="Add Product" onclick="chooseProduct(' . $order->id . ');" />';
 
 		return $orderDetailsHtml;
 	}
