@@ -17,6 +17,17 @@
 			return $this->customerMapper->getCustomers($id);
 		}
 
+		public function getCustomerStats($startDate, $endDate, $minValue)
+		{
+			$time = strtotime($startDate);
+			$startDate = date('Y-m-d',$time);
+
+			$time = strtotime($endDate);
+			$endDate = date('Y-m-d',$time);
+			
+			return $this->customerMapper->getCustomerStats($startDate, $endDate, $minValue);
+		}
+
 		public function addCustomer($customer)
 		{
 			$this->customerMapper->addCustomer($customer);

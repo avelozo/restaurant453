@@ -39,6 +39,48 @@
 			}	
 		}
 
+		public function getCustomerStats($startDate, $endDate, $minValue, $connection = null)
+		{
+			if($connection == null)
+				$connection = $this->conn;
+
+			try
+			{
+			  	$sql = 'SELECT
+							C.*
+						FROM
+							customer AS C
+						WHERE
+							(
+							SELECT
+								SUM(O2.orderdetailPrice * O2.orderdetailQuantity)
+							FROM
+								`order` AS O1
+							JOIN
+								orderdetail AS O2 USING (orderId)
+							WHERE
+								O1.customerId = C.customerId
+							AND DATE(O1.orderDate) >= DATE(:startDate)
+							AND DATE(O1.orderDate) <= DATE(:endDate)
+							) >= :minValue';
+
+			    $prep = $connection->prepare($sql);
+			    
+	    		$prep->bindValue(':startDate', $startDate);
+	    		$prep->bindValue(':endDate', $endDate);
+	    		$prep->bindValue(':minValue', $minValue);
+
+			    $prep->execute();
+			    return $prep->fetchAll();
+			}
+			catch (PDOException $e)
+			{
+			    $error = 'Error fetching customer statistics: ' . $e->getMessage();
+			    die($error);
+			    exit();
+			}	
+		}
+
 		public function countOrders($id, $connection = null)
 		{
 			if($connection == null)
