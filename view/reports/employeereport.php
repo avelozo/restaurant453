@@ -12,7 +12,7 @@
 		$endDate = $_POST['endDate'];
 
 		$employeeStats = $employeeBS->getEmployeeStats($startDate, $endDate);
-		print_r(array_values($employeeStats));
+		//print_r(array_values($employeeStats));
 		echo createTableBody($employeeStats);
 	}
 	else
@@ -33,7 +33,7 @@
 				<td>' . $employee->firstName . '</td>
 				<td>' . $employee->email . '</td>
 				<td>' . $employee->jobTitle . '</td>
-				<td>' . $employee->total . '</td>
+				<td> $ ' . number_format ($employee->total, 2, '.', '') . '</td>
 			</tr>';
 		}
 

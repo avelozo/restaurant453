@@ -26,24 +26,24 @@ INSERT INTO `role` VALUES (0, 'Operator'		, 0, 'Servers');
 -- -----------------------------------------------------
 -- Table `employee` Content
 -- -----------------------------------------------------
-INSERT INTO `employee` VALUES (0, '123-45-6789', 'Tuttle'	, 'Dennis'	, 'dennis@gmail.com'	, 1, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i'	, 'IT Manager'	, 'dennis'	, NULL, 1, 0);
-INSERT INTO `employee` VALUES (0, '234-56-7891', 'Hruby'	, 'Marylin'	, 'marylin@hotmail.com'	, 1, NULL	, 'Manager'		, 'marylin'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '321-54-9876', 'Defranco'	, 'Juana'	, 'juana@gmail.com'		, 1, 2		, 'Waitress'	, 'juana'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '456-78-9123', 'Kimery'	, 'Lewis'	, 'lewis@hotmail.com'	, 1, 2		, 'Waiter'		, 'lewis'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '555-55-6666', 'Driggers'	, 'Frank'	, 'frank@gmail.com'		, 2, NULL	, 'Manager'		, 'frank'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '888-45-9852', 'Disla'	, 'Scarlett', 'scarlett@gmail.com'	, 2, 5		, 'Waitress'	, 'scarlett', NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '852-14-3698', 'Haga'		, 'Joseph'	, 'joseph@gmail.com'	, 2, 5		, 'Waiter'		, 'joseph'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '487-55-6666', 'Feemster'	, 'Arlen'	, 'arlen@hotmail.com'	, 3, NULL	, 'Manager'		, 'arlen'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '215-45-9852', 'Haus'		, 'Johanna'	, 'johanna@gmail.com'	, 3, 8		, 'Waitress'	, 'johanna'	, NULL, 2, 0);
-INSERT INTO `employee` VALUES (0, '654-14-3698', 'Hance'	, 'Diego'	, 'diego@hotmail.com'	, 3, 8		, 'Waiter'		, 'diego'	, NULL, 2, 0);
+INSERT INTO `employee` VALUES (0, '123-45-6789', 'Tuttle'	, 'Dennis'	, 'dennis@gmail.com'	, 1, NULL	, 'IT Manager'	, 'dennis'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 1, 0);
+INSERT INTO `employee` VALUES (0, '234-56-7891', 'Hruby'	, 'Marylin'	, 'marylin@hotmail.com'	, 1, NULL	, 'Manager'		, 'marylin'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '321-54-9876', 'Defranco'	, 'Juana'	, 'juana@gmail.com'		, 1, 2		, 'Waitress'	, 'juana'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '456-78-9123', 'Kimery'	, 'Lewis'	, 'lewis@hotmail.com'	, 1, 2		, 'Waiter'		, 'lewis'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '555-55-6666', 'Driggers'	, 'Frank'	, 'frank@gmail.com'		, 2, NULL	, 'Manager'		, 'frank'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '888-45-9852', 'Disla'	, 'Scarlett', 'scarlett@gmail.com'	, 2, 5		, 'Waitress'	, 'scarlett', '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '852-14-3698', 'Haga'		, 'Joseph'	, 'joseph@gmail.com'	, 2, 5		, 'Waiter'		, 'joseph'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '487-55-6666', 'Feemster'	, 'Arlen'	, 'arlen@hotmail.com'	, 3, NULL	, 'Manager'		, 'arlen'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '215-45-9852', 'Haus'		, 'Johanna'	, 'johanna@gmail.com'	, 3, 8		, 'Waitress'	, 'johanna'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
+INSERT INTO `employee` VALUES (0, '654-14-3698', 'Hance'	, 'Diego'	, 'diego@hotmail.com'	, 3, 8		, 'Waiter'		, 'diego'	, '$2y$10$iSVBaohwDWosL8bzn4l40u4DbJt2PqJBFMCKlvCUczeRzq3ULfQ3i', 2, 0);
 
 
 -- -----------------------------------------------------
 -- Table `order` Content
 -- -----------------------------------------------------
-INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', NULL, 1, 3, 1, 0, NULL);
-INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', NULL, 2, 4, 1, 0, NULL);
-INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', NULL, 3, 3, 1, 0, NULL);
+INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', 1, 1, 3, 1, 0, '2014-12-01 10:00:00');
+INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', 2, 2, 4, 1, 0, '2014-12-02 11:00:00');
+INSERT INTO `order` VALUES (0, '2014-12-02 00:00:00', 3, 3, 3, 1, 0, '2014-12-03 09:00:00');
 
 
 -- -----------------------------------------------------
