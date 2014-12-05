@@ -13,7 +13,7 @@
 		$minValue = $_POST['minValue'];
 
 		$customerStats = $customerBS->getCustomerStats($startDate, $endDate, $minValue);
-		print_r(array_values($customerStats));
+		//print_r(array_values($customerStats));
 		echo createTableBody($customerStats);
 	}
 	else

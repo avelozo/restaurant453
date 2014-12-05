@@ -12,7 +12,7 @@
 		$endDate = $_POST['endDate'];
 
 		$orderStats = $orderBS->getOrderStats($startDate, $endDate);
-		print_r(array_values($orderStats));
+		//print_r(array_values($orderStats));
 		echo createTableBody($orderStats);
 	}
 	else
