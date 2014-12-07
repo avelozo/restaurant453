@@ -22,8 +22,8 @@
 				<th>Ticket</th>
 				<th>Avg Total</th>
 				<th>Avg Ticket</th>
-				<th>Total Above Avg</th>
-				<th>Ticket Above Avg</th>
+				<th>Total Above Avg?</th>
+				<th>Ticket Above Avg?</th>
 			</tr>
 		</thead>
 		<tbody>

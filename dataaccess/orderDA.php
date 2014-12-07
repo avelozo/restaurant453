@@ -108,14 +108,14 @@
 							T3.averagePriceTotal AS averagePriceTotal,
 							T3.averageAverageTicket AS averageAverageTicket,
 							CASE
-								WHEN T4.orderPriceTotal > T3.averagePriceTotal THEN 1
-								WHEN T4.orderPriceTotal = T3.averagePriceTotal THEN 0
-								WHEN T4.orderPriceTotal < T3.averagePriceTotal THEN -1
+								WHEN T4.orderPriceTotal > T3.averagePriceTotal THEN \'+\'
+								WHEN T4.orderPriceTotal = T3.averagePriceTotal THEN \'=\'
+								WHEN T4.orderPriceTotal < T3.averagePriceTotal THEN \'-\'
 							END	AS priceTotalAboveAverage,
 							CASE
-								WHEN T4.averageTicket > T3.averageAverageTicket THEN 1
-								WHEN T4.averageTicket = T3.averageAverageTicket THEN 0
-								WHEN T4.averageTicket < T3.averageAverageTicket THEN -1
+								WHEN T4.averageTicket > T3.averageAverageTicket THEN \'+\'
+								WHEN T4.averageTicket = T3.averageAverageTicket THEN \'=\'
+								WHEN T4.averageTicket < T3.averageAverageTicket THEN \'-\'
 							END AS averageTicketAboveAverage
 						FROM
 							(
