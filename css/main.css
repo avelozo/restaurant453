@@ -6,7 +6,7 @@ html,body,ul,li {
 
 body {
     text-align: center;
-    background-color: white;
+    background-color: #e6e9ee;
     color: #411125;
     font-family: helvetica,arial,sans-serif;
     font-size: 1.25em;
@@ -164,7 +164,7 @@ a:active {
 
 /*Left Panel */
 
-.leftPanel {
+/*.leftPanel {
     width: 15%;
     float: left;
     border-top: 0;
@@ -180,52 +180,140 @@ a:active {
     -webkit-border-radius: 0  0px 8px 0;
     -moz-border-radius: 0  0px 8px 0;
     border-radius: 0  0px 8px 0;
-}
+}*/
 
-.leftMenu {
+/*.leftMenu {
     width: 100%;
-}
+}*/
 
 .leftMenu ul {
-    min-height: 10px;
+  /*  min-height: 10px;
     list-style-type: none;
     margin: 10px 0;
-    padding: 0;
+    padding: 0;*/
+     text-align: left;
+  display: inline;
+  margin: 0;
+  padding: 15px 4px 17px 0;
+  list-style: none;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+}
+.leftMenu ul li{
+    width:10%;
+ font: bold 20px sans-serif;
+color:white;
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  padding: 15px 20px;
+  background: #70eb66;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+
 }
 
-.leftPanelLi {
-    float: left;
+.leftMenu > ul > li span{
+position: relative;
+  margin-left: 50%;
+
+
+}
+.leftMenu > ul > li ul li span {
+ margin-left: 2%;
+    }
+
+.leftMenu ul li ul{
+padding: 0;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 150px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transiton: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  -transition: opacity 0.2s;
+
+
+}
+
+.leftMenu ul li ul li {
+
+    width:100%;
+  background: #0c9c00; 
+  display: block; 
+  color: #fff;
+  text-shadow: 0 -1px 0 #000;
+}
+
+.leftMenu li {
+   /* float: left;
     min-width: 100%;
-    display: list-item;
+    display: list-item;*/
+font: bold 1em sans-serif;
+  display: inline-block;
+  margin-right: -4px;
+  position: relative;
+  padding: 15px 20px;
+  background: #fff;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
 }
 
 .leftPanelLi > a {
-    display: block;
+    /*display: block;
     height: inherit;
     width: 100%;
     text-decoration: none;
     display: inline-block;
     padding: 30px 0;
-    text-align: center;
+    text-align: center;*/
 }
 
 .leftPanelLi:hover {
-    background: #ddd;
+    /*background: #ddd;
     color: #222;
     //height: inherit;
     width: 100%;
     //display: inline-block;
-    //padding: 30px 0;
+    //padding: 30px 0;*/
+
+     background: #555;
+  color: #fff;
+}
+
+.leftMenu ul li ul li:hover { background: #555; }
+.leftMenu ul li:hover ul {
+    width:100%;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  z-index: 3;
+
 }
 
 .leftPIcon {
-    width: 8%;
-    height: auto;
-    margin-left: 10%;
-    display: block;
+
+    display: inline-block;
     position: absolute;
     -webkit-filter: sepia(100%);
-    ;
+    
 }
 
 
