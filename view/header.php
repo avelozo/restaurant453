@@ -11,6 +11,9 @@
     <title>Rousseff Restaurant</title>
   </head>
   <body hola-ext-player="1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT; ?>/js/materialize.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT; ?>/js/util.js"></script>
     <div class="hiddendiv common"></div>
     <header class="header grey darken-3 z-depth-1">
         <img src="<?php echo ROOT; ?>/img/logoRousseff120.png" alt="Logout" class="center-align">

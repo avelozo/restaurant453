@@ -1,7 +1,8 @@
 <?php  include 'header.php';?>
 <div id="alertWarning" class="alertWarning"></div>
+<div class="container">
 <div class="row">
-  <span>Employee</span>
+  <h5 class="center-align">Employees</h5>
   <form class="col s12" action="?<?php echo $action; ?>" method="post" name="formEmployee" onsubmit="return validateForm()">
     <div class="row">
       <div class="input-field col s6">
@@ -51,11 +52,10 @@
 
 
 
-
     <div class="row">
       <div class="input-field col s6">
       	<label>Restaurant</label>
-  		<select id="restaurant" name="restaurant">
+  		<select  id="restaurant" name="restaurant">
     		<option value="" disabled selected>Choose your option</option>
 			<?php foreach ($restaurants as $restaurant): ?>
 				<option <?php echo isset($employee->restaurant) && $employee->restaurant->id == $restaurant->id ? 'selected' : ''?> value="<?php echo $restaurant->id; ?>">
@@ -78,16 +78,13 @@
     </div>
 
 
-		<div><label for="jobTitle">Job Title<input type="text" class="inputContent" name="jobTitle"
-			id="jobTitle" value="<?php echo $employee->jobTitle; ?>"></label></div>
-
-      <div class="row">
-      <div class="input-field col s6">
+      
+      <div class="input-field col s12">
         <input id="jobTitle" type="text" class="validate" name="jobTitle" value="<?php echo $employee->jobTitle; ?>">
         <label for="jobTitle" >Job Title</label>
       </div>
-      </div>
-      <div class="input-field col s6">
+      
+      <div class="input-field col s12">
       	<label>Role</label>
   		<select name="role">
     		<option value="" disabled selected>Choose your option</option>
@@ -98,6 +95,16 @@
 				<?php endforeach; ?>
   		</select>
       </div>
+
+    </div>
+
+        <div class="row">
+      <div class="input-field col s12">
+        <input type="hidden" name="id" value="<?php echo $employee->id; ?>">
+        <button class="waves-effect waves-light btn green" type="submit" value="Confirm">Confirm
+          <i class="mdi-action-assignment right"></i>
+        </button>
+      </div>
     </div>
 
 
@@ -106,10 +113,12 @@
 
   </form>
 </div>
+</div>
 <script>
-errorVisibility();
+
  $(document).ready(function() {
     $('select').material_select();
   });
+ errorVisibility();
 </script>
 <?php  include 'footer.php';?>

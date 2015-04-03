@@ -31,10 +31,13 @@
             <td class="center-align">
 				<form action="?" method="post">
 					<div>
-						<a class="btn-floating btn-flat waves-effect waves-light green"><i class="mdi-editor-mode-edit"></i><input type="submit" name="action" value= "iedit"></a>
 						<input type="hidden" name="id" value="<?php echo $employee->id; ?>">
-						
-						<input type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
+						<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+    						<i class="mdi-editor-mode-edit"></i>
+  						</button>
+  						<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
+    						<i class="mdi-action-delete"></i>
+  						</button>
 					</div>
 				</form>
 			</td>
@@ -43,7 +46,10 @@
         </tbody>
       </table>
 	<form action="?" method="post">
-		<input type="submit" name="add" class="submitButton  rightPosition" value="Add">
+		<button class="waves-effect waves-light btn green" type="submit" name="add" value="Add">Add
+    		<i class="mdi-content-add left"></i>
+  		</button>
+		
 	</form>
 </div>
 <?php  include 'footer.php';?>
