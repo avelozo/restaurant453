@@ -15,3 +15,8 @@ function callDeleteRoutine(url, id, getTableBody, callback)
 	}
   	});
 }
+
+$( document ).ready(function(){
+
+	  $(".button-collapse").sideNav();
+})
