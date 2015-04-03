@@ -22,16 +22,45 @@ elseif(isset($_SESSION['UserId'])
 
 <?php if(!isset($_SESSION['UserId'])) : ?>
 
-    <div id="content">
-    
-    <form  action="?" method="POST" >
-        
-           <div class= "error" > </div>
-           <div class= "loginBorder">
-           <label for="username" class= "labelInput">Username:</label> <input type="text" class= "inputBorder" id="username"  name="username" placeholder="Username"value=""><br/>
-           <label for="password" class= "labelInput">Password:</label> <input type="password" class= "inputBorder" id="password" name="password" placeholder="Password" value=""><br/>       
-           <input type="submit" id= "submitLogin"class="submitButton" value="Submit">             
-        </div>
-       </form>
+<div class="container">
+
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card grey darken-3 darken-1">
+        <div class="card-content white-text">
+          <div class="row">
+            <span class="card-title left-align">Login</span>
+          </div>
+                <form class="col s8" action="?" method="POST">
+      <div class= "error" > </div>
+    <div class="row">
+      <div class="input-field ">
+        <input id="username" type="text" class="validate" name="username" value="">
+        <label for="username">Username</label>
+      </div>
     </div>
+    <div class="row">
+      <div class="input-field">
+        <input id="password" type="password" class="validate" name="password" value="">
+        <label for="password">Password</label>
+      </div>
+    <div class="row">
+    <button class="btn waves-effect waves-light" type="submit"  id= "submitLogin" name="action">Submit
+      <i class="mdi-content-send right"></i>
+    </button>
+    </div>
+    </div>
+  </form>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
+</div>    
 <?php exit(); endif; ?>

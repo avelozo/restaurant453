@@ -1,31 +1,26 @@
 <?php session_start(); ?>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="<?php echo ROOT; ?>/css/jquery-ui.css" rel="stylesheet">
-    <link href="<?php echo ROOT; ?>/css/normalize.css" rel="stylesheet">
-    <link href="<?php echo ROOT; ?>/css/main.css" rel="stylesheet">
-    <link  href="<?php echo ROOT; ?>/css/login_page.css"  rel="stylesheet"/>
-    <script src="<?php echo ROOT; ?>/scripts/jquery-2.1.1.min.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/jquery-ui.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/util.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/product.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/validate.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/orderStats.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/orders.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/customerStats.js"></script>
-    <script src="<?php echo ROOT; ?>/scripts/employeeStats.js"></script>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="<?php echo ROOT; ?>/css/materialize.min.css"  media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
     <title>Rousseff Restaurant</title>
   </head>
-  <body>
-    
-    <div class="previewHeader">
-    	<img id="logoHeader" src="<?php echo ROOT; ?>/img/logoRousseff120.png" alt="Logout">
-      <?php if(isset($_SESSION['UserId'])) { ?>
-      	<ul class="navHeader">
-      	 <li class="liClass">Welcome</li>
-      	 <li class="liClass">
+  <body hola-ext-player="1">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo ROOT; ?>/js/materialize.min.js"></script>
+    <div class="hiddendiv common"></div>
+    <header class="header grey darken-3 z-depth-1">
+        <img src="<?php echo ROOT; ?>/img/logoRousseff120.png" alt="Logout" class="center-align">
+        <?php if(isset($_SESSION['UserId'])) { ?>
+
+        <ul class="navHeader">
+         <li class="liClass">Welcome</li>
+         <li class="liClass">
          
           <form action="?" method="post">
             <input type="hidden" name="action" value="logout">
@@ -34,34 +29,60 @@
         
          </li>
         </ul>
-      <?php } ?>
-    </div>
+
+
+        <!--Colocar algo de logout aqui no futuro-->
+
+
+
+        <?php } ?>
+
+
+    </header>
+
+
 
     <?php include DIR_BASE . '/view/login.php'; ?>
-  
-    <div class="leftPanel">
-      <div class="leftMenu">
-        <ul>
-          <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/orders/"><img src="<?php echo ROOT; ?>/img/iorder.png" class="leftPIcon"></i> <span>Order</span></a></li>
-        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/employee.php"><img src="<?php echo ROOT; ?>/img/iemployee.png" class="leftPIcon"></i> <span>Employee</span></a></li>
-        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/restaurant.php"><img src="<?php echo ROOT; ?>/img/irestaurant.png" class="leftPIcon"></i> <span>Restaurant</span></a></li>
-        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/role.php"><img src="<?php echo ROOT; ?>/img/irole.png" class="leftPIcon"></i> <span>Role</span></a></li>
 
-          <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/product.php"><img src="<?php echo ROOT; ?>/img/iproduct.png" class="leftPIcon"></i> <span>Product</span></a></li>
-          <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/customer.php"><img src="<?php echo ROOT; ?>/img/icustomer.png" class="leftPIcon"></i> <span>Customer</span></a></li>
-          <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/stock.php"><img src="<?php echo ROOT; ?>/img/istock.png" class="leftPIcon"></i> <span>Stock</span></a></li>
-        	<li><img src="<?php echo ROOT; ?>/img/ichart.png" class="leftPIcon"></i><span>Reports</span>
-          <ul>
-            <li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/reports/orderreport.php"> <span>Order Report</span></a></li>
-        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/reports/employeereport.php"> <span>Employee Report</span></a></li>
-        	<li class="leftPanelLi"><a href="<?php echo ROOT; ?>/view/reports/customerreport.php"><span>Customer Report</span></a></li>
-          </ul>
-        </li>
-        </ul>
-      </div>
-    </div>  
-    <div class="menuExpandCollapse">
-      -
-    </div>
-    <div class="main content">
+
+
+        <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="<?php echo ROOT; ?>/view/reports/orderreport.php">Order</a></li>
+  <li class="divider"></li>
+  <li><a href="<?php echo ROOT; ?>/view/reports/employeereport.php">Employee</a></li>
+  <li><a href="<?php echo ROOT; ?>/view/reports/customerreport.php">Customer</a></li>
+</ul>
+<nav class="green">
+  <div class="nav-wrapper">
+    <a href="#!" class="brand-logo">Rouseff</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-dashboard left"></i>Order</a></li>
+
+      <li><a href="<?php echo ROOT; ?>/view/employee.php"><i class="mdi-social-person left"></i>Employee</a></li>
+      <li><a href="<?php echo ROOT; ?>/view/restaurant.php"><i class="mdi-maps-local-restaurant left"></i>Restaurant</a></li>
+      <li><a href="<?php echo ROOT; ?>/view/role.php"><i class="mdi-action-dashboard left"></i>Role</a></li>
+
+      <li><a href="<?php echo ROOT; ?>/view/product.php"><i class="mdi-maps-local-drink left"></i>Product</a></li>
+      <li><a href="<?php echo ROOT; ?>/view/customer.php"><i class="mdi-social-person-outline left"></i>Customer</a></li>
+      <li><a href="<?php echo ROOT; ?>/view/stock.php"><i class="mdi-action-store left"></i>Stock</a></li>
+      
+
+
+
+      <!-- Dropdown Trigger -->
+      <li><a class="dropdown-button" href="#" data-activates="dropdown1">Reports<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+    </ul>
+  </div>
+</nav>
+    
+<script type="text/javascript" >
+    $( document ).ready(function(){
+        $(".dropdown-button").dropdown();
  
+ 
+    });
+ 
+</script>
+
+    <div class="main content">
