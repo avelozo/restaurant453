@@ -34,7 +34,7 @@
 						<a class="btn-floating btn-flat waves-effect waves-light green"><i class="mdi-editor-mode-edit"></i><input type="submit" name="action" value= "iedit"></a>
 						<input type="hidden" name="id" value="<?php echo $employee->id; ?>">
 						
-						<input type="button" onclick="confirmDelete('<?php echo $deleteMsg . $employee->firstName . $employee->lastName . "?"; ?>', '<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
+						<input type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
 					</div>
 				</form>
 			</td>
