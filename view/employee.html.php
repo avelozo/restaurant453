@@ -2,9 +2,9 @@
 <?php if($error!=""){?>
 <div class="alertWarning"><?php echo $error ?></div>
 <?php }?>
-<div class="container">
+<div class="container z-depth-3">
 	<h5 class="center-align">Employees</h5>
-	<table class="bordered hoverable">
+	<table class="bordered hoverable responsive-table">
         <thead>
           <tr>
 			<th data-field="id" class="center-align">First Name</th>
@@ -35,8 +35,11 @@
 						<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
     						<i class="mdi-editor-mode-edit"></i>
   						</button>
+
   						<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
     						<i class="mdi-action-delete"></i>
+
+
   						</button>
 					</div>
 				</form>

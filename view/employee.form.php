@@ -1,6 +1,6 @@
 <?php  include 'header.php';?>
 <div id="alertWarning" class="alertWarning"></div>
-<div class="container">
+<div class="container z-depth-3">
 <div class="row">
   <h5 class="center-align">Employees</h5>
   <form class="col s12" action="?<?php echo $action; ?>" method="post" name="formEmployee" onsubmit="return validateForm()">
