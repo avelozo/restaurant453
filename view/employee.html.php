@@ -2,7 +2,7 @@
 <?php if($error!=""){?>
 <div class="alertWarning"><?php echo $error ?></div>
 <?php }?>
-<div class="container">
+<div class="container z-depth-3">
 	<h5 class="center-align">Employees</h5>
 	<table class="bordered hoverable">
         <thead>

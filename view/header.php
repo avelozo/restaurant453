@@ -15,17 +15,19 @@
     <script type="text/javascript" src="<?php echo ROOT; ?>/js/materialize.min.js"></script>
     <script type="text/javascript" src="<?php echo ROOT; ?>/js/util.js"></script>
     <div class="hiddendiv common"></div>
-    <header class="header grey darken-3 z-depth-1">
-        <img src="<?php echo ROOT; ?>/img/logoRousseff120.png" alt="Logout" class="center-align">
+    <header class="header green darken-3 z-depth-1">
         <?php if(isset($_SESSION['UserId'])) { ?>
 
-        <ul class="navHeader">
-         <li class="liClass">Welcome</li>
-         <li class="liClass">
+        <ul class="navHeader" style="
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left:95%;
+">
+           <li class="liClass">
          
           <form action="?" method="post">
             <input type="hidden" name="action" value="logout">
-            <input type="image" src="<?php echo ROOT; ?>/img/logout.png" alt="Logout" style="margin-top: -47px; margin-right: 20px;">
+            <input type="image" src="<?php echo ROOT; ?>/img/logout.png" alt="Logout" >
           </form>
         
          </li>
@@ -70,7 +72,7 @@
            <!-- Dropdown Trigger -->
       <li><a class="dropdown-button" href="#" data-activates="dropdown1">Reports<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
     </ul>
-     
+
        <ul class="side-nav" id="mobile-demo">
             <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-dashboard left"></i>Order</a></li>
             <li><a href="<?php echo ROOT; ?>/view/employee.php"><i class="mdi-social-person left"></i>Employee</a></li>
