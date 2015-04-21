@@ -3,7 +3,10 @@
 			<input type="text" class="inputContent tableNumber" name="tableNumber" placeholder="Table Number" id="tableNumber" value="">
 	</label>
 </div>
-<input type="button" name="add" class="rightPosition submitButton" value="Add" onclick="addTable(<?php echo $employeeId; ?>)">
+<button  class=class="waves-effect waves-light btn green" value="Add" onclick="addTable(<?php echo $employeeId; ?>)">
+<i class="mdi-content-add left"></i>
+</button>
 
-<div class="tableList">
+	 <div class="tableList">
 </div>
+

@@ -20,3 +20,18 @@ $( document ).ready(function(){
 
 	  $(".button-collapse").sideNav();
 })
+
+function callServer(url, data, complete, error)
+{
+	jQuery.ajax({
+	  type: "POST",
+	  url: url,
+	  data: data,
+	  complete: function (response) 
+	  			{
+				  	if(complete !== undefined)
+				  		complete(response)
+				}
+  	});
+}
+
