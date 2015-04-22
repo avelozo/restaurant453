@@ -124,16 +124,16 @@
 		global $deleteMsg, $deleteUrl;
 		foreach ($products as $product)
 		{
-			$tableBody .= '<tr class="tableRow" valign="top">
+			$tableBody .= '<tr>
 				
-				<td>' . $product->name . '</td>';
+				<td class="center-align">' . $product->name . '</td>';
 			if($restaurantId != null && $restaurantId > 0)
 				$tableBody .= '<td> $ ' . $product->buyPrice . '</td>
-					<td> $ ' . $product->price . '</td>
-					<td>' . $product->quantityInStock . '</td>
-					<td>' . $product->saleTaxRate . '% </td> ';
+					<td class="center-align"> $ ' . $product->price . '</td>
+					<td class="center-align">' . $product->quantityInStock . '</td>
+					<td class="center-align">' . $product->saleTaxRate . '% </td> ';
 
-			$tableBody .= '<td>
+			$tableBody .= '<td class="center-align">
 					<form action="?" method="post">
 						<div>
 							<input type="hidden" name="id" value="' .  $product->id . '">
@@ -141,7 +141,9 @@
 			
 			if($restaurantId != null && $restaurantId > 0)
 				$tableBody .= '<input type="hidden" name="restaurantId" value="' .  $restaurantId . '">
-								<input type="submit" name="action" value="iedit">';
+							<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+    							<i class="mdi-editor-mode-edit"></i>
+  							</button>';
 			
 			$tableBody .= '	<input type="submit" name="action" value="add">
 						</div>

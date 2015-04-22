@@ -3,7 +3,7 @@
 <div class="alertWarning"><?php echo $error ?></div>
 <?php }?>
 <div class="container z-depth-3">
-	<h5 class="center-align">Employees</h5>
+	<h4 class="center-align ">Employees</h4>
 	<table class="bordered hoverable responsive-table">
         <thead>
           <tr>
@@ -46,13 +46,17 @@
 			</td>
           </tr>
           <?php endforeach; ?>
+
+
         </tbody>
       </table>
-	<form action="?" method="post">
+
+      <form action="?" method="post">
+       <br>
 		<button class="waves-effect waves-light btn green" type="submit" name="add" value="Add">Add
     		<i class="mdi-content-add left"></i>
   		</button>
-		
 	</form>
+
 </div>
 <?php  include 'footer.php';?>

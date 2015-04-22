@@ -88,18 +88,21 @@
 		global $deleteMsg, $deleteUrl;
 		foreach ($products as $product)
 		{
-			$tableBody .= '<tr class="tableRow" valign="top">
-				<td>' . $product->id . '</td>
-				<td>' . $product->name . '</td>
-				<td>' . $product->vendor . '</td>
-				<td>' . $product->description . '</td>
-				<td>
+			$tableBody .= '<tr>
+				<td class="center-align">' . $product->id . '</td>
+				<td class="center-align">' . $product->name . '</td>
+				<td class="center-align">' . $product->vendor . '</td>
+				<td class="center-align">' . $product->description . '</td>
+				<td class="center-align">
 					<form action="?" method="post" id="mainForm">
 						<div>
 							<input type="hidden" name="id" value="' .  $product->id . '">
-							<input type="submit" name="action" value="iedit">
-							<input type="button" onclick="confirmDelete(\'' . $deleteMsg . $product->name . '?\', \'' . $deleteUrl . '\', ' . $product->id .', getProductTableBody, fillTable )" name="delete" value="idelete">
-							<input type="submit" name="action" onclick="transferToStock(' .  $product->id . ')" value="editStock">
+							<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+    							<i class="mdi-editor-mode-edit"></i>
+  							</button>
+  							<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine(' . $deleteUrl.'\', '.$product->id.')" name="delete" value="idelete">
+  							    <i class="mdi-action-delete"></i>
+  							</button>
 						</div>
 					</form>
 				</td>

@@ -86,10 +86,10 @@
       
       <div class="input-field col s12">
       	<label>Role</label>
-  		<select name="role">
+  		<select class="left-align" name="role">
     		<option value="" disabled selected>Choose your option</option>
 				<?php foreach ($roles as $role): ?>
-					<option <?php echo isset($employee->role) && $employee->role->id == $role->id ? 'selected' : ''?> value="<?php echo $role->id; ?>">
+					<option  <?php echo isset($employee->role) && $employee->role->id == $role->id ? 'selected' : ''?> value="<?php echo $role->id; ?>">
 						<?php echo $role->name; ?>
 					</option>
 				<?php endforeach; ?>
