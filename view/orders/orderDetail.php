@@ -138,9 +138,9 @@ class OrderDetailView
 								</tfoot>
 							</table>
 
-							<input type="button" class="submitButton PayButton" value="Pay" onclick="payOrder(' . $order->id . ');"/>
-		
-<a class="waves-effect waves-light btn modal-trigger" onclick="chooseProduct(' . $order->id . ');" href="#modal1">Modal</a>
+							<a class="waves-effect waves-light btn " onclick="payOrder(' . $order->id . ');" >Pay<i class="mdi-editor-attach-money right-align"></i></a>
+
+<a class="waves-effect waves-light btn modal-trigger" onclick="chooseProduct(' . $order->id . ');" href="#modal1">Add Product<i class="mdi-maps-local-pizza right-align"></i></a>
 <script type="text/javascript"> $(document).ready(function(){
       $(".modal-trigger").leanModal()
        });</script>';
