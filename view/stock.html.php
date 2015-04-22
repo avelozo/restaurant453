@@ -35,12 +35,7 @@
 		</tbody>
       </table>
 
-      <form action="?" method="post">
-       <br>
-		<button class="waves-effect waves-light btn green" type="submit" name="add" value="Add">Add
-    		<i class="mdi-content-add left"></i>
-  		</button>
-	</form>
+
 
 </div>
 

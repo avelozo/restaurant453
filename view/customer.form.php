@@ -1,32 +1,83 @@
 <?php  include 'header.php';?>
 <div id="alertWarning" class="alertWarning"></div>
-<div class="boxContainer marginContainer">
-	<span>Customer</span><hr/>
-	<form  action="?<?php echo $action; ?>" method="post">
-		<div><label for="id">ID <input type="text" disabled class="inputContent" name="id"
-			id="id" value="<?php echo $customer->id; ?>"></label></div>
-		<div><label for="name">Name <input type="text" class="inputContent" name="name"
-			id="name" value="<?php echo $customer->name; ?>"></label></div>
-		<div><label for="phone">Phone <input type="text" class="inputContent" name="phone"
-			id="phone" value="<?php echo $customer->phone; ?>"></label></div>
-		<div><label for="addressLine1">Address Line 1 <input type="text" class="inputContent" name="addressLine1"
-			id="addressLine1" value="<?php echo $customer->addressLine1; ?>"></label></div>
-		<div><label for="addressLine2">Address Line 2 <input type="text" class="inputContent" name="addressLine2"
-			id="addressLine2" value="<?php echo $customer->addressLine2; ?>"></label></div>
-		<div><label for="city">City <input type="text" class="inputContent" name="city"
-			id="city" value="<?php echo $customer->city; ?>"></label></div>
-		<div><label for="state">State <input type="text" class="inputContent" name="state"
-			id="state" value="<?php echo $customer->state; ?>"></label></div>
-		<div><label for="country">Country<input type="text" class="inputContent" name="country"
-			id="country" value="<?php echo $customer->country; ?>"></label></div>
-		<div><label for="postalCode">Postal Code<input type="text" class="inputContent" name="postalCode"
-			id="postalCode" value="<?php echo $customer->postalCode; ?>"></label></div>
-		<div>
-			<input type="hidden" name="id" value="<?php echo $customer->id; ?>">
-			<input type="submit" class="submitButton  rightPosition" value="Confirm">
-		</div>
-	</form>
+
+<div class="container z-depth-3">
+<div class="row">
+  <h4 class="center-align">Customer</h4>
+  <form class="col s12" action="?<?php echo $action; ?>" method="post" >
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="name" type="text" class="validate" name="name" value="<?php echo $customer->name; ?>">
+        <label for="name">Name</label>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="id" type="text" class="validate" name="id" value="<?php echo $customer->id; ?>">
+        <label for="id" >ID</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="phone" type="text" class="validate" name="phone" value="<?php echo $customer->phone; ?>">
+        <label for="phone" >Phone</label>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="addressLine1" type="text" class="validate" name="addressLine1" value="<?php echo $customer->addressLine1; ?>">
+        <label for="addressLine1" >Address Line 1</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="addressLine2" type="text" class="validate" name="addressLine2" value="<?php echo $customer->addressLine2; ?>">
+        <label for="addressLine2" >Address Line 2</label>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="city" type="text" class="validate" name="city" value="<?php echo $customer->city; ?>">
+        <label for="city" >City</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="state" type="text" class="validate" name="state" value="<?php echo $customer->state; ?>">
+        <label for="state" >State</label>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s6">
+        <input id="country" type="text" class="validate" name="country" value="<?php echo $customer->country; ?>">
+        <label for="country" >Country</label>
+      </div>
+      <div class="input-field col s6">
+        <input id="postalCode" type="text" class="validate" name="postalCode" value="<?php echo $customer->postalCode; ?>">
+        <label for="postalCode" >Postal Code</label>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="row">
+      <div class="input-field col s12">
+        <input type="hidden" name="id" value="<?php echo $customer->id; ?>">
+        <button class="waves-effect waves-light btn green" type="submit" value="Confirm">Confirm
+          <i class="mdi-action-assignment right"></i>
+        </button>
+      </div>
+    </div>
+
+  </form>
 </div>
+
+</div>
+
+
 <script>
 errorVisibility();
 </script>

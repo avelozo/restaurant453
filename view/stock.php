@@ -128,7 +128,7 @@
 				
 				<td class="center-align">' . $product->name . '</td>';
 			if($restaurantId != null && $restaurantId > 0)
-				$tableBody .= '<td> $ ' . $product->buyPrice . '</td>
+				$tableBody .= '<td class="center-align"> $ ' . $product->buyPrice . '</td>
 					<td class="center-align"> $ ' . $product->price . '</td>
 					<td class="center-align">' . $product->quantityInStock . '</td>
 					<td class="center-align">' . $product->saleTaxRate . '% </td> ';
@@ -145,7 +145,12 @@
     							<i class="mdi-editor-mode-edit"></i>
   							</button>';
 			
-			$tableBody .= '	<input type="submit" name="action" value="add">
+			$tableBody .= '					<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="add">
+    							<i class="mdi-content-add"></i>
+  							</button>
+
+
+			
 						</div>
 					</form>
 				</td>
@@ -159,15 +164,15 @@
 	{
 		$tableHead = '';
 		
-		$tableHead .= '<tr class= "tableRowHeader">
+		$tableHead .= '<tr>
 				
-				<th>Product</th>';
+				<th data-field="id" class="center-align">Product</th>';
 		if($restaurantId != null && $restaurantId > 0)
-			$tableHead .= '<th>Buy Price</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Sale Tax Rate</th>';
-		$tableHead .= '<th>Options</th>
+			$tableHead .= '<th data-field="id" class="center-align">Buy Price</th>
+						<th data-field="id" class="center-align">Price</th>
+						<th data-field="id" class="center-align">Quantity</th>
+						<th data-field="id" class="center-align">Sale Tax Rate</th>';
+		$tableHead .= '<th data-field="id" class="center-align">Options</th>
 						</tr>';
 		
 
