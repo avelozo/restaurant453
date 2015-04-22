@@ -15,8 +15,6 @@ function getProductTableBody(url, restaurantId, callback)
   	});
 }
 
-
-
 function fillTable(data, url, restaurantId)
 {
 	jQuery('.tableClass tbody').html(data);
@@ -35,48 +33,9 @@ function fillTableAndHead(data, url, restaurantId)
 	  }
   	});
 }
-
 function transferToStock(productId)
 {
 	var restaurantId = jQuery('#restaurants').val();
     document.getElementById('mainForm').action = 'stock.php?productId=' + productId + '&restaurantId=' + restaurantId;
     document.getElementById('mainForm').submit();
 }
-
-function callDeleteRoutine(url, id, getTableBody, callback)
-{
-	jQuery.ajax({
-	  type: "POST",
-	  url: url,
-	  data: { action: "idelete", id: id },
-	  complete: function (response) {
-	  	if(getTableBody !== undefined)
-	  		getTableBody(url, -1 , callback);
-	  	else
-	  		location.reload(true);
-	  },
-	  error: function(resp){
-   		alert(resp);
-	}
-  	});
-}
-
-$( document ).ready(function(){
-
-	  $(".button-collapse").sideNav();
-})
-
-function callServer(url, data, complete, error)
-{
-	jQuery.ajax({
-	  type: "POST",
-	  url: url,
-	  data: data,
-	  complete: function (response) 
-	  			{
-				  	if(complete !== undefined)
-				  		complete(response)
-				}
-  	});
-}
-

@@ -2,11 +2,10 @@
 <?php if(isset($error) && $error != ""){?>
 	<div class="alertWarning"><?php echo $error ?></div>
 <?php } ?>
-<div class="marginContainer">
+<div id="orderContainer">
 	
-	<div class="verticalLine ordersTables">
-		<?php  include 'tables.html.php';?>
-	</div>
+   <?php  include 'tables.html.php';?>
+	
 
 	<div class="verticalLine ordersDetails">
 		<?php  include 'details.html.php';?>
@@ -16,8 +15,6 @@
 		<?php  include 'products.html.php';?>
 	</div>
 
-	<script type="text/javascript">
-	   showTables();
-	</script>
+<script type="text/javascript">showTables();</script>
 </div>
 <?php  include DIR_BASE . 'view/footer.php';?>

@@ -58,5 +58,9 @@
   		</button>
 	</form>
 
+<<<<<<< HEAD
 </div>
+=======
+
+>>>>>>> d1cd746a6cffa224a940088bc89d7a7a200dc830
 <?php  include 'footer.php';?>
