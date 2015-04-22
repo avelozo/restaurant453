@@ -1,5 +1,4 @@
 <?php session_start(); ?>
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -23,7 +22,6 @@
     margin-left:95%;
 ">
            <li class="liClass">
-         
           <form action="?" method="post">
             <input type="hidden" name="action" value="logout">
             <input type="image" src="<?php echo ROOT; ?>/img/logout.png" alt="Logout"> 

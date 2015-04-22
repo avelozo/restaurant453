@@ -17,4 +17,5 @@
 
 <script type="text/javascript">showTables();</script>
 </div>
+
 <?php  include DIR_BASE . 'view/footer.php';?>

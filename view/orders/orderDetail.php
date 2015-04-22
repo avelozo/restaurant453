@@ -139,8 +139,11 @@ class OrderDetailView
 							</table>
 
 							<input type="button" class="submitButton PayButton" value="Pay" onclick="payOrder(' . $order->id . ');"/>
-							<input type="button" class="submitButton AddProductButton"value="Add Product" onclick="chooseProduct(' . $order->id . ');" />';
-
+		
+<a class="waves-effect waves-light btn modal-trigger" onclick=chooseProduct(' . $order->id . ');" href="#modal1">Modal</a>
+<script type="text/javascript"> $(document).ready(function(){
+      $(".modal-trigger").leanModal()
+       });</script>';
 		return $orderDetailsHtml;
 	}
 }

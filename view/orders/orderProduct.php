@@ -22,7 +22,7 @@ class OrderProduct
 
 		$productsListHtml="";
 		$productsList = $this->productBS->getProducts($order[0]->restaurant->id);
-		//$productsListHtml="<form  action='?'' method='post' name='formOrderProduct'>";
+		$productsListHtml="";
 	     
 		foreach ($productsList as $product)
 		{
@@ -31,9 +31,7 @@ class OrderProduct
 
 		$productsListHtml.="<input class='productQuantity inputContent' type='text' name='productQuanti.$product->name.ty' placeholder='Quantity' value=''> ".
 		"<input class='chair inputContent' type='text' name='chair' placeholder='Chair Number' value=''> ".
-	    "<input type='button' onClick='addProducts(" . $orderId . ")' class='submitButton' value='Confirm'>";//</form>";
-	
-
+	    "<input type='button' onClick='addProducts(" . $orderId . ")' class='submitButton' value='Confirm'></div>";//</form>";
 		echo $productsListHtml;
 	}
 

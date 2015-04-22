@@ -42,11 +42,17 @@ class OrderTableView
 
 		foreach ($orders as $order)
 		{
-			$tableList .= '<li><div class="collapsible-header"><i class="mdi-maps-restaurant-menu"></i>Table: '.$order->tableNumber .'</div>
-      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-    </li>';
-		}
 
+			$tableList .= '<li><div class="collapsible-header" onclick="showDetails(' . $order->id . ');"><i class="mdi-maps-restaurant-menu"></i>Table: '.$order->tableNumber .'</div>
+      		<div class="collapsible-body orderDetailsContent"></div>
+    		</li>';
+		}
+        $tableList.="<script type='text/javascript'> $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+ </script>";
 		return $tableList;
 	}
 }
