@@ -140,7 +140,7 @@ class OrderDetailView
 
 							<input type="button" class="submitButton PayButton" value="Pay" onclick="payOrder(' . $order->id . ');"/>
 		
-<a class="waves-effect waves-light btn modal-trigger" onclick=chooseProduct(' . $order->id . ');" href="#modal1">Modal</a>
+<a class="waves-effect waves-light btn modal-trigger" onclick="chooseProduct(' . $order->id . ');" href="#modal1">Modal</a>
 <script type="text/javascript"> $(document).ready(function(){
       $(".modal-trigger").leanModal()
        });</script>';
