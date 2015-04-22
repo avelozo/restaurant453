@@ -3,8 +3,6 @@
 	<div class="alertWarning"><?php echo $error ?></div>
 <?php } ?>
 
-
-
 <div class="container z-depth-3">
 	<h4 class="center-align ">Products</h4>
 	   <div class="input-field col s6">
@@ -19,9 +17,7 @@
 
 
 
-
-
-	<table class="bordered hoverable responsive-table">
+	<table class="bordered hoverable responsive-table tableClass">
         <thead>
           <tr>
 			<th data-field="id" class="center-align">ID</th>
@@ -50,7 +46,7 @@
  $(document).ready(function() {
     $('select').material_select();
   });
- errorVisibility();
+ 
 </script>
 
 <?php  include 'footer.php';?>

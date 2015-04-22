@@ -42,7 +42,7 @@ class OrderTableView
 
 		foreach ($orders as $order)
 		{
-			$tableList .= ' <li><div class="collapsible-header"><i class="mdi-maps-restaurant-menu"></i>Table: '.$order->tableNumber .'</div>
+			$tableList .= '<li><div class="collapsible-header"><i class="mdi-maps-restaurant-menu"></i>Table: '.$order->tableNumber .'</div>
       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
     </li>';
 		}

@@ -56,6 +56,7 @@ function callDeleteRoutine(url, id, getTableBody, callback)
 	  		location.reload(true);
 	  },
 	  error: function(resp){
+	  	alert("vish");
    		alert(resp);
 	}
   	});

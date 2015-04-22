@@ -16,7 +16,7 @@
 				<?php endforeach; ?>
   		</select>
       </div>
-	<table class="bordered hoverable responsive-table">
+	<table class="bordered hoverable responsive-table tableClass">
         <thead>
 
           <tr>

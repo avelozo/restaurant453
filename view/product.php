@@ -9,7 +9,7 @@
 	$productBS = new ProductBS();
 	$restaurantBS = new RestaurantBS();
 	$deleteMsg = 'Do you want to delete this product: ';
-	$deleteUrl = 'product.php';
+	$deleteUrl = 'product';
 	$tableBody = '';
 
 	if (isset($_POST['add']))
@@ -54,6 +54,7 @@
 	}
 	elseif (isset($_POST['action']) and $_POST['action'] == 'idelete')
 	{
+		echo "entrou no test";
 		$error = $productBS->deleteProduct($_POST['id']);
 
 		mainPage();
@@ -88,7 +89,7 @@
 		global $deleteMsg, $deleteUrl;
 		foreach ($products as $product)
 		{
-			$tableBody .= '<tr>
+			$tableBody .= '
 				<td class="center-align">' . $product->id . '</td>
 				<td class="center-align">' . $product->name . '</td>
 				<td class="center-align">' . $product->vendor . '</td>
@@ -100,7 +101,7 @@
 							<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
     							<i class="mdi-editor-mode-edit"></i>
   							</button>
-  							<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine(' . $deleteUrl.'\', '.$product->id.')" name="delete" value="idelete">
+  							<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine(' .$deleteUrl.'.php'.', '.$product->id.')" name="delete" value="idelete">
   							    <i class="mdi-action-delete"></i>
   							</button>
 						</div>
