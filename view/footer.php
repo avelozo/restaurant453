@@ -1,7 +1,10 @@
 </body>
 <footer>
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="<?php echo ROOT; ?>/js/materialize.min.js"></script>
-<script type="text/javascript" src="<?php echo ROOT; ?>/js/util.js"></script>
+<script type="text/javascript"> $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+ </script>
 </footer>
 </html>

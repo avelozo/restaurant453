@@ -38,11 +38,13 @@ class OrderTableView
 	{
 		$orders = $this->orderBS->getOrders(null, null, $employeeId);
 
-		$tableList = '';
+		$tableList = '<ul class="collapsible popout" data-collapsible="accordion">';
 
 		foreach ($orders as $order)
 		{
-			$tableList .= '<input type="button" class="orderTableButton" onclick="showDetails(' . $order->id . ');" name="table" value="' . $order->tableNumber .'"><br>';
+			$tableList .= ' <li><div class="collapsible-header"><i class="mdi-maps-restaurant-menu"></i>Table: '.$order->tableNumber .'</div>
+      <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    </li>';
 		}
 
 		return $tableList;
