@@ -53,7 +53,7 @@
 </ul>
 <nav class="green">
   <div class="nav-wrapper">
-    <a href="#" class="brand-logo">Rousseff</a></div> 
+    <a href="#" class="brand-logo">Rousseff</a>
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down">
       <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-dashboard left"></i>Order</a></li>
