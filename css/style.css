@@ -11,10 +11,13 @@
 }
 
 .container80{
-
 	width:80%;
 }
 
+.containerLogin{
+	margin-left: 30%;
+	margin-top:15%;
+}
 
 ::-webkit-scrollbar {
     width: 8px;
