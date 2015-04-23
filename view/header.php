@@ -56,9 +56,9 @@
     <a href="#" class="brand-logo">Rousseff</a>
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down">
-      <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-dashboard left"></i>Order</a></li>
+      <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-shopping-cart left"></i>Order</a></li>
 
-      <li><a href="<?php echo ROOT; ?>/view/employee.php"><i class="mdi-social-person left"></i>Employee</a></li>
+      <li><a href="<?php echo ROOT; ?>/view/employee.php"><i class="mdi-action-perm-contact-cal left"></i>Employee</a></li>
       <li><a href="<?php echo ROOT; ?>/view/restaurant.php"><i class="mdi-maps-local-restaurant left"></i>Restaurant</a></li>
       <li><a href="<?php echo ROOT; ?>/view/role.php"><i class="mdi-action-dashboard left"></i>Role</a></li>
 
