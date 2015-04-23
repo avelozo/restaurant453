@@ -54,7 +54,7 @@
 
     <div class="row">
       <div class="input-field col s6">
-      	<label>Restaurant</label>
+      	
   		<select  id="restaurant" name="restaurant">
     		<option value="" disabled selected>Choose your option</option>
 			<?php foreach ($restaurants as $restaurant): ?>
@@ -63,9 +63,10 @@
 				</option>
 			<?php endforeach; ?>
   		</select>
+      <label>Restaurant</label>
       </div>
       <div class="input-field col s6">
-      	<label>Manager</label>
+      	
   		<select name="manager">
     		<option value="" disabled selected>Choose your option</option>
 				<?php foreach ($employees as $manager): ?>
@@ -74,6 +75,7 @@
 					</option>
 				<?php endforeach; ?>
   		</select>
+      <label>Manager</label>
       </div>
     </div>
 
@@ -85,7 +87,7 @@
       </div>
       
       <div class="input-field col s12">
-      	<label>Role</label>
+      	
   		<select class="left-align" name="role">
     		<option value="" disabled selected>Choose your option</option>
 				<?php foreach ($roles as $role): ?>
@@ -94,6 +96,7 @@
 					</option>
 				<?php endforeach; ?>
   		</select>
+      <label>Role</label>
       </div>
 
     </div>

@@ -33,13 +33,14 @@
 
 
 	<div class="input-field col s12">
-      	<label>Restaurant</label>
+      	
   		<select class="left-align" name="restaurants" onchange="filterRestaurant(this)">
     		<option disabled <?php $restaurantId == -1 ? "selected" : "" ?> value="-1">All restaurants</option>
 				<?php foreach ($restaurants as $restaurant) : ?> 
 					<option <?php $restaurant->id == $restaurantId ? "selected" : "" ?> value="<?php echo $restaurant->id; ?>"><?php echo $restaurant->name; ?></option>
 				<?php endforeach;?>
 		</select>
+    <label>Restaurant</label>
     </div>
 
     <div class="row">
