@@ -57,42 +57,39 @@ class OrderDetailView
 		$orderDetailsHtml = '';
 
 		$orderDetailsHtml .= '<p>
-									Table Number: ' . $order->tableNumber . '
-								</p>';
+									<h4>Table Number: ' . $order->tableNumber . '
+								</h4></p>';
 
 		if(isset($order->customer->name))
 		{
 			$orderDetailsHtml .= '<p>
-									Customer: ' . $order->customer->name . '
-								</p>';
+									<h5>Customer: ' . $order->customer->name . '
+								</h5></p>';
 		}
 		else
 		{
-			$orderDetailsHtml .= '<p><label for="customer">
-									<input type="text" name="customer" class="inputContent customerNumber" placeholder="Customer Number" />
-									<input type="button" class="submitButton" name="Add" value="Add" onClick="addCustomer(' . $order->id . ');" />
-								</label></p>';
+			$orderDetailsHtml .= '';
 		}
 
-		$orderDetailsHtml .= '<p>
+		$orderDetailsHtml .= '<p><h5>
 								Start Time: ' . date('m/d/Y H:i', strtotime($order->date)) . '
-							</p>
-							<table class="orderDetailsTable">
+							</h5></p>
+							<table class="bordered hoverable responsive-table">
 								<thead>
 									<tr>
-										<th>
+										<th data-field="id" class="center-align">
 											Product
 										</th>
-										<th>
+										<th data-field="id" class="center-align">
 											Chair #
 										</th>
-										<th>
+										<th data-field="id" class="center-align">
 											Price
 										</th>
-										<th>
+										<th data-field="id" class="center-align">
 											Quantity
 										</th>
-										<th>
+										<th data-field="id" class="center-align">
 											Total
 										</th>
 									</tr>
@@ -102,19 +99,19 @@ class OrderDetailView
 		foreach($order->orderDetails as $orderDetail)
 		{
 			$orderDetailsHtml .= '<tr>
-									<td>
+									<td class="center-align">
 										 ' . $orderDetail->product->name . ' 
 									</td>
-									<td>
+									<td class="center-align">
 										 ' . $orderDetail->chair . ' 
 									</td>
-									<td class="orderDetailsTableNumber">
+									<td class="center-align">
 										$ ' . number_format($orderDetail->priceEach, 2, '.', '') . ' 
 									</td>
-									<td class="orderDetailsTableNumber">
+									<td class="center-align">
 										 ' . $orderDetail->quantityOrdered . ' 
 									</td>
-									<td class="orderDetailsTableNumber">
+									<td class="center-align">
 										 $ ' . number_format($orderDetail->priceEach *  $orderDetail->quantityOrdered, 2, '.', '')  . ' 
 									</td>
 								 </tr>';
@@ -127,11 +124,11 @@ class OrderDetailView
 		$orderDetailsHtml .= ' </tbody>
 								<tfoot>
 									<tr>
-										<td class="totalOrder"></td>
-										<td class="totalOrder"></td>
-										<td class="totalOrder"></td>
-										<td class="totalOrder">Total</td>
-										<td class="orderDetailsTableNumber totalOrder">
+										<td class="center-align"></td>
+										<td class="center-align"></td>
+										<td class="center-align"></td>
+										<td class="center-align">Total</td>
+										<td class="center-align">
 										  $ ' . number_format($orderTotal, 2, '.', '') . '
 										</td>			
 									</tr>

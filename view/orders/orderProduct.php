@@ -29,9 +29,11 @@ class OrderProduct
 			$productsListHtml.= "<input class='productId css-checkbox' id='".$product->id ."' type='radio' name='productId' value='".$product->id . "'> </input> <label for='".$product->id ."' class='css-label'>".$product->name."</label><br />";
 		}
 
-		$productsListHtml.="<input class='productQuantity inputContent' type='text' name='productQuanti.$product->name.ty' placeholder='Quantity' value=''> ".
+				$productsListHtml.="<input class='productQuantity inputContent' type='text' name='productQuanti.$product->name.ty' placeholder='Quantity' value=''> ".
 		"<input class='chair inputContent' type='text' name='chair' placeholder='Chair Number' value=''> ".
-	    "<input type='button' onClick='addProducts(" . $orderId . ")' class='submitButton' value='Confirm'></div>";//</form>";
+	    "<input type='button' onClick='addProducts(" . $orderId . ")' class='submitButton waves-effect waves-light btn green' value='Confirm'>";//</form>";
+	
+
 		echo $productsListHtml;
 	}
 
