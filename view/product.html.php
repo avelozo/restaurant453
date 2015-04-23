@@ -13,6 +13,7 @@
 					<option value="<?php echo $restaurant->id; ?>"><?php echo $restaurant->name; ?></option>
 				<?php endforeach; ?>
   		</select>
+  		<label>Filter by</label>
       </div>
 
 

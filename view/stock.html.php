@@ -15,6 +15,7 @@
 					<option <?php echo isset($restaurantId) && $restaurantId == $restaurant->id ? 'selected' : '' ?> value="<?php echo $restaurant->id; ?>"><?php echo $restaurant->name; ?></option>
 				<?php endforeach; ?>
   		</select>
+  		<label>Filter by</label>
       </div>
 	<table class="bordered hoverable responsive-table tableClass">
         <thead>

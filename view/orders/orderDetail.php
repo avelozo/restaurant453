@@ -56,24 +56,21 @@ class OrderDetailView
 		$orderTotal = 0;
 		$orderDetailsHtml = '';
 
-		$orderDetailsHtml .= '<p>
-									<h4>Table Number: ' . $order->tableNumber . '
-								</h4></p>';
 
 		if(isset($order->customer->name))
 		{
 			$orderDetailsHtml .= '<p>
-									<h5>Customer: ' . $order->customer->name . '
-								</h5></p>';
+									<h6>Customer: ' . $order->customer->name . '
+								</h6></p>';
 		}
 		else
 		{
 			$orderDetailsHtml .= '';
 		}
 
-		$orderDetailsHtml .= '<p><h5>
+		$orderDetailsHtml .= '<p><h6>
 								Start Time: ' . date('m/d/Y H:i', strtotime($order->date)) . '
-							</h5></p>
+							</h6></p>
 							<table class="bordered hoverable responsive-table">
 								<thead>
 									<tr>
