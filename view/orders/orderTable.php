@@ -38,7 +38,7 @@ class OrderTableView
 	{
 		$orders = $this->orderBS->getOrders(null, null, $employeeId);
 
-		$tableList = '<ul class="collapsible popout" data-collapsible="accordion">';
+		$tableList = '<div class="container container80"><ul class="collapsible popout" data-collapsible="accordion">';
 
 		foreach ($orders as $order)
 		{
@@ -47,7 +47,7 @@ class OrderTableView
       		<div class="collapsible-body orderDetailsContent"></div>
     		</li>';
 		}
-        $tableList.="<script type='text/javascript'> $(document).ready(function(){
+        $tableList.="</div><script type='text/javascript'> $(document).ready(function(){
     $('.collapsible').collapsible({
       accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });

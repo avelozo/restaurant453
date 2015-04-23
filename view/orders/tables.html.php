@@ -1,4 +1,4 @@
-<div class="container z-depth-3">
+<div class="container z-depth-1">
 	<label for="tableNumber">
 			<input type="text" class="inputContent tableNumber" name="tableNumber" placeholder="Table Number" id="tableNumber" value="">
 	</label>
