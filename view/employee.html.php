@@ -32,14 +32,11 @@
 				<form action="?" method="post">
 					<div>
 						<input type="hidden" name="id" value="<?php echo $employee->id; ?>">
-						<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+						<button class="btn-floating btn-flat waves-effect waves-light tooltipped green" data-position="top" data-delay="15" data-tooltip="Edit Employee" type="submit" name="action" value="iedit">
     						<i class="mdi-editor-mode-edit"></i>
   						</button>
-
-  						<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
+  						<button class="btn-floating btn-flat waves-effect waves-light tooltipped red lighten-3" data-position="top" data-delay="15" data-tooltip="Delete Employee" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $employee->id; ?>);" name="delete" value="idelete">
     						<i class="mdi-action-delete"></i>
-
-
   						</button>
 					</div>
 				</form>

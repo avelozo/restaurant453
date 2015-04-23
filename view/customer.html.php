@@ -41,11 +41,11 @@
 				<form action="?" method="post">
 					<div>
 						<input type="hidden" name="id" value="<?php echo $customer->id; ?>">
-						<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+						<button class="btn-floating btn-flat waves-effect waves-light green tooltipped" data-position="top" data-delay="15" data-tooltip="Edit Costumer"  type="submit" name="action" value="iedit">
     						<i class="mdi-editor-mode-edit"></i>
   						</button>
 
-  						<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $customer->id; ?>);" name="delete" value="idelete">
+  						<button class="btn-floating btn-flat waves-effect waves-light red lighten-3 tooltipped" data-position="top" data-delay="15" data-tooltip="Delete Costumer"  type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $customer->id; ?>);" name="delete" value="idelete">
     						<i class="mdi-action-delete"></i>
   						</button>
 					</div>

@@ -141,11 +141,11 @@
 			
 			if($restaurantId != null && $restaurantId > 0)
 				$tableBody .= '<input type="hidden" name="restaurantId" value="' .  $restaurantId . '">
-							<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+							<button class="btn-floating btn-flat waves-effect waves-light green tooltipped" data-position="top" data-delay="15" data-tooltip="Edit Product" type="submit" name="action" value="iedit">
     							<i class="mdi-editor-mode-edit"></i>
   							</button>';
 			
-			$tableBody .= '					<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="add">
+			$tableBody .= '					<button class="btn-floating btn-flat waves-effect waves-light green tooltipped" data-position="top" data-delay="15" data-tooltip="Add Product" type="submit" name="action" value="add">
     							<i class="mdi-content-add"></i>
   							</button>
 

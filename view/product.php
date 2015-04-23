@@ -98,10 +98,10 @@
 					<form action="?" method="post" id="mainForm">
 						<div>
 							<input type="hidden" name="id" value="' .  $product->id . '">
-							<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+							<button class="btn-floating btn-flat waves-effect waves-light green tooltipped" data-position="top" data-delay="15" data-tooltip="Edit Product" type="submit" name="action" value="iedit">
     							<i class="mdi-editor-mode-edit"></i>
   							</button>
-  							<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine(' .$deleteUrl.'.php'.', '.$product->id.')" name="delete" value="idelete">
+  							<button class="btn-floating btn-flat waves-effect waves-light red lighten-3 tooltipped" data-position="top" data-delay="15" data-tooltip="Delete Product" type="button" onclick="callDeleteRoutine(' .$deleteUrl.'.php'.', '.$product->id.')" name="delete" value="idelete">
   							    <i class="mdi-action-delete"></i>
   							</button>
 						</div>

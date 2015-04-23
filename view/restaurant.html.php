@@ -32,22 +32,23 @@
 			<td class="center-align"><?php echo $restaurant->country; ?></td>
 			<td class="center-align"><?php echo $restaurant->postalCode; ?></td>
             <td class="center-align">
+
 				<form action="?" method="post">
 					<div>
 						<input type="hidden" name="id" value="<?php echo $restaurant->id; ?>">
-						<button class="btn-floating btn-flat waves-effect waves-light green" type="submit" name="action" value="iedit">
+						<button class="btn-floating btn-flat waves-effect waves-light green tooltipped" data-position="top" data-delay="15" data-tooltip="Edit Restaurant" type="submit" name="action" value="iedit">
     						<i class="mdi-editor-mode-edit"></i>
   						</button>
 
-  						<button class="btn-floating btn-flat waves-effect waves-light red lighten-3" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $restaurant->id; ?>);" name="delete" value="idelete">
+  						<button class="btn-floating btn-flat waves-effect waves-light tooltipped red lighten-3" data-position="top" data-delay="15" data-tooltip="Delete Restaurant" type="button" onclick="callDeleteRoutine('<?php echo $deleteUrl; ?>', <?php echo $restaurant->id; ?>);" name="delete" value="idelete">
     						<i class="mdi-action-delete"></i>
   						</button>
 					</div>
 				</form>
 			</td>
           </tr>
-          <?php endforeach; ?>
 
+          <?php endforeach; ?>
 
         </tbody>
       </table>

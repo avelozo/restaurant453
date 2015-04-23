@@ -66,20 +66,17 @@
       <li><a href="<?php echo ROOT; ?>/view/customer.php"><i class="mdi-social-person-outline left"></i>Customer</a></li>
       <li><a href="<?php echo ROOT; ?>/view/stock.php"><i class="mdi-action-store left"></i>Stock</a></li>
            <!-- Dropdown Trigger -->
-      <li><a class="dropdown-button" href="#" data-activates="dropdown1">Reports<i class="mdi-navigation-arrow-drop-down right"></i></a></li>
+
     </ul>
 
        <ul class="side-nav" id="mobile-demo">
-            <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-dashboard left"></i>Order</a></li>
-            <li><a href="<?php echo ROOT; ?>/view/employee.php"><i class="mdi-social-person left"></i>Employee</a></li>
+            <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-shopping-cart left"></i>Order</a></li>
+            <li><a href="<?php echo ROOT; ?>/view/employee.php"><i class="mdi-action-perm-contact-cal left"></i>Employee</a></li>
             <li><a href="<?php echo ROOT; ?>/view/restaurant.php"><i class="mdi-maps-local-restaurant left"></i>Restaurant</a></li>
             <li><a href="<?php echo ROOT; ?>/view/role.php"><i class="mdi-action-dashboard left"></i>Role</a></li>
             <li><a href="<?php echo ROOT; ?>/view/product.php"><i class="mdi-maps-local-drink left"></i>Product</a></li>
             <li><a href="<?php echo ROOT; ?>/view/customer.php"><i class="mdi-social-person-outline left"></i>Customer</a></li>
             <li><a href="<?php echo ROOT; ?>/view/stock.php"><i class="mdi-action-store left"></i>Stock</a></li>
-             <li><a href="<?php echo ROOT; ?>/view/reports/orderreport.php"><i class="large mdi-editor-insert-chart"></i>Order Report</a></li>
-            <li><a href="<?php echo ROOT; ?>/view/reports/employeereport.php"><i class="large mdi-editor-insert-chart"></i>Employe Report</a></li>
-            <li><a href="<?php echo ROOT; ?>/view/reports/customerreport.php"><i class="large mdi-editor-insert-chart"></i>Customer Report</a></li>
       </ul>
   </div>
 </nav>

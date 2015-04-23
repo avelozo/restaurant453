@@ -37,8 +37,10 @@
         </ul>
         <?php } ?>
     </header>
+
+    <?php include DIR_BASE . '/view/login.php'; ?>
 <nav class="green">
-  <div class="nav-wrapper"><a href="#" class="brand-logo">Rousseff</a></div>  
+  <div class="nav-wrapper"><a href="<?php echo ROOT; ?>" class="brand-logo">Rousseff</a></div>  
 </nav>
 
     
