@@ -22,7 +22,7 @@ class OrderProduct
 
 		$productsListHtml="";
 		$productsList = $this->productBS->getProducts($order[0]->restaurant->id);
-		$productsListHtml="";
+		$productsListHtml="<h3> Products</h3>";
 	     
 		foreach ($productsList as $product)
 		{

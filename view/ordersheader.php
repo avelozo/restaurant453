@@ -38,7 +38,6 @@
         <?php } ?>
     </header>
 <nav class="green">
-  <div class="nav-wrapper">    
 </nav>
 
     

@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="<?php echo ROOT; ?>/css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="<?php echo ROOT; ?>/css/style.css" >
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <script type="text/javascript" src="<?php echo ROOT; ?>/js/jquery-2.1.1.min.js"></script>
@@ -52,6 +53,7 @@
 </ul>
 <nav class="green">
   <div class="nav-wrapper">
+    <a href="#" class="brand-logo">Rousseff</a></div> 
        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down">
       <li><a href="<?php echo ROOT; ?>/view/orders/"><i class="mdi-action-dashboard left"></i>Order</a></li>
